@@ -1,0 +1,8 @@
+5c434b8a39d684af6d260551dd6d0f9b1e1c5b10b17cb20330ba50929c0cd2ec  bin/srdt-client-linux-amd64
+4db427bba6863b0cf36fbf84c7d2f459230a261a19138d20c4a871861cb5f5a9  bin/srdt-client-windows-amd64.exe
+949112813225ac968d5626bb29784b99bd9a60166934279b6d8adb0a9c69db39  bin/srdt-load-linux-amd64
+f64230710102d23f3792b1404450b270f0f0ba610884abbe08952414fad630a5  bin/srdt-load-windows-amd64.exe
+fe1142307cb03ab0e0244428a51ae20158c9ed575c56fbca4a21b6e38a64a3de  bin/srdt-server-linux-amd64
+4358b4ba72e74e670d9667a7c73a8e036e8d02996ebb4089ad513802f2df3ba3  bin/srdt-server-windows-amd64.exe
+6c77b3018f10a8ca66e569271aad4cf02f6230d9e68bc7eba613d32b47db9251  bin/srdt-test-linux-amd64
+2e278f6a2d008cd066cbc8a68bd06d8255bd2cb277d48ce38945fba67ffb45a7  bin/srdt-test-windows-amd64.exe

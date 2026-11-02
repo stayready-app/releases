@@ -1,0 +1,29 @@
+[
+  {
+    "name": "stage20-client-stage19-server",
+    "passed": true,
+    "expected_success": true,
+    "client_exit": 0,
+    "delivered_messages": 12,
+    "resource_drops": 0,
+    "server_exit": 0
+  },
+  {
+    "name": "stage19-client-stage20-server-explicit",
+    "passed": true,
+    "expected_success": true,
+    "client_exit": 0,
+    "delivered_messages": 12,
+    "resource_drops": 0,
+    "server_exit": 0
+  },
+  {
+    "name": "stage19-client-stage20-server-no-flag",
+    "passed": true,
+    "expected_success": false,
+    "client_exit": 1,
+    "delivered_messages": 1,
+    "resource_drops": 0,
+    "server_exit": 0
+  }
+]

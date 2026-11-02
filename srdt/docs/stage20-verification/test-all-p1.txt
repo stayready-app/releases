@@ -1,0 +1,5 @@
+?   	example.com/srdt/cmd/srdt-client	[no test files]
+?   	example.com/srdt/cmd/srdt-load	[no test files]
+?   	example.com/srdt/cmd/srdt-server	[no test files]
+?   	example.com/srdt/cmd/srdt-test	[no test files]
+ok  	example.com/srdt/emulator	0.003s

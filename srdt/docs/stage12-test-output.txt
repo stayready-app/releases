@@ -1,0 +1,12 @@
+Stage 12: bounded receiver configuration and constant-time queue in-flight accounting
+Known limits: not a streaming transport; per-session caps are not a global process budget; existing handshake not production safe.
+
+go version go1.23.2 linux/amd64
+?   	example.com/srdt/cmd/srdt-client	[no test files]
+?   	example.com/srdt/cmd/srdt-server	[no test files]
+?   	example.com/srdt/cmd/srdt-test	[no test files]
+ok  	example.com/srdt/emulator	1.015s
+ok  	example.com/srdt/netreliable	6.653s
+ok  	example.com/srdt/reliable	17.328s
+ok  	example.com/srdt/secureudp	1.125s
+ok  	example.com/srdt/testkit	1.192s

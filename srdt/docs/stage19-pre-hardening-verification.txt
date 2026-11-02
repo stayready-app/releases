@@ -1,0 +1,27 @@
+=== toolchain ===
+go version go1.23.2 linux/amd64
+Linux ffc6162fb8c6 6.18.57 #1 SMP Tue Oct 20 21:56:04 UTC 2026 x86_64 GNU/Linux
+=== formatting ===
+=== build ===
+=== unit and real-socket tests ===
+?   	example.com/srdt/cmd/srdt-client	[no test files]
+?   	example.com/srdt/cmd/srdt-load	[no test files]
+?   	example.com/srdt/cmd/srdt-server	[no test files]
+?   	example.com/srdt/cmd/srdt-test	[no test files]
+ok  	example.com/srdt/emulator	0.012s
+ok  	example.com/srdt/netreliable	42.003s
+ok  	example.com/srdt/reliable	0.406s
+ok  	example.com/srdt/secureudp	5.126s
+ok  	example.com/srdt/testkit	0.020s
+=== race detector (full suite) ===
+?   	example.com/srdt/cmd/srdt-client	[no test files]
+?   	example.com/srdt/cmd/srdt-load	[no test files]
+?   	example.com/srdt/cmd/srdt-server	[no test files]
+?   	example.com/srdt/cmd/srdt-test	[no test files]
+ok  	example.com/srdt/emulator	1.019s
+ok  	example.com/srdt/netreliable	49.194s
+ok  	example.com/srdt/reliable	4.318s
+ok  	example.com/srdt/secureudp	1.129s
+ok  	example.com/srdt/testkit	1.172s
+=== vet ===
+=== focused repeated regression tests ===

@@ -1,0 +1,2 @@
+ok  	example.com/srdt/netreliable	7.841s
+elapsed=8.14

@@ -1,0 +1,222 @@
+[
+  {
+    "name": "baseline",
+    "passed": true,
+    "server_GOMAXPROCS": 2,
+    "server_GOMEMLIMIT": "128MiB (soft Go-runtime limit, not RSS cap)",
+    "elapsed_seconds": 0.8879315789999964,
+    "server_sampled": {
+      "rss_kib": 9124,
+      "threads": 8,
+      "cpu_seconds": 0.08
+    },
+    "server": {
+      "active_sessions": 0,
+      "peak_sessions": 32,
+      "used_hello_ids": 32,
+      "buffer_bytes": 0,
+      "peak_buffer_bytes": 603648,
+      "received_datagrams": 6451,
+      "sent_datagrams": 7596,
+      "delivered_messages": 384,
+      "delivered_bytes": 1572864,
+      "invalid_packets": 0,
+      "admission_rejects": 0,
+      "rate_limited": 0,
+      "resource_drops": 41,
+      "stale_messages": 0,
+      "repeated_hellos": 0,
+      "expired_sessions": 0,
+      "write_errors": 0,
+      "filtered_datagrams": 0
+    },
+    "load": {
+      "mode": "active",
+      "clients": 32,
+      "succeeded": 32,
+      "messages_per_client": 12,
+      "message_bytes": 4096,
+      "verified_bytes_one_direction": 1572864,
+      "seconds": 0.885608888,
+      "verified_one_direction_mbps": 14.208204288031038,
+      "verification": "byte-for-byte echo of every message",
+      "seed": 1
+    }
+  },
+  {
+    "name": "filter",
+    "passed": true,
+    "server_GOMAXPROCS": 2,
+    "server_GOMEMLIMIT": "128MiB (soft Go-runtime limit, not RSS cap)",
+    "elapsed_seconds": 1.0556905700000243,
+    "server_sampled": {
+      "rss_kib": 9364,
+      "threads": 7,
+      "cpu_seconds": 0.12
+    },
+    "server": {
+      "active_sessions": 0,
+      "peak_sessions": 32,
+      "used_hello_ids": 32,
+      "buffer_bytes": 0,
+      "peak_buffer_bytes": 746496,
+      "received_datagrams": 10082,
+      "sent_datagrams": 10608,
+      "delivered_messages": 384,
+      "delivered_bytes": 1572864,
+      "invalid_packets": 0,
+      "admission_rejects": 0,
+      "rate_limited": 0,
+      "resource_drops": 0,
+      "stale_messages": 0,
+      "repeated_hellos": 0,
+      "expired_sessions": 0,
+      "write_errors": 0,
+      "filtered_datagrams": 1461
+    },
+    "load": {
+      "mode": "active",
+      "clients": 32,
+      "succeeded": 32,
+      "messages_per_client": 12,
+      "message_bytes": 4096,
+      "verified_bytes_one_direction": 1572864,
+      "seconds": 1.05159253,
+      "verified_one_direction_mbps": 11.96557757974945,
+      "verification": "byte-for-byte echo of every message",
+      "seed": 1
+    }
+  },
+  {
+    "name": "idle",
+    "passed": true,
+    "server_GOMAXPROCS": 2,
+    "server_GOMEMLIMIT": "128MiB (soft Go-runtime limit, not RSS cap)",
+    "elapsed_seconds": 1.3315189469999495,
+    "server_sampled": {
+      "rss_kib": 9688,
+      "threads": 7,
+      "cpu_seconds": 0.14
+    },
+    "server": {
+      "active_sessions": 0,
+      "peak_sessions": 1000,
+      "used_hello_ids": 1000,
+      "buffer_bytes": 0,
+      "peak_buffer_bytes": 9,
+      "received_datagrams": 3000,
+      "sent_datagrams": 3000,
+      "delivered_messages": 1000,
+      "delivered_bytes": 1000,
+      "invalid_packets": 0,
+      "admission_rejects": 0,
+      "rate_limited": 0,
+      "resource_drops": 0,
+      "stale_messages": 0,
+      "repeated_hellos": 0,
+      "expired_sessions": 0,
+      "write_errors": 0,
+      "filtered_datagrams": 0
+    },
+    "load": {
+      "mode": "idle",
+      "clients": 1000,
+      "succeeded": 1000,
+      "messages_per_client": 1,
+      "message_bytes": 1,
+      "verified_bytes_one_direction": 1000,
+      "seconds": 1.329118594,
+      "verified_one_direction_mbps": 0.006019026470710859,
+      "verification": "byte-for-byte echo of every message",
+      "seed": 1
+    }
+  },
+  {
+    "name": "bulk",
+    "passed": true,
+    "server_GOMAXPROCS": 2,
+    "server_GOMEMLIMIT": "128MiB (soft Go-runtime limit, not RSS cap)",
+    "elapsed_seconds": 8.170560992999981,
+    "server_sampled": {
+      "rss_kib": 38596,
+      "threads": 8,
+      "cpu_seconds": 8.19
+    },
+    "server": {
+      "active_sessions": 0,
+      "peak_sessions": 200,
+      "used_hello_ids": 200,
+      "buffer_bytes": 0,
+      "peak_buffer_bytes": 14413824,
+      "received_datagrams": 898720,
+      "sent_datagrams": 762406,
+      "delivered_messages": 6400,
+      "delivered_bytes": 104857600,
+      "invalid_packets": 0,
+      "admission_rejects": 0,
+      "rate_limited": 0,
+      "resource_drops": 359800,
+      "stale_messages": 0,
+      "repeated_hellos": 0,
+      "expired_sessions": 0,
+      "write_errors": 0,
+      "filtered_datagrams": 0
+    },
+    "load": {
+      "mode": "active",
+      "clients": 200,
+      "succeeded": 200,
+      "messages_per_client": 32,
+      "message_bytes": 16384,
+      "verified_bytes_one_direction": 104857600,
+      "seconds": 8.164631927,
+      "verified_one_direction_mbps": 102.74324764426089,
+      "verification": "byte-for-byte echo of every message",
+      "seed": 1
+    }
+  },
+  {
+    "name": "long-batch",
+    "passed": true,
+    "server_GOMAXPROCS": 2,
+    "server_GOMEMLIMIT": "128MiB (soft Go-runtime limit, not RSS cap)",
+    "elapsed_seconds": 2.709749761000012,
+    "server_sampled": {
+      "rss_kib": 9992,
+      "threads": 8,
+      "cpu_seconds": 2.24
+    },
+    "server": {
+      "active_sessions": 0,
+      "peak_sessions": 1,
+      "used_hello_ids": 1,
+      "buffer_bytes": 0,
+      "peak_buffer_bytes": 73728,
+      "received_datagrams": 248001,
+      "sent_datagrams": 248001,
+      "delivered_messages": 6400,
+      "delivered_bytes": 104857600,
+      "invalid_packets": 0,
+      "admission_rejects": 0,
+      "rate_limited": 0,
+      "resource_drops": 0,
+      "stale_messages": 0,
+      "repeated_hellos": 0,
+      "expired_sessions": 0,
+      "write_errors": 0,
+      "filtered_datagrams": 0
+    },
+    "load": {
+      "mode": "active",
+      "clients": 1,
+      "succeeded": 1,
+      "messages_per_client": 6400,
+      "message_bytes": 16384,
+      "verified_bytes_one_direction": 104857600,
+      "seconds": 2.698017608,
+      "verified_one_direction_mbps": 310.9174667773332,
+      "verification": "byte-for-byte echo of every message",
+      "seed": 1
+    }
+  }
+]

@@ -1,0 +1,16 @@
+=== toolchain ===
+go version go1.23.2 linux/amd64
+Linux dee82507c750 6.18.57 #1 SMP Tue Oct 20 21:56:04 UTC 2026 x86_64 GNU/Linux
+=== formatting ===
+=== build ===
+=== unit and real-socket tests ===
+?   	example.com/srdt/cmd/srdt-client	[no test files]
+?   	example.com/srdt/cmd/srdt-load	[no test files]
+?   	example.com/srdt/cmd/srdt-server	[no test files]
+?   	example.com/srdt/cmd/srdt-test	[no test files]
+ok  	example.com/srdt/emulator	0.013s
+ok  	example.com/srdt/netreliable	20.802s
+ok  	example.com/srdt/reliable	0.726s
+ok  	example.com/srdt/secureudp	5.134s
+ok  	example.com/srdt/testkit	0.030s
+=== race detector (full suite) ===

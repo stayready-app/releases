@@ -1,0 +1,37 @@
+=== toolchain ===
+go version go1.23.2 linux/amd64
+Linux efe4328ec684 6.18.57 #1 SMP Tue Oct 20 21:56:04 UTC 2026 x86_64 GNU/Linux
+=== formatting ===
+=== build ===
+=== unit and real-socket tests ===
+?   	example.com/srdt/cmd/srdt-client	[no test files]
+?   	example.com/srdt/cmd/srdt-load	[no test files]
+?   	example.com/srdt/cmd/srdt-server	[no test files]
+?   	example.com/srdt/cmd/srdt-test	[no test files]
+ok  	example.com/srdt/emulator	0.012s
+ok  	example.com/srdt/netreliable	8.836s
+ok  	example.com/srdt/reliable	1.577s
+ok  	example.com/srdt/secureudp	0.105s
+ok  	example.com/srdt/testkit	0.015s
+=== race detector (full suite) ===
+?   	example.com/srdt/cmd/srdt-client	[no test files]
+?   	example.com/srdt/cmd/srdt-load	[no test files]
+?   	example.com/srdt/cmd/srdt-server	[no test files]
+?   	example.com/srdt/cmd/srdt-test	[no test files]
+ok  	example.com/srdt/emulator	1.019s
+ok  	example.com/srdt/netreliable	11.683s
+ok  	example.com/srdt/reliable	17.935s
+ok  	example.com/srdt/secureudp	1.124s
+ok  	example.com/srdt/testkit	1.197s
+=== vet ===
+=== focused repeated regression tests ===
+ok  	example.com/srdt/netreliable	8.321s
+=== frame parser fuzz (3 seconds, 2 workers) ===
+fuzz: elapsed: 0s, gathering baseline coverage: 0/9 completed
+fuzz: elapsed: 0s, gathering baseline coverage: 9/9 completed, now fuzzing with 2 workers
+fuzz: elapsed: 3s, execs: 173339 (57769/sec), new interesting: 0 (total: 9)
+fuzz: elapsed: 3s, execs: 173339 (0/sec), new interesting: 0 (total: 9)
+PASS
+ok  	example.com/srdt/reliable	3.026s
+=== Linux amd64 and Windows amd64 builds ===
+=== PASS ===

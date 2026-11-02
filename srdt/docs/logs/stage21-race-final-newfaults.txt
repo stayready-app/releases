@@ -1,0 +1,38 @@
+=== RUN   TestAuditRealUDPNetworkFaults
+=== RUN   TestAuditRealUDPNetworkFaults/loss-reorder-corrupt-replay-inject
+    fault_test.go:218: verified=131072 bytes; invalid=99 resources=0
+    fault_test.go:173: relay: up={Submitted:452 Dropped:22 Duplicated:25 Corrupted:4 Delivered:455 QueueDrops:0 LinkDrops:0} down={Submitted:405 Dropped:18 Duplicated:23 Corrupted:11 Delivered:410 QueueDrops:0 LinkDrops:0} forged=123 direct_drops=0 write_drops=0
+=== RUN   TestAuditRealUDPNetworkFaults/size-blackhole-and-loss
+    fault_test.go:218: verified=131072 bytes; invalid=175 resources=0
+    fault_test.go:173: relay: up={Submitted:1079 Dropped:156 Duplicated:27 Corrupted:0 Delivered:950 QueueDrops:0 LinkDrops:0} down={Submitted:936 Dropped:159 Duplicated:26 Corrupted:0 Delivered:803 QueueDrops:0 LinkDrops:0} forged=250 direct_drops=0 write_drops=0
+=== RUN   TestAuditRealUDPNetworkFaults/lost-welcome
+    fault_test.go:218: verified=131072 bytes; invalid=0 resources=0
+    fault_test.go:173: relay: up={Submitted:341 Dropped:0 Duplicated:0 Corrupted:0 Delivered:341 QueueDrops:0 LinkDrops:0} down={Submitted:268 Dropped:0 Duplicated:0 Corrupted:0 Delivered:268 QueueDrops:0 LinkDrops:0} forged=0 direct_drops=1 write_drops=0
+=== RUN   TestAuditRealUDPNetworkFaults/wan-rtt-above-fixed-rto
+    fault_test.go:218: verified=131072 bytes; invalid=51 resources=0
+    fault_test.go:173: relay: up={Submitted:364 Dropped:1 Duplicated:0 Corrupted:0 Delivered:363 QueueDrops:0 LinkDrops:0} down={Submitted:345 Dropped:5 Duplicated:0 Corrupted:0 Delivered:340 QueueDrops:0 LinkDrops:0} forged=100 direct_drops=0 write_drops=0
+=== RUN   TestAuditRealUDPNetworkFaults/reverse-path-blackout
+    fault_test.go:218: verified=131072 bytes; invalid=0 resources=0
+    fault_test.go:173: relay: up={Submitted:343 Dropped:0 Duplicated:0 Corrupted:0 Delivered:343 QueueDrops:0 LinkDrops:0} down={Submitted:268 Dropped:0 Duplicated:0 Corrupted:0 Delivered:268 QueueDrops:0 LinkDrops:0} forged=0 direct_drops=3 write_drops=0
+=== RUN   TestAuditRealUDPNetworkFaults/lost-open-and-grant
+    fault_test.go:218: verified=131072 bytes; invalid=0 resources=0
+    fault_test.go:173: relay: up={Submitted:341 Dropped:0 Duplicated:0 Corrupted:0 Delivered:341 QueueDrops:0 LinkDrops:0} down={Submitted:269 Dropped:0 Duplicated:0 Corrupted:0 Delivered:269 QueueDrops:0 LinkDrops:0} forged=0 direct_drops=2 write_drops=0
+=== RUN   TestAuditRealUDPNetworkFaults/credit-control-blackout
+    fault_test.go:218: verified=131072 bytes; invalid=0 resources=0
+    fault_test.go:173: relay: up={Submitted:344 Dropped:0 Duplicated:0 Corrupted:0 Delivered:344 QueueDrops:0 LinkDrops:0} down={Submitted:268 Dropped:0 Duplicated:0 Corrupted:0 Delivered:268 QueueDrops:0 LinkDrops:0} forged=0 direct_drops=4 write_drops=0
+--- PASS: TestAuditRealUDPNetworkFaults (19.38s)
+    --- PASS: TestAuditRealUDPNetworkFaults/loss-reorder-corrupt-replay-inject (2.34s)
+    --- PASS: TestAuditRealUDPNetworkFaults/size-blackhole-and-loss (8.51s)
+    --- PASS: TestAuditRealUDPNetworkFaults/lost-welcome (0.57s)
+    --- PASS: TestAuditRealUDPNetworkFaults/wan-rtt-above-fixed-rto (5.39s)
+    --- PASS: TestAuditRealUDPNetworkFaults/reverse-path-blackout (0.87s)
+    --- PASS: TestAuditRealUDPNetworkFaults/lost-open-and-grant (0.67s)
+    --- PASS: TestAuditRealUDPNetworkFaults/credit-control-blackout (1.02s)
+=== RUN   TestStage21V1HelloRetryChangesObservedSize
+    fault_test.go:173: relay: up={Submitted:5 Dropped:0 Duplicated:0 Corrupted:0 Delivered:5 QueueDrops:0 LinkDrops:0} down={Submitted:5 Dropped:0 Duplicated:0 Corrupted:0 Delivered:5 QueueDrops:0 LinkDrops:0} forged=0 direct_drops=1 write_drops=0
+--- PASS: TestStage21V1HelloRetryChangesObservedSize (0.56s)
+=== RUN   TestStage21V1WelcomeRetryChangesObservedSize
+    fault_test.go:173: relay: up={Submitted:6 Dropped:0 Duplicated:0 Corrupted:0 Delivered:6 QueueDrops:0 LinkDrops:0} down={Submitted:5 Dropped:0 Duplicated:0 Corrupted:0 Delivered:5 QueueDrops:0 LinkDrops:0} forged=0 direct_drops=1 write_drops=0
+--- PASS: TestStage21V1WelcomeRetryChangesObservedSize (0.56s)
+PASS
+ok  	example.com/srdt/netreliable	21.503s

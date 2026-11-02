@@ -1,0 +1,41 @@
+=== RUN   TestAuditRealUDPNetworkFaults
+=== RUN   TestAuditRealUDPNetworkFaults/loss-reorder-corrupt-replay-inject
+    fault_test.go:218: verified=131072 bytes; invalid=91 resources=0
+    fault_test.go:173: relay: up={Submitted:468 Dropped:28 Duplicated:23 Corrupted:7 Delivered:463 QueueDrops:0 LinkDrops:0} down={Submitted:415 Dropped:16 Duplicated:26 Corrupted:9 Delivered:425 QueueDrops:0 LinkDrops:0} forged=126 direct_drops=0 write_drops=0
+=== RUN   TestAuditRealUDPNetworkFaults/size-blackhole-and-loss
+    fault_test.go:218: verified=131072 bytes; invalid=183 resources=0
+    fault_test.go:173: relay: up={Submitted:1086 Dropped:161 Duplicated:30 Corrupted:0 Delivered:955 QueueDrops:0 LinkDrops:0} down={Submitted:979 Dropped:156 Duplicated:26 Corrupted:0 Delivered:849 QueueDrops:0 LinkDrops:0} forged=257 direct_drops=0 write_drops=0
+=== RUN   TestAuditRealUDPNetworkFaults/lost-welcome
+    fault_test.go:218: verified=131072 bytes; invalid=0 resources=0
+    fault_test.go:173: relay: up={Submitted:341 Dropped:0 Duplicated:0 Corrupted:0 Delivered:341 QueueDrops:0 LinkDrops:0} down={Submitted:269 Dropped:0 Duplicated:0 Corrupted:0 Delivered:269 QueueDrops:0 LinkDrops:0} forged=0 direct_drops=1 write_drops=0
+=== RUN   TestAuditRealUDPNetworkFaults/wan-rtt-above-fixed-rto
+    fault_test.go:218: verified=131072 bytes; invalid=47 resources=0
+    fault_test.go:173: relay: up={Submitted:368 Dropped:2 Duplicated:0 Corrupted:0 Delivered:366 QueueDrops:0 LinkDrops:0} down={Submitted:356 Dropped:4 Duplicated:0 Corrupted:0 Delivered:352 QueueDrops:0 LinkDrops:0} forged=102 direct_drops=0 write_drops=0
+=== RUN   TestAuditRealUDPNetworkFaults/reverse-path-blackout
+    fault_test.go:218: verified=131072 bytes; invalid=0 resources=0
+    fault_test.go:173: relay: up={Submitted:343 Dropped:0 Duplicated:0 Corrupted:0 Delivered:343 QueueDrops:0 LinkDrops:0} down={Submitted:268 Dropped:0 Duplicated:0 Corrupted:0 Delivered:268 QueueDrops:0 LinkDrops:0} forged=0 direct_drops=3 write_drops=0
+=== RUN   TestAuditRealUDPNetworkFaults/lost-open-and-grant
+    fault_test.go:218: verified=131072 bytes; invalid=0 resources=0
+    fault_test.go:173: relay: up={Submitted:341 Dropped:0 Duplicated:0 Corrupted:0 Delivered:341 QueueDrops:0 LinkDrops:0} down={Submitted:269 Dropped:0 Duplicated:0 Corrupted:0 Delivered:269 QueueDrops:0 LinkDrops:0} forged=0 direct_drops=2 write_drops=0
+=== RUN   TestAuditRealUDPNetworkFaults/credit-control-blackout
+    fault_test.go:218: verified=131072 bytes; invalid=0 resources=0
+    fault_test.go:173: relay: up={Submitted:344 Dropped:0 Duplicated:0 Corrupted:0 Delivered:344 QueueDrops:0 LinkDrops:0} down={Submitted:268 Dropped:0 Duplicated:0 Corrupted:0 Delivered:268 QueueDrops:0 LinkDrops:0} forged=0 direct_drops=4 write_drops=0
+--- PASS: TestAuditRealUDPNetworkFaults (21.09s)
+    --- PASS: TestAuditRealUDPNetworkFaults/loss-reorder-corrupt-replay-inject (2.65s)
+    --- PASS: TestAuditRealUDPNetworkFaults/size-blackhole-and-loss (8.67s)
+    --- PASS: TestAuditRealUDPNetworkFaults/lost-welcome (0.56s)
+    --- PASS: TestAuditRealUDPNetworkFaults/wan-rtt-above-fixed-rto (6.67s)
+    --- PASS: TestAuditRealUDPNetworkFaults/reverse-path-blackout (0.86s)
+    --- PASS: TestAuditRealUDPNetworkFaults/lost-open-and-grant (0.66s)
+    --- PASS: TestAuditRealUDPNetworkFaults/credit-control-blackout (1.01s)
+=== RUN   TestAuditRealUDPNetworkFaults
+=== RUN   TestAuditRealUDPNetworkFaults/loss-reorder-corrupt-replay-inject
+    fault_test.go:218: verified=131072 bytes; invalid=104 resources=0
+    fault_test.go:173: relay: up={Submitted:473 Dropped:27 Duplicated:26 Corrupted:8 Delivered:472 QueueDrops:0 LinkDrops:0} down={Submitted:423 Dropped:17 Duplicated:23 Corrupted:8 Delivered:429 QueueDrops:0 LinkDrops:0} forged=128 direct_drops=0 write_drops=0
+=== RUN   TestAuditRealUDPNetworkFaults/size-blackhole-and-loss
+    fault_test.go:218: verified=131072 bytes; invalid=172 resources=0
+    fault_test.go:173: relay: up={Submitted:1079 Dropped:161 Duplicated:31 Corrupted:0 Delivered:949 QueueDrops:0 LinkDrops:0} down={Submitted:954 Dropped:156 Duplicated:23 Corrupted:0 Delivered:821 QueueDrops:0 LinkDrops:0} forged=252 direct_drops=0 write_drops=0
+=== RUN   TestAuditRealUDPNetworkFaults/lost-welcome
+    fault_test.go:218: verified=131072 bytes; invalid=0 resources=0
+    fault_test.go:173: relay: up={Submitted:341 Dropped:0 Duplicated:0 Corrupted:0 Delivered:341 QueueDrops:0 LinkDrops:0} down={Submitted:269 Dropped:0 Duplicated:0 Corrupted:0 Delivered:269 QueueDrops:0 LinkDrops:0} forged=0 direct_drops=1 write_drops=0
+=== RUN   TestAuditRealUDPNetworkFaults/wan-rtt-above-fixed-rto

@@ -1,0 +1,4 @@
+$ grep fuzz functions
+reliable/packets_test.go:250:func FuzzPacketReceipt(f *testing.F) {
+reliable/ownership_test.go:108:func FuzzDecode(f *testing.F) {
+secureudp/audit_test.go:45:func FuzzAuditOpen(f *testing.F) {

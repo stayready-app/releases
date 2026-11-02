@@ -1,0 +1,8 @@
+=== RUN   TestAuditRealUDPNetworkFaults
+=== RUN   TestAuditRealUDPNetworkFaults/wan-rtt-above-fixed-rto
+    fault_test.go:218: verified=131072 bytes; invalid=53 resources=0
+    fault_test.go:173: relay: up={Submitted:374 Dropped:2 Duplicated:0 Corrupted:0 Delivered:372 QueueDrops:0 LinkDrops:0} down={Submitted:365 Dropped:4 Duplicated:0 Corrupted:0 Delivered:361 QueueDrops:0 LinkDrops:0} forged=104 direct_drops=0 write_drops=0
+--- PASS: TestAuditRealUDPNetworkFaults (6.85s)
+    --- PASS: TestAuditRealUDPNetworkFaults/wan-rtt-above-fixed-rto (6.85s)
+PASS
+ok  	example.com/srdt/netreliable	6.854s

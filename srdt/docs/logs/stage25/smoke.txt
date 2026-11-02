@@ -1,0 +1,14 @@
+===== smoke =====
+{
+  "mode": "bridge",
+  "clients": 1,
+  "succeeded": 1,
+  "messages_per_client": 16,
+  "message_bytes": 4096,
+  "verified_bytes_one_direction": 65536,
+  "seconds": 0.318970805,
+  "verified_one_direction_mbps": 1.643686480961792,
+  "verification": "byte-for-byte independent TCP stream echo with half-close",
+  "seed": 1
+}
+WALL=0.33 MAXRSS_KIB=4780

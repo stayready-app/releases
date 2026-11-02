@@ -1,0 +1,25 @@
+stage21 1 3.746313 PASS: streamed 104857600 bytes in 6400 chunks, peak_transactions=4 peak_queue=65536
+stage21 2 3.750226 PASS: streamed 104857600 bytes in 6400 chunks, peak_transactions=4 peak_queue=65536
+stage21 3 3.686658 PASS: streamed 104857600 bytes in 6400 chunks, peak_transactions=4 peak_queue=65536
+stage22 1 3.556330 PASS: streamed 104857600 bytes in 6400 chunks, peak_transactions=4 peak_queue=65536
+stage22 2 3.651488 PASS: streamed 104857600 bytes in 6400 chunks, peak_transactions=4 peak_queue=65536
+stage22 3 3.806763 PASS: streamed 104857600 bytes in 6400 chunks, peak_transactions=4 peak_queue=65536
+{
+  "stage21": {
+    "runs_s": [
+      3.7463130230000843,
+      3.7502259340000137,
+      3.686657564999905
+    ],
+    "median_s": 3.7463130230000843
+  },
+  "stage22": {
+    "runs_s": [
+      3.5563303249999763,
+      3.6514875029999985,
+      3.806763391000004
+    ],
+    "median_s": 3.6514875029999985
+  }
+}
+delta_percent -2.5311691633324473

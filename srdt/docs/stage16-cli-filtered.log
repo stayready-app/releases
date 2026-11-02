@@ -1,0 +1,31 @@
+SERVER_PUBLIC=81e0375377f7188db9a7a008dda4abf32be4d7e8cb2f24e57cf5d95a87419e76
+LISTEN_ADDR=127.0.0.1:40094
+PASS: 12 independent messages, 4096 bytes each, verified echo
+SERVER_STATS={
+  "active_sessions": 0,
+  "peak_sessions": 1,
+  "used_hello_ids": 1,
+  "buffer_bytes": 0,
+  "peak_buffer_bytes": 22528,
+  "received_datagrams": 337,
+  "sent_datagrams": 337,
+  "delivered_messages": 12,
+  "delivered_bytes": 49152,
+  "invalid_packets": 0,
+  "admission_rejects": 0,
+  "rate_limited": 0,
+  "resource_drops": 0,
+  "credit_requests": 12,
+  "credits_granted": 12,
+  "credit_blocked": 0,
+  "credit_violations": 0,
+  "credit_rejected": 0,
+  "legacy_sessions": 0,
+  "waiting_sessions": 0,
+  "peak_waiting_sessions": 0,
+  "stale_messages": 0,
+  "repeated_hellos": 0,
+  "expired_sessions": 0,
+  "write_errors": 0,
+  "filtered_datagrams": 48
+}

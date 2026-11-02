@@ -1,0 +1,44 @@
+=== toolchain ===
+go version go1.23.2 linux/amd64
+Linux 2079cf4f3d51 6.18.57 #1 SMP Tue Oct 20 21:56:04 UTC 2026 x86_64 GNU/Linux
+=== formatting ===
+=== build ===
+=== unit and real-socket tests ===
+?   	example.com/srdt/cmd/srdt-client	[no test files]
+?   	example.com/srdt/cmd/srdt-load	[no test files]
+?   	example.com/srdt/cmd/srdt-server	[no test files]
+?   	example.com/srdt/cmd/srdt-test	[no test files]
+ok  	example.com/srdt/emulator	0.002s
+ok  	example.com/srdt/netreliable	47.482s
+ok  	example.com/srdt/reliable	0.480s
+ok  	example.com/srdt/secureudp	0.108s
+ok  	example.com/srdt/testkit	0.018s
+=== race detector (full suite) ===
+?   	example.com/srdt/cmd/srdt-client	[no test files]
+?   	example.com/srdt/cmd/srdt-load	[no test files]
+?   	example.com/srdt/cmd/srdt-server	[no test files]
+?   	example.com/srdt/cmd/srdt-test	[no test files]
+ok  	example.com/srdt/emulator	1.013s
+ok  	example.com/srdt/netreliable	51.115s
+ok  	example.com/srdt/reliable	4.450s
+ok  	example.com/srdt/secureudp	1.123s
+ok  	example.com/srdt/testkit	1.168s
+=== vet ===
+=== focused repeated regression tests ===
+ok  	example.com/srdt/netreliable	131.582s
+=== frame parser fuzz (3 seconds, 2 workers) ===
+fuzz: elapsed: 0s, gathering baseline coverage: 0/21 completed
+fuzz: elapsed: 0s, gathering baseline coverage: 21/21 completed, now fuzzing with 2 workers
+fuzz: elapsed: 3s, execs: 138663 (46213/sec), new interesting: 0 (total: 21)
+fuzz: elapsed: 3s, execs: 138663 (0/sec), new interesting: 0 (total: 21)
+PASS
+ok  	example.com/srdt/reliable	3.060s
+=== authenticated packet fuzz (3 seconds, 2 workers) ===
+fuzz: elapsed: 0s, gathering baseline coverage: 0/7 completed
+fuzz: elapsed: 0s, gathering baseline coverage: 7/7 completed, now fuzzing with 2 workers
+fuzz: elapsed: 3s, execs: 117067 (39017/sec), new interesting: 0 (total: 7)
+fuzz: elapsed: 3s, execs: 117067 (0/sec), new interesting: 0 (total: 7)
+PASS
+ok  	example.com/srdt/secureudp	3.036s
+=== Linux amd64 and Windows amd64 builds ===
+=== PASS ===

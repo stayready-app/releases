@@ -1,0 +1,8 @@
+bin/srdt-client-linux-amd64:       ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, Go BuildID=-3JKr21K2VbWw_cR9SBD/DXMRzXvpMvXWftDLzvme/0GtESdML0JVTsjJ8sY9m/OTzRZFhErC7Mwgm1Rqvf, with debug_info, not stripped
+bin/srdt-client-windows-amd64.exe: PE32+ executable for MS Windows 6.01 (console), x86-64, 15 sections
+bin/srdt-load-linux-amd64:         ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, Go BuildID=j6x8vS110IJaK9TRRmJH/V5xExl5xRigtqzvsZW6Z/rpp5esGtx3DfQNnwMb-O/53ma5YLwtcEtkZsSx0Bd, with debug_info, not stripped
+bin/srdt-load-windows-amd64.exe:   PE32+ executable for MS Windows 6.01 (console), x86-64, 15 sections
+bin/srdt-server-linux-amd64:       ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, Go BuildID=q8jPQIV-VaCm6DoADKqp/dSCkl0pC7upkp-HdMnm0/AD5ATy3tdYwWbRKeG9Dn/9RG_3g3Hlh87Z71BjAEc, with debug_info, not stripped
+bin/srdt-server-windows-amd64.exe: PE32+ executable for MS Windows 6.01 (console), x86-64, 15 sections
+bin/srdt-test-linux-amd64:         ELF 64-bit LSB executable, x86-64, version 1 (SYSV), statically linked, Go BuildID=NysBOsx-2qBwRQVuyjNF/IIBk2c9PFfoUfshvxogJ/dlOMWxCQwvyIwn95gsx9/bTHFJXM9jLACL0bnCRLf, with debug_info, not stripped
+bin/srdt-test-windows-amd64.exe:   PE32+ executable for MS Windows 6.01 (console), x86-64, 15 sections

@@ -1,0 +1,12 @@
+{
+  "mode": "active",
+  "clients": 128,
+  "succeeded": 128,
+  "messages_per_client": 16,
+  "message_bytes": 4096,
+  "verified_bytes_one_direction": 8388608,
+  "seconds": 0.944630817,
+  "verified_one_direction_mbps": 71.04242503238173,
+  "verification": "byte-for-byte echo of every message",
+  "seed": 1
+}

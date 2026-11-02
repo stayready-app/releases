@@ -1,0 +1,21 @@
+{
+  "stage": 19,
+  "primary_reports": [
+    "docs/stage19-verification.txt",
+    "docs/stage19-final-tests.txt",
+    "docs/stage19-final-race.txt",
+    "docs/stage19-final-sanity.txt",
+    "docs/stage19-cli-smoke.json",
+    "docs/stage19-comparison/summary.json",
+    "docs/stage19-bottleneck-summary.json",
+    "docs/stage19-process-tests-active1000.json",
+    "docs/stage19-process-tests-baseline.json",
+    "docs/stage19-process-tests-bulk.json",
+    "docs/stage19-process-tests-filter.json",
+    "docs/stage19-process-tests-idle.json",
+    "docs/stage19-process-tests-long-batch.json",
+    "docs/stage19-process-tests-pressure.json"
+  ],
+  "expected_failure_evidence": "docs/stage19-close-regression-before.txt",
+  "interrupted_intermediate_not_a_pass": "docs/stage19-pre-hardening-verification.txt"
+}

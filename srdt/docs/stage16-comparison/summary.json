@@ -1,0 +1,26 @@
+{
+  "stage15": {
+    "runs": 3,
+    "elapsed_seconds_median": 4.985424499000146,
+    "server_cpu_seconds_median": 4.89,
+    "sampled_server_rss_kib_median": 34536,
+    "resource_drops": [
+      184406,
+      186966,
+      177715
+    ],
+    "data_verified_all_runs": true
+  },
+  "stage16": {
+    "runs": 3,
+    "elapsed_seconds_median": 4.208722118999958,
+    "server_cpu_seconds_median": 4.18,
+    "sampled_server_rss_kib_median": 35588,
+    "resource_drops": [
+      0,
+      0,
+      0
+    ],
+    "data_verified_all_runs": true
+  }
+}

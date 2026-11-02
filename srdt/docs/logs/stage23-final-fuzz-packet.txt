@@ -1,0 +1,6 @@
+fuzz: elapsed: 0s, gathering baseline coverage: 0/19 completed
+fuzz: elapsed: 0s, gathering baseline coverage: 19/19 completed, now fuzzing with 2 workers
+fuzz: elapsed: 3s, execs: 23314 (7771/sec), new interesting: 2 (total: 21)
+fuzz: elapsed: 4s, execs: 23314 (0/sec), new interesting: 2 (total: 21)
+PASS
+ok  	example.com/srdt/reliable	4.011s

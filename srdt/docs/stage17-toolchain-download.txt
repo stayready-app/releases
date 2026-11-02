@@ -1,0 +1,7 @@
+Available compiler: go1.23.2 linux/amd64.
+Official release listing checked on 2026-11-01: Go 1.27.3 (2026-10-19), supported branch.
+Attempt: curl -I -L --connect-timeout 3 --max-time 8 https://go.dev/dl/go1.27.3.linux-amd64.tar.gz
+Result: curl: (6) Could not resolve host: go.dev
+Independent container.download attempt for the same archive: ERROR: download failed.
+No new toolchain was installed. No govulncheck was run. Builds remain laboratory builds
+with the installed unsupported Go 1.23.2. No claim of vulnerability-free binaries.

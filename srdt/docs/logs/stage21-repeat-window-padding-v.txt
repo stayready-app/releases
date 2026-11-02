@@ -1,0 +1,26 @@
+=== RUN   TestWindowControlPaddingSizeBlackholes
+=== RUN   TestWindowControlPaddingSizeBlackholes/58-58
+    fault_test.go:173: relay: up={Submitted:132 Dropped:0 Duplicated:4 Corrupted:0 Delivered:136 QueueDrops:0 LinkDrops:0} down={Submitted:113 Dropped:0 Duplicated:4 Corrupted:0 Delivered:117 QueueDrops:0 LinkDrops:0} forged=36 direct_drops=0 write_drops=0
+=== RUN   TestWindowControlPaddingSizeBlackholes/200-280
+    fault_test.go:173: relay: up={Submitted:394 Dropped:115 Duplicated:5 Corrupted:0 Delivered:283 QueueDrops:0 LinkDrops:0} down={Submitted:378 Dropped:116 Duplicated:6 Corrupted:0 Delivered:268 QueueDrops:0 LinkDrops:0} forged=78 direct_drops=0 write_drops=0
+--- PASS: TestWindowControlPaddingSizeBlackholes (3.02s)
+    --- PASS: TestWindowControlPaddingSizeBlackholes/58-58 (0.49s)
+    --- PASS: TestWindowControlPaddingSizeBlackholes/200-280 (2.53s)
+=== RUN   TestWindowControlPaddingSizeBlackholes
+=== RUN   TestWindowControlPaddingSizeBlackholes/58-58
+    fault_test.go:173: relay: up={Submitted:134 Dropped:0 Duplicated:4 Corrupted:0 Delivered:138 QueueDrops:0 LinkDrops:0} down={Submitted:116 Dropped:0 Duplicated:4 Corrupted:0 Delivered:120 QueueDrops:0 LinkDrops:0} forged=36 direct_drops=0 write_drops=0
+=== RUN   TestWindowControlPaddingSizeBlackholes/200-280
+    fault_test.go:173: relay: up={Submitted:328 Dropped:96 Duplicated:4 Corrupted:0 Delivered:236 QueueDrops:0 LinkDrops:0} down={Submitted:311 Dropped:87 Duplicated:5 Corrupted:0 Delivered:229 QueueDrops:0 LinkDrops:0} forged=66 direct_drops=0 write_drops=0
+--- PASS: TestWindowControlPaddingSizeBlackholes (7.34s)
+    --- PASS: TestWindowControlPaddingSizeBlackholes/58-58 (0.50s)
+    --- PASS: TestWindowControlPaddingSizeBlackholes/200-280 (6.84s)
+=== RUN   TestWindowControlPaddingSizeBlackholes
+=== RUN   TestWindowControlPaddingSizeBlackholes/58-58
+    fault_test.go:173: relay: up={Submitted:132 Dropped:0 Duplicated:5 Corrupted:0 Delivered:137 QueueDrops:0 LinkDrops:0} down={Submitted:113 Dropped:0 Duplicated:3 Corrupted:0 Delivered:116 QueueDrops:0 LinkDrops:0} forged=36 direct_drops=0 write_drops=0
+=== RUN   TestWindowControlPaddingSizeBlackholes/200-280
+    fault_test.go:173: relay: up={Submitted:328 Dropped:95 Duplicated:7 Corrupted:0 Delivered:240 QueueDrops:0 LinkDrops:0} down={Submitted:323 Dropped:101 Duplicated:2 Corrupted:0 Delivered:224 QueueDrops:0 LinkDrops:0} forged=66 direct_drops=0 write_drops=0
+--- PASS: TestWindowControlPaddingSizeBlackholes (4.12s)
+    --- PASS: TestWindowControlPaddingSizeBlackholes/58-58 (0.49s)
+    --- PASS: TestWindowControlPaddingSizeBlackholes/200-280 (3.63s)
+PASS
+ok  	example.com/srdt/netreliable	14.486s

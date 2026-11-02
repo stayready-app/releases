@@ -1,0 +1,9 @@
+	example.com/srdt/cmd/srdt-client		coverage: 0.0% of statements
+	example.com/srdt/cmd/srdt-load		coverage: 0.0% of statements
+	example.com/srdt/cmd/srdt-server		coverage: 0.0% of statements
+	example.com/srdt/cmd/srdt-test		coverage: 0.0% of statements
+ok  	example.com/srdt/emulator	0.003s	coverage: 94.1% of statements
+ok  	example.com/srdt/netreliable	13.745s	coverage: 84.2% of statements
+ok  	example.com/srdt/reliable	0.368s	coverage: 85.3% of statements
+ok  	example.com/srdt/secureudp	0.106s	coverage: 74.0% of statements
+ok  	example.com/srdt/testkit	0.013s	coverage: 87.8% of statements

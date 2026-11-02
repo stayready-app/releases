@@ -1,0 +1,31 @@
+=== RUN   TestBatchRealUDP
+=== RUN   TestBatchRealUDP/baseline
+=== RUN   TestBatchRealUDP/size-filter
+--- PASS: TestBatchRealUDP (1.38s)
+    --- PASS: TestBatchRealUDP/baseline (0.34s)
+    --- PASS: TestBatchRealUDP/size-filter (1.05s)
+=== RUN   TestRealUDPReliability
+=== RUN   TestRealUDPReliability/baseline
+=== RUN   TestRealUDPReliability/selective-size-drop
+--- PASS: TestRealUDPReliability (0.74s)
+    --- PASS: TestRealUDPReliability/baseline (0.33s)
+    --- PASS: TestRealUDPReliability/selective-size-drop (0.41s)
+=== RUN   TestPacketModernAndExplicitLegacy
+=== RUN   TestPacketModernAndExplicitLegacy/packet-receipts
+=== RUN   TestPacketModernAndExplicitLegacy/range-only-compatibility
+--- PASS: TestPacketModernAndExplicitLegacy (0.81s)
+    --- PASS: TestPacketModernAndExplicitLegacy/packet-receipts (0.41s)
+    --- PASS: TestPacketModernAndExplicitLegacy/range-only-compatibility (0.41s)
+=== RUN   TestPacketBudgetPreflightAndMixedMode
+--- PASS: TestPacketBudgetPreflightAndMixedMode (0.00s)
+=== RUN   TestPacketThousandMetadataBound
+    packets_test.go:91: 1000 packet-capable sessions: idle ring charge=0; per-active-direction cap=8192
+--- PASS: TestPacketThousandMetadataBound (1.48s)
+=== RUN   TestPacketAckBatchAndExplicitStage19Compatibility
+=== RUN   TestPacketAckBatchAndExplicitStage19Compatibility/batched-acks
+=== RUN   TestPacketAckBatchAndExplicitStage19Compatibility/stage19-one-packet-acks
+--- PASS: TestPacketAckBatchAndExplicitStage19Compatibility (0.81s)
+    --- PASS: TestPacketAckBatchAndExplicitStage19Compatibility/batched-acks (0.41s)
+    --- PASS: TestPacketAckBatchAndExplicitStage19Compatibility/stage19-one-packet-acks (0.41s)
+PASS
+ok  	example.com/srdt/netreliable	6.252s

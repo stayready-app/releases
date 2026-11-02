@@ -1,0 +1,14 @@
+===== stress1000 =====
+{
+  "mode": "bridge",
+  "clients": 1000,
+  "succeeded": 1000,
+  "messages_per_client": 16,
+  "message_bytes": 4096,
+  "verified_bytes_one_direction": 65536000,
+  "seconds": 7.354950415,
+  "verified_one_direction_mbps": 71.28368927283924,
+  "verification": "byte-for-byte independent TCP stream echo with half-close",
+  "seed": 1
+}
+WALL=7.36 MAXRSS_KIB=114776

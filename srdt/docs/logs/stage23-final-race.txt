@@ -1,0 +1,7 @@
+=== Stage23 race ===
+ok  	example.com/srdt/netreliable	4.813s
+=== core race ===
+ok  	example.com/srdt/reliable	4.503s
+ok  	example.com/srdt/secureudp	1.142s
+ok  	example.com/srdt/testkit	1.174s
+ok  	example.com/srdt/emulator	1.013s

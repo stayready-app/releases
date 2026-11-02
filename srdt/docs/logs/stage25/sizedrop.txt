@@ -1,0 +1,14 @@
+===== sizedrop =====
+{
+  "mode": "bridge",
+  "clients": 1,
+  "succeeded": 1,
+  "messages_per_client": 64,
+  "message_bytes": 4096,
+  "verified_bytes_one_direction": 262144,
+  "seconds": 6.76944279,
+  "verified_one_direction_mbps": 0.30979684223020076,
+  "verification": "byte-for-byte independent TCP stream echo with half-close",
+  "seed": 1
+}
+WALL=6.77 MAXRSS_KIB=7532

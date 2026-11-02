@@ -1,0 +1,23 @@
+=== RUN   TestWindowServerCapacityReplayModeAndExpiry
+--- PASS: TestWindowServerCapacityReplayModeAndExpiry (0.00s)
+=== RUN   TestWindowFairnessWithExactAdmissionWaiters
+--- PASS: TestWindowFairnessWithExactAdmissionWaiters (0.00s)
+=== RUN   TestWindowVariableSizesAndBoundedLookahead
+    fault_test.go:140: relay: up={Submitted:1756 Dropped:36 Duplicated:0 Corrupted:0 Delivered:1720 QueueDrops:0} down={Submitted:1732 Dropped:0 Duplicated:0 Corrupted:0 Delivered:1732 QueueDrops:0} forged=0
+--- PASS: TestWindowVariableSizesAndBoundedLookahead (0.47s)
+=== RUN   TestWindowControlPaddingSizeBlackholes
+=== RUN   TestWindowControlPaddingSizeBlackholes/58-58
+    fault_test.go:140: relay: up={Submitted:132 Dropped:0 Duplicated:8 Corrupted:0 Delivered:140 QueueDrops:0} down={Submitted:138 Dropped:0 Duplicated:0 Corrupted:0 Delivered:138 QueueDrops:0} forged=39
+=== RUN   TestWindowControlPaddingSizeBlackholes/77-180
+    windowcredits_test.go:128: handshake timeout
+    fault_test.go:140: relay: up={Submitted:133 Dropped:133 Duplicated:0 Corrupted:0 Delivered:0 QueueDrops:0} down={Submitted:0 Dropped:0 Duplicated:0 Corrupted:0 Delivered:0 QueueDrops:0} forged=0
+--- FAIL: TestWindowControlPaddingSizeBlackholes (20.35s)
+    --- PASS: TestWindowControlPaddingSizeBlackholes/58-58 (0.34s)
+    --- FAIL: TestWindowControlPaddingSizeBlackholes/77-180 (20.01s)
+=== RUN   TestWindowExplicitLegacyCompatibility
+--- PASS: TestWindowExplicitLegacyCompatibility (0.40s)
+=== RUN   TestWindowPerSessionBudgetNeverMultiplies
+--- PASS: TestWindowPerSessionBudgetNeverMultiplies (0.00s)
+FAIL
+FAIL	example.com/srdt/netreliable	21.237s
+FAIL

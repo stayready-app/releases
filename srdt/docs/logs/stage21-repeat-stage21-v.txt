@@ -1,0 +1,47 @@
+=== RUN   TestStage21V1CapabilitySession
+--- PASS: TestStage21V1CapabilitySession (0.40s)
+=== RUN   TestStage21LegacyHandshakeRequiresExplicitServerOptIn
+--- PASS: TestStage21LegacyHandshakeRequiresExplicitServerOptIn (0.55s)
+=== RUN   TestStage21StreamingEchoBoundedAndOrdered
+--- PASS: TestStage21StreamingEchoBoundedAndOrdered (0.46s)
+=== RUN   TestStage21StreamingEchoThroughFaultRelay
+    fault_test.go:173: relay: up={Submitted:1530 Dropped:36 Duplicated:28 Corrupted:0 Delivered:1522 QueueDrops:0 LinkDrops:0} down={Submitted:1279 Dropped:29 Duplicated:25 Corrupted:0 Delivered:1275 QueueDrops:0 LinkDrops:0} forged=399 direct_drops=0 write_drops=0
+--- PASS: TestStage21StreamingEchoThroughFaultRelay (4.19s)
+=== RUN   TestStage21V1HelloRetryChangesObservedSize
+    fault_test.go:173: relay: up={Submitted:5 Dropped:0 Duplicated:0 Corrupted:0 Delivered:5 QueueDrops:0 LinkDrops:0} down={Submitted:5 Dropped:0 Duplicated:0 Corrupted:0 Delivered:5 QueueDrops:0 LinkDrops:0} forged=0 direct_drops=1 write_drops=0
+--- PASS: TestStage21V1HelloRetryChangesObservedSize (0.55s)
+=== RUN   TestStage21V1WelcomeRetryChangesObservedSize
+    fault_test.go:173: relay: up={Submitted:6 Dropped:0 Duplicated:0 Corrupted:0 Delivered:6 QueueDrops:0 LinkDrops:0} down={Submitted:5 Dropped:0 Duplicated:0 Corrupted:0 Delivered:5 QueueDrops:0 LinkDrops:0} forged=0 direct_drops=1 write_drops=0
+--- PASS: TestStage21V1WelcomeRetryChangesObservedSize (0.55s)
+=== RUN   TestStage21V1CapabilitySession
+--- PASS: TestStage21V1CapabilitySession (0.40s)
+=== RUN   TestStage21LegacyHandshakeRequiresExplicitServerOptIn
+--- PASS: TestStage21LegacyHandshakeRequiresExplicitServerOptIn (0.55s)
+=== RUN   TestStage21StreamingEchoBoundedAndOrdered
+--- PASS: TestStage21StreamingEchoBoundedAndOrdered (0.47s)
+=== RUN   TestStage21StreamingEchoThroughFaultRelay
+    fault_test.go:173: relay: up={Submitted:1523 Dropped:36 Duplicated:26 Corrupted:0 Delivered:1513 QueueDrops:0 LinkDrops:0} down={Submitted:1271 Dropped:28 Duplicated:26 Corrupted:0 Delivered:1269 QueueDrops:0 LinkDrops:0} forged=397 direct_drops=0 write_drops=0
+--- PASS: TestStage21StreamingEchoThroughFaultRelay (4.00s)
+=== RUN   TestStage21V1HelloRetryChangesObservedSize
+    fault_test.go:173: relay: up={Submitted:5 Dropped:0 Duplicated:0 Corrupted:0 Delivered:5 QueueDrops:0 LinkDrops:0} down={Submitted:5 Dropped:0 Duplicated:0 Corrupted:0 Delivered:5 QueueDrops:0 LinkDrops:0} forged=0 direct_drops=1 write_drops=0
+--- PASS: TestStage21V1HelloRetryChangesObservedSize (0.55s)
+=== RUN   TestStage21V1WelcomeRetryChangesObservedSize
+    fault_test.go:173: relay: up={Submitted:6 Dropped:0 Duplicated:0 Corrupted:0 Delivered:6 QueueDrops:0 LinkDrops:0} down={Submitted:5 Dropped:0 Duplicated:0 Corrupted:0 Delivered:5 QueueDrops:0 LinkDrops:0} forged=0 direct_drops=1 write_drops=0
+--- PASS: TestStage21V1WelcomeRetryChangesObservedSize (0.55s)
+=== RUN   TestStage21V1CapabilitySession
+--- PASS: TestStage21V1CapabilitySession (0.40s)
+=== RUN   TestStage21LegacyHandshakeRequiresExplicitServerOptIn
+--- PASS: TestStage21LegacyHandshakeRequiresExplicitServerOptIn (0.55s)
+=== RUN   TestStage21StreamingEchoBoundedAndOrdered
+--- PASS: TestStage21StreamingEchoBoundedAndOrdered (0.48s)
+=== RUN   TestStage21StreamingEchoThroughFaultRelay
+    fault_test.go:173: relay: up={Submitted:1517 Dropped:31 Duplicated:28 Corrupted:0 Delivered:1514 QueueDrops:0 LinkDrops:0} down={Submitted:1273 Dropped:33 Duplicated:24 Corrupted:0 Delivered:1264 QueueDrops:0 LinkDrops:0} forged=396 direct_drops=0 write_drops=0
+--- PASS: TestStage21StreamingEchoThroughFaultRelay (4.27s)
+=== RUN   TestStage21V1HelloRetryChangesObservedSize
+    fault_test.go:173: relay: up={Submitted:5 Dropped:0 Duplicated:0 Corrupted:0 Delivered:5 QueueDrops:0 LinkDrops:0} down={Submitted:5 Dropped:0 Duplicated:0 Corrupted:0 Delivered:5 QueueDrops:0 LinkDrops:0} forged=0 direct_drops=1 write_drops=0
+--- PASS: TestStage21V1HelloRetryChangesObservedSize (0.55s)
+=== RUN   TestStage21V1WelcomeRetryChangesObservedSize
+    fault_test.go:173: relay: up={Submitted:6 Dropped:0 Duplicated:0 Corrupted:0 Delivered:6 QueueDrops:0 LinkDrops:0} down={Submitted:5 Dropped:0 Duplicated:0 Corrupted:0 Delivered:5 QueueDrops:0 LinkDrops:0} forged=0 direct_drops=1 write_drops=0
+--- PASS: TestStage21V1WelcomeRetryChangesObservedSize (0.55s)
+PASS
+ok  	example.com/srdt/netreliable	20.063s

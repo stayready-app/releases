@@ -1,0 +1,22 @@
+SERVER_PUBLIC=f7ef4b5e6e8b1220fb4be0f41e2287f32a8f17eeca9ab8470585bf8ada12813b
+LISTEN_ADDR=127.0.0.1:58523
+SERVER_STATS={
+  "active_sessions": 0,
+  "peak_sessions": 200,
+  "used_hello_ids": 200,
+  "buffer_bytes": 0,
+  "peak_buffer_bytes": 14745600,
+  "received_datagrams": 41881059,
+  "sent_datagrams": 2893,
+  "delivered_messages": 0,
+  "delivered_bytes": 0,
+  "invalid_packets": 10705367,
+  "admission_rejects": 0,
+  "rate_limited": 0,
+  "resource_drops": 31172799,
+  "stale_messages": 0,
+  "repeated_hellos": 0,
+  "expired_sessions": 200,
+  "write_errors": 0,
+  "filtered_datagrams": 0
+}

@@ -1,0 +1,23 @@
+{
+  "20": {
+    "wall_s": 4.372204242,
+    "server_cpu_s": 4.11,
+    "max_rss_kib": 21024,
+    "sent_datagrams": 329094,
+    "retries": 52395
+  },
+  "21": {
+    "wall_s": 4.977141906,
+    "server_cpu_s": 4.25,
+    "max_rss_kib": 21136,
+    "sent_datagrams": 331828,
+    "retries": 54555
+  },
+  "delta_percent": {
+    "wall_s": 13.835988222802698,
+    "server_cpu_s": 3.406326034063256,
+    "max_rss_kib": 0.5327245053272422,
+    "sent_datagrams": 0.8307656778914208,
+    "retries": 4.122530775837396
+  }
+}

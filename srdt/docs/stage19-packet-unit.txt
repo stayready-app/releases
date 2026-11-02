@@ -1,0 +1,25 @@
+=== RUN   TestPacketCodec
+--- PASS: TestPacketCodec (0.00s)
+=== RUN   TestPacketReceiptExactAndCopiesIndependent
+--- PASS: TestPacketReceiptExactAndCopiesIndependent (0.00s)
+=== RUN   TestPacketLateReceiptAndRetransmitRTT
+--- PASS: TestPacketLateReceiptAndRetransmitRTT (0.00s)
+=== RUN   TestPacketStateBudgetAndRingBound
+--- PASS: TestPacketStateBudgetAndRingBound (0.00s)
+=== RUN   TestPacketPhysicalWindowAndLegacyAckReject
+--- PASS: TestPacketPhysicalWindowAndLegacyAckReject (0.00s)
+=== RUN   TestPacketReceiverPreservesReceiptOnDuplicate
+--- PASS: TestPacketReceiverPreservesReceiptOnDuplicate (0.00s)
+=== RUN   TestPacketNoCounterWrap
+--- PASS: TestPacketNoCounterWrap (0.00s)
+PASS
+ok  	example.com/srdt/reliable	0.003s
+goos: linux
+goarch: amd64
+pkg: example.com/srdt/reliable
+cpu: AMD EPYC 9V74 80-Core Processor                
+BenchmarkPacketLedgerReceipt-5   	 8904985	        41.08 ns/op	       0 B/op	       0 allocs/op
+BenchmarkPacketLedgerReceipt-5   	 9338479	        39.87 ns/op	       0 B/op	       0 allocs/op
+BenchmarkPacketLedgerReceipt-5   	 8294106	        41.83 ns/op	       0 B/op	       0 allocs/op
+PASS
+ok  	example.com/srdt/reliable	1.219s

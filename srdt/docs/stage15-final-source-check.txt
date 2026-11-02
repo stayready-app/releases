@@ -1,0 +1,12 @@
+Final source check after documentation/comment-only changes
+go version go1.23.2 linux/amd64
+?   	example.com/srdt/cmd/srdt-client	[no test files]
+?   	example.com/srdt/cmd/srdt-load	[no test files]
+?   	example.com/srdt/cmd/srdt-server	[no test files]
+?   	example.com/srdt/cmd/srdt-test	[no test files]
+ok  	example.com/srdt/emulator	0.007s
+ok  	example.com/srdt/netreliable	13.492s
+ok  	example.com/srdt/reliable	0.362s
+ok  	example.com/srdt/secureudp	5.127s
+ok  	example.com/srdt/testkit	0.015s
+PASS

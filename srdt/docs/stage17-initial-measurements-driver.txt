@@ -1,0 +1,14 @@
+RUN /mnt/data/work/srdt-stage16 ['bash', '-lc', 'go version; for tool in srdt-server srdt-client srdt-test srdt-load; do GOOS=linux GOARCH=amd64 go build -o "bin/${tool}-linux-amd64" "./cmd/${tool}" || exit; done']
+PASS stage17-baseline-build.txt
+RUN /mnt/data/srdt-stage17 ['python3', 'scripts/compare.py', '--baseline', '/mnt/data/work/srdt-stage16', '--runs', '3']
+Traceback (most recent call last):
+  File "/mnt/data/run_measure17.py", line 16, in <module>
+    run(['python3','scripts/compare.py','--baseline',str(base),'--runs','3'],root,'stage17-measure-comparison.txt',timeout=420)
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/run_measure17.py", line 12, in run
+    subprocess.run(args,cwd=cwd,stdout=out,stderr=subprocess.STDOUT,timeout=timeout,check=True)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/subprocess.py", line 577, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '['python3', 'scripts/compare.py', '--baseline', '/mnt/data/work/srdt-stage16', '--runs', '3']' returned non-zero exit status 1.

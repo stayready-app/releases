@@ -1,0 +1,12 @@
+{
+  "mode": "bridge",
+  "clients": 1000,
+  "succeeded": 1000,
+  "messages_per_client": 16,
+  "message_bytes": 4096,
+  "verified_bytes_one_direction": 65536000,
+  "seconds": 7.588896527,
+  "verified_one_direction_mbps": 69.0861969371532,
+  "verification": "byte-for-byte independent TCP stream echo with half-close",
+  "seed": 1
+}

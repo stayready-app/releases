@@ -1,0 +1,96 @@
+/mnt/data/srdt-stage18/bin/srdt-client-linux-amd64: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, Go BuildID=FK6O1SYApZdlpWZoSneJ/aHAreCjORBDV8g_hXweI/G55jaqQL1BB1Surv4lK8/XFW8fQLVNgGL4EQarGkC, with debug_info, not stripped
+/mnt/data/srdt-stage18/bin/srdt-client-linux-amd64: go1.23.2
+	path	example.com/srdt/cmd/srdt-client
+	mod	example.com/srdt	(devel)	
+	build	-buildmode=exe
+	build	-compiler=gc
+	build	CGO_ENABLED=1
+	build	CGO_CFLAGS=
+	build	CGO_CPPFLAGS=
+	build	CGO_CXXFLAGS=
+	build	CGO_LDFLAGS=
+	build	GOARCH=amd64
+	build	GOOS=linux
+	build	GOAMD64=v1
+/mnt/data/srdt-stage18/bin/srdt-client-windows-amd64.exe: PE32+ executable for MS Windows 6.01 (console), x86-64, 15 sections
+/mnt/data/srdt-stage18/bin/srdt-client-windows-amd64.exe: go1.23.2
+	path	example.com/srdt/cmd/srdt-client
+	mod	example.com/srdt	(devel)	
+	build	-buildmode=exe
+	build	-compiler=gc
+	build	CGO_ENABLED=0
+	build	GOARCH=amd64
+	build	GOOS=windows
+	build	GOAMD64=v1
+/mnt/data/srdt-stage18/bin/srdt-load-linux-amd64: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, Go BuildID=J-IJntsdZbXmdwItv8MP/SxEpbViktYXpueinTD5J/UMTI6g0I54LkZfek0zXx/2HHybdmaSDcd-N2XRlwK, with debug_info, not stripped
+/mnt/data/srdt-stage18/bin/srdt-load-linux-amd64: go1.23.2
+	path	example.com/srdt/cmd/srdt-load
+	mod	example.com/srdt	(devel)	
+	build	-buildmode=exe
+	build	-compiler=gc
+	build	CGO_ENABLED=1
+	build	CGO_CFLAGS=
+	build	CGO_CPPFLAGS=
+	build	CGO_CXXFLAGS=
+	build	CGO_LDFLAGS=
+	build	GOARCH=amd64
+	build	GOOS=linux
+	build	GOAMD64=v1
+/mnt/data/srdt-stage18/bin/srdt-load-windows-amd64.exe: PE32+ executable for MS Windows 6.01 (console), x86-64, 15 sections
+/mnt/data/srdt-stage18/bin/srdt-load-windows-amd64.exe: go1.23.2
+	path	example.com/srdt/cmd/srdt-load
+	mod	example.com/srdt	(devel)	
+	build	-buildmode=exe
+	build	-compiler=gc
+	build	CGO_ENABLED=0
+	build	GOARCH=amd64
+	build	GOOS=windows
+	build	GOAMD64=v1
+/mnt/data/srdt-stage18/bin/srdt-server-linux-amd64: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, Go BuildID=6dN9EH2s1doVkX9mgNiR/yj2FjQ_9ervVlc1pV-d1/jeiDR1pOrzoH5nhR_Wnh/X1A8Ijcib7D02ot7_paO, with debug_info, not stripped
+/mnt/data/srdt-stage18/bin/srdt-server-linux-amd64: go1.23.2
+	path	example.com/srdt/cmd/srdt-server
+	mod	example.com/srdt	(devel)	
+	build	-buildmode=exe
+	build	-compiler=gc
+	build	CGO_ENABLED=1
+	build	CGO_CFLAGS=
+	build	CGO_CPPFLAGS=
+	build	CGO_CXXFLAGS=
+	build	CGO_LDFLAGS=
+	build	GOARCH=amd64
+	build	GOOS=linux
+	build	GOAMD64=v1
+/mnt/data/srdt-stage18/bin/srdt-server-windows-amd64.exe: PE32+ executable for MS Windows 6.01 (console), x86-64, 15 sections
+/mnt/data/srdt-stage18/bin/srdt-server-windows-amd64.exe: go1.23.2
+	path	example.com/srdt/cmd/srdt-server
+	mod	example.com/srdt	(devel)	
+	build	-buildmode=exe
+	build	-compiler=gc
+	build	CGO_ENABLED=0
+	build	GOARCH=amd64
+	build	GOOS=windows
+	build	GOAMD64=v1
+/mnt/data/srdt-stage18/bin/srdt-test-linux-amd64: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), statically linked, Go BuildID=JIT-CY5SLMS5oq-2E2SA/I9D08jdxyaOYgl4F2gaJ/cCm2XuvLDig_reRtWOS8/vi_JakUwyZvLAWMAxDUs, with debug_info, not stripped
+/mnt/data/srdt-stage18/bin/srdt-test-linux-amd64: go1.23.2
+	path	example.com/srdt/cmd/srdt-test
+	mod	example.com/srdt	(devel)	
+	build	-buildmode=exe
+	build	-compiler=gc
+	build	CGO_ENABLED=1
+	build	CGO_CFLAGS=
+	build	CGO_CPPFLAGS=
+	build	CGO_CXXFLAGS=
+	build	CGO_LDFLAGS=
+	build	GOARCH=amd64
+	build	GOOS=linux
+	build	GOAMD64=v1
+/mnt/data/srdt-stage18/bin/srdt-test-windows-amd64.exe: PE32+ executable for MS Windows 6.01 (console), x86-64, 15 sections
+/mnt/data/srdt-stage18/bin/srdt-test-windows-amd64.exe: go1.23.2
+	path	example.com/srdt/cmd/srdt-test
+	mod	example.com/srdt	(devel)	
+	build	-buildmode=exe
+	build	-compiler=gc
+	build	CGO_ENABLED=0
+	build	GOARCH=amd64
+	build	GOOS=windows
+	build	GOAMD64=v1

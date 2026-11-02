@@ -1,0 +1,3 @@
+native-test-cli=0
+vet=0
+gofmt=0

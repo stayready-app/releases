@@ -1,0 +1,5 @@
+=== gofmt ===
+=== build ===
+=== vet ===
+=== stage23 ===
+ok  	example.com/srdt/netreliable	10.826s

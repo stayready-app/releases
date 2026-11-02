@@ -1,0 +1,6 @@
+=== RUN   TestCongestionTailSizeBlackhole
+    congestion_test.go:286: permanent tail-size loop: pending=1 control={WindowBytes:1800 PeakWindowBytes:9000 FreshPackets:1 RetryPackets:9 RetryBytes:1737 LossEvents:5 PacingWaits:0 WindowWaits:0}
+--- FAIL: TestCongestionTailSizeBlackhole (0.00s)
+FAIL
+FAIL	example.com/srdt/reliable	0.002s
+FAIL

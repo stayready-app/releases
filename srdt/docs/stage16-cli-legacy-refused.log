@@ -1,0 +1,31 @@
+SERVER_PUBLIC=76ed7947fcb7034b73bf04888713fe7168912cb85e0c3c50fc82471f6ea24248
+LISTEN_ADDR=127.0.0.1:60057
+2026/11/01 12:39:45 context deadline exceeded
+SERVER_STATS={
+  "active_sessions": 0,
+  "peak_sessions": 1,
+  "used_hello_ids": 1,
+  "buffer_bytes": 0,
+  "peak_buffer_bytes": 0,
+  "received_datagrams": 309,
+  "sent_datagrams": 1,
+  "delivered_messages": 0,
+  "delivered_bytes": 0,
+  "invalid_packets": 0,
+  "admission_rejects": 0,
+  "rate_limited": 0,
+  "resource_drops": 0,
+  "credit_requests": 0,
+  "credits_granted": 0,
+  "credit_blocked": 0,
+  "credit_violations": 308,
+  "credit_rejected": 0,
+  "legacy_sessions": 0,
+  "waiting_sessions": 0,
+  "peak_waiting_sessions": 0,
+  "stale_messages": 0,
+  "repeated_hellos": 0,
+  "expired_sessions": 0,
+  "write_errors": 0,
+  "filtered_datagrams": 0
+}

@@ -1,0 +1,15 @@
+=== bash -n server helper ===
+PASS
+=== PowerShell basic structural validation ===
+PASS (PowerShell runtime is unavailable in this Linux environment; native Windows execution remains to be performed by the user)
+=== go build ===
+PASS
+=== go vet ===
+PASS
+=== go test ===
+?   	example.com/srdt/cmd/srdt-client	[no test files]
+?   	example.com/srdt/cmd/srdt-load	[no test files]
+?   	example.com/srdt/cmd/srdt-server	[no test files]
+?   	example.com/srdt/cmd/srdt-test	[no test files]
+?   	example.com/srdt/cmd/srdt-upstream-echo	[no test files]
+ok  	example.com/srdt/emulator	0.003s

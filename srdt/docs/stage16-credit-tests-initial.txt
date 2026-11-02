@@ -1,0 +1,31 @@
+=== RUN   TestCreditsFrameValidation
+--- PASS: TestCreditsFrameValidation (0.00s)
+=== RUN   TestCreditsLazyReservationIdempotenceAndTransfer
+--- PASS: TestCreditsLazyReservationIdempotenceAndTransfer (0.00s)
+=== RUN   TestCreditsBlockedQueueAndReorderedControls
+--- PASS: TestCreditsBlockedQueueAndReorderedControls (0.00s)
+=== RUN   TestCreditsProbeBackoffBoundedAndNoPayload
+--- PASS: TestCreditsProbeBackoffBoundedAndNoPayload (0.00s)
+=== RUN   TestCreditsReservationExpiryAndGlobalContention
+--- PASS: TestCreditsReservationExpiryAndGlobalContention (0.00s)
+PASS
+ok  	example.com/srdt/reliable	0.005s
+=== RUN   TestCreditsDataNeedsPermissionAndNoDowngrade
+--- PASS: TestCreditsDataNeedsPermissionAndNoDowngrade (0.00s)
+=== RUN   TestCreditsReservationLossDuplicateAndConflictingLength
+--- PASS: TestCreditsReservationLossDuplicateAndConflictingLength (0.00s)
+=== RUN   TestCreditsWaitQueueFairnessReleaseAndNoPolling
+--- PASS: TestCreditsWaitQueueFairnessReleaseAndNoPolling (0.00s)
+=== RUN   TestCreditsPendingRequestsBoundedAndDuplicatesDoNotPin
+--- PASS: TestCreditsPendingRequestsBoundedAndDuplicatesDoNotPin (0.00s)
+=== RUN   TestCreditsManyWaitersFairBoundedPass
+--- PASS: TestCreditsManyWaitersFairBoundedPass (0.02s)
+=== RUN   TestCreditsRealUDPMinimalGlobalBudget
+    credits_test.go:205: minimal budget: {ActiveSessions:16 PeakSessions:16 UsedHelloIDs:16 BufferBytes:0 PeakBufferBytes:5632 ReceivedDatagrams:1552 SentDatagrams:1568 DeliveredMessages:128 DeliveredBytes:524288 InvalidPackets:0 AdmissionRejects:0 RateLimited:0 ResourceDrops:0 CreditRequests:128 CreditsGranted:128 CreditBlocked:16 CreditViolations:0 CreditRejected:0 LegacySessions:0 WaitingSessions:0 PeakWaitingSessions:16 StaleMessages:0 RepeatedHellos:0 ExpiredSessions:0 WriteErrors:0 FilteredDatagrams:0}
+--- PASS: TestCreditsRealUDPMinimalGlobalBudget (0.42s)
+=== RUN   TestCreditsTooLargeMessageFailsExplicitly
+--- PASS: TestCreditsTooLargeMessageFailsExplicitly (0.10s)
+=== RUN   TestCreditsControlWorkBound
+--- PASS: TestCreditsControlWorkBound (0.01s)
+PASS
+ok  	example.com/srdt/netreliable	0.561s

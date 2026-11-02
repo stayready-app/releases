@@ -1,0 +1,9 @@
+?   	example.com/srdt/cmd/srdt-client	[no test files]
+?   	example.com/srdt/cmd/srdt-load	[no test files]
+?   	example.com/srdt/cmd/srdt-server	[no test files]
+?   	example.com/srdt/cmd/srdt-test	[no test files]
+ok  	example.com/srdt/emulator	0.005s
+ok  	example.com/srdt/netreliable	17.452s
+ok  	example.com/srdt/reliable	0.396s
+ok  	example.com/srdt/secureudp	5.127s
+ok  	example.com/srdt/testkit	0.023s

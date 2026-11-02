@@ -1,0 +1,18 @@
+goos: linux
+goarch: amd64
+pkg: example.com/srdt/reliable
+cpu: AMD EPYC 9V74 80-Core Processor                
+BenchmarkAuditDuplicateACK-5       	70958576	         3.518 ns/op	9314701.70 MB/s	       0 B/op	       0 allocs/op
+BenchmarkAuditDuplicateACK-5       	72064994	         3.696 ns/op	8866184.46 MB/s	       0 B/op	       0 allocs/op
+BenchmarkAuditDuplicateACK-5       	60892748	         3.622 ns/op	9046858.70 MB/s	       0 B/op	       0 allocs/op
+BenchmarkAuditReceiveDuplicate-5   	 1244757	       206.1 ns/op	4367.55 MB/s	      52 B/op	       2 allocs/op
+BenchmarkAuditReceiveDuplicate-5   	 1207065	       201.3 ns/op	4471.78 MB/s	      52 B/op	       2 allocs/op
+BenchmarkAuditReceiveDuplicate-5   	 1218558	       205.4 ns/op	4381.95 MB/s	      52 B/op	       2 allocs/op
+BenchmarkAuditRetry-5              	 8218498	        30.58 ns/op	       0 B/op	       0 allocs/op
+BenchmarkAuditRetry-5              	 8915870	        27.32 ns/op	       0 B/op	       0 allocs/op
+BenchmarkAuditRetry-5              	 9239773	        26.58 ns/op	       0 B/op	       0 allocs/op
+BenchmarkCongestionPacer-5         	 4729666	        50.59 ns/op	       0 B/op	       0 allocs/op
+BenchmarkCongestionPacer-5         	 5153755	        49.50 ns/op	       0 B/op	       0 allocs/op
+BenchmarkCongestionPacer-5         	 4556230	        57.83 ns/op	       0 B/op	       0 allocs/op
+PASS
+ok  	example.com/srdt/reliable	3.929s

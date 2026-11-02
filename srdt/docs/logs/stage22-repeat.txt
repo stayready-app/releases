@@ -1,0 +1,23 @@
+=== RUN   TestStage22DuplexReadBlockDoesNotStopNetwork
+--- PASS: TestStage22DuplexReadBlockDoesNotStopNetwork (0.40s)
+=== RUN   TestStage22DuplexWriteBlockDoesNotStopNetwork
+--- PASS: TestStage22DuplexWriteBlockDoesNotStopNetwork (0.41s)
+=== RUN   TestStage22DuplexThroughFaultRelay
+    fault_test.go:173: relay: up={Submitted:1541 Dropped:36 Duplicated:34 Corrupted:0 Delivered:1539 QueueDrops:0 LinkDrops:0} down={Submitted:1285 Dropped:29 Duplicated:19 Corrupted:0 Delivered:1275 QueueDrops:0 LinkDrops:0} forged=402 direct_drops=0 write_drops=0
+--- PASS: TestStage22DuplexThroughFaultRelay (3.26s)
+=== RUN   TestStage22DuplexReadBlockDoesNotStopNetwork
+--- PASS: TestStage22DuplexReadBlockDoesNotStopNetwork (0.40s)
+=== RUN   TestStage22DuplexWriteBlockDoesNotStopNetwork
+--- PASS: TestStage22DuplexWriteBlockDoesNotStopNetwork (0.40s)
+=== RUN   TestStage22DuplexThroughFaultRelay
+    fault_test.go:173: relay: up={Submitted:1535 Dropped:31 Duplicated:27 Corrupted:0 Delivered:1531 QueueDrops:0 LinkDrops:0} down={Submitted:1274 Dropped:34 Duplicated:26 Corrupted:0 Delivered:1266 QueueDrops:0 LinkDrops:0} forged=399 direct_drops=0 write_drops=0
+--- PASS: TestStage22DuplexThroughFaultRelay (3.56s)
+=== RUN   TestStage22DuplexReadBlockDoesNotStopNetwork
+--- PASS: TestStage22DuplexReadBlockDoesNotStopNetwork (0.40s)
+=== RUN   TestStage22DuplexWriteBlockDoesNotStopNetwork
+--- PASS: TestStage22DuplexWriteBlockDoesNotStopNetwork (0.41s)
+=== RUN   TestStage22DuplexThroughFaultRelay
+    fault_test.go:173: relay: up={Submitted:1546 Dropped:33 Duplicated:25 Corrupted:0 Delivered:1538 QueueDrops:0 LinkDrops:0} down={Submitted:1265 Dropped:32 Duplicated:28 Corrupted:0 Delivered:1261 QueueDrops:0 LinkDrops:0} forged=399 direct_drops=0 write_drops=0
+--- PASS: TestStage22DuplexThroughFaultRelay (3.50s)
+PASS
+ok  	example.com/srdt/netreliable	12.755s

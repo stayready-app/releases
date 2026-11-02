@@ -1,0 +1,51 @@
+=== RUN   TestAuditInvalidACKCannotConfirmOrRefresh
+--- PASS: TestAuditInvalidACKCannotConfirmOrRefresh (0.00s)
+=== RUN   TestAuditExpiredTimersStillPermitInput
+--- PASS: TestAuditExpiredTimersStillPermitInput (0.00s)
+=== RUN   TestAuditServiceHasGlobalWorkBound
+--- PASS: TestAuditServiceHasGlobalWorkBound (0.01s)
+=== RUN   TestAuditIdentityReuseCannotReopenTranscript
+--- PASS: TestAuditIdentityReuseCannotReopenTranscript (0.00s)
+=== RUN   TestAuditClientHandshakeInjectionDoesNotAmplify
+--- PASS: TestAuditClientHandshakeInjectionDoesNotAmplify (0.40s)
+=== RUN   TestAuditOversizePacketDoesNotStopServer
+--- PASS: TestAuditOversizePacketDoesNotStopServer (0.40s)
+=== RUN   TestAuditLegacyLargeMessagePreserved
+--- PASS: TestAuditLegacyLargeMessagePreserved (0.31s)
+=== RUN   TestAuditGlobalBudgetUnderIncompleteFlood
+--- PASS: TestAuditGlobalBudgetUnderIncompleteFlood (0.18s)
+=== RUN   TestAuditRealUDPNetworkFaults
+=== RUN   TestAuditRealUDPNetworkFaults/loss-reorder-corrupt-replay-inject
+    fault_test.go:160: verified=131072 bytes; invalid=94 resources=0
+    fault_test.go:117: relay: up={Submitted:437 Dropped:16 Duplicated:22 Corrupted:8 Delivered:443 QueueDrops:0} down={Submitted:447 Dropped:28 Duplicated:27 Corrupted:8 Delivered:446 QueueDrops:0} forged=127
+=== RUN   TestAuditRealUDPNetworkFaults/size-blackhole-and-loss
+    fault_test.go:160: verified=131072 bytes; invalid=266 resources=0
+    fault_test.go:117: relay: up={Submitted:1190 Dropped:163 Duplicated:27 Corrupted:0 Delivered:1054 QueueDrops:0} down={Submitted:1039 Dropped:88 Duplicated:34 Corrupted:0 Delivered:985 QueueDrops:0} forged=291
+=== RUN   TestAuditRealUDPNetworkFaults/lost-welcome
+    fault_test.go:160: verified=131072 bytes; invalid=0 resources=0
+    fault_test.go:117: relay: up={Submitted:330 Dropped:0 Duplicated:0 Corrupted:0 Delivered:330 QueueDrops:0} down={Submitted:329 Dropped:0 Duplicated:0 Corrupted:0 Delivered:329 QueueDrops:0} forged=0
+=== RUN   TestAuditRealUDPNetworkFaults/wan-rtt-above-fixed-rto
+    fault_test.go:160: verified=131072 bytes; invalid=653 resources=0
+    fault_test.go:117: relay: up={Submitted:1364 Dropped:18 Duplicated:0 Corrupted:0 Delivered:1346 QueueDrops:0} down={Submitted:1232 Dropped:7 Duplicated:0 Corrupted:0 Delivered:1225 QueueDrops:0} forged=367
+=== RUN   TestAuditRealUDPNetworkFaults/ack-blackout
+    fault_test.go:160: verified=131072 bytes; invalid=0 resources=0
+    fault_test.go:117: relay: up={Submitted:971 Dropped:0 Duplicated:0 Corrupted:0 Delivered:971 QueueDrops:0} down={Submitted:727 Dropped:0 Duplicated:0 Corrupted:0 Delivered:727 QueueDrops:0} forged=0
+--- PASS: TestAuditRealUDPNetworkFaults (6.72s)
+    --- PASS: TestAuditRealUDPNetworkFaults/loss-reorder-corrupt-replay-inject (1.55s)
+    --- PASS: TestAuditRealUDPNetworkFaults/size-blackhole-and-loss (1.80s)
+    --- PASS: TestAuditRealUDPNetworkFaults/lost-welcome (0.56s)
+    --- PASS: TestAuditRealUDPNetworkFaults/wan-rtt-above-fixed-rto (2.01s)
+    --- PASS: TestAuditRealUDPNetworkFaults/ack-blackout (0.81s)
+=== RUN   TestAuditPermanentBlackholeTimesOut
+    fault_test.go:117: relay: up={Submitted:1 Dropped:0 Duplicated:0 Corrupted:0 Delivered:1 QueueDrops:0} down={Submitted:0 Dropped:0 Duplicated:0 Corrupted:0 Delivered:0 QueueDrops:0} forged=0
+--- PASS: TestAuditPermanentBlackholeTimesOut (0.40s)
+=== RUN   TestAuditLegacyReliableRecoversLostWelcome
+=== RUN   TestAuditLegacyReliableRecoversLostWelcome/1
+    fault_test.go:117: relay: up={Submitted:6 Dropped:0 Duplicated:0 Corrupted:0 Delivered:6 QueueDrops:0} down={Submitted:5 Dropped:0 Duplicated:0 Corrupted:0 Delivered:5 QueueDrops:0} forged=0
+=== RUN   TestAuditLegacyReliableRecoversLostWelcome/4
+    fault_test.go:117: relay: up={Submitted:19 Dropped:0 Duplicated:0 Corrupted:0 Delivered:19 QueueDrops:0} down={Submitted:17 Dropped:0 Duplicated:0 Corrupted:0 Delivered:17 QueueDrops:0} forged=0
+--- PASS: TestAuditLegacyReliableRecoversLostWelcome (1.06s)
+    --- PASS: TestAuditLegacyReliableRecoversLostWelcome/1 (0.45s)
+    --- PASS: TestAuditLegacyReliableRecoversLostWelcome/4 (0.60s)
+PASS
+ok  	example.com/srdt/netreliable	9.485s

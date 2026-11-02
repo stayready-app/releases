@@ -1,0 +1,20 @@
+{
+  "active_sessions": 0,
+  "peak_sessions": 32,
+  "used_hello_ids": 32,
+  "buffer_bytes": 0,
+  "peak_buffer_bytes": 746496,
+  "received_datagrams": 10082,
+  "sent_datagrams": 10608,
+  "delivered_messages": 384,
+  "delivered_bytes": 1572864,
+  "invalid_packets": 0,
+  "admission_rejects": 0,
+  "rate_limited": 0,
+  "resource_drops": 0,
+  "stale_messages": 0,
+  "repeated_hellos": 0,
+  "expired_sessions": 0,
+  "write_errors": 0,
+  "filtered_datagrams": 1461
+}

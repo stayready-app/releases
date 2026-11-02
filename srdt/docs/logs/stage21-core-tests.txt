@@ -1,0 +1,233 @@
+=== RUN   TestAuditRepeatedAcceptCannotRecreateKeys
+--- PASS: TestAuditRepeatedAcceptCannotRecreateKeys (0.00s)
+=== RUN   TestAuditClientInputsValidated
+--- PASS: TestAuditClientInputsValidated (0.00s)
+=== RUN   TestAuditOpenRejectsOversize
+--- PASS: TestAuditOpenRejectsOversize (0.00s)
+=== RUN   TestAuditRawEchoIgnoresUnauthenticatedNoise
+--- PASS: TestAuditRawEchoIgnoresUnauthenticatedNoise (0.00s)
+=== RUN   TestRealUDPEcho
+--- PASS: TestRealUDPEcho (0.10s)
+=== RUN   TestHandshakeBidirectionalAndTamper
+--- PASS: TestHandshakeBidirectionalAndTamper (0.00s)
+=== RUN   TestOutOfOrderAndSize
+--- PASS: TestOutOfOrderAndSize (0.00s)
+=== RUN   TestV1CapabilityNegotiationAndRepadding
+--- PASS: TestV1CapabilityNegotiationAndRepadding (0.00s)
+=== RUN   TestV1RequiredCapabilityFailsClosed
+--- PASS: TestV1RequiredCapabilityFailsClosed (0.00s)
+=== RUN   TestV1TailCannotChangeAuthenticatedCapabilities
+--- PASS: TestV1TailCannotChangeAuthenticatedCapabilities (0.00s)
+=== RUN   FuzzAuditOpen
+=== RUN   FuzzAuditOpen/seed#0
+=== RUN   FuzzAuditOpen/seed#1
+=== RUN   FuzzAuditOpen/seed#2
+--- PASS: FuzzAuditOpen (0.00s)
+    --- PASS: FuzzAuditOpen/seed#0 (0.00s)
+    --- PASS: FuzzAuditOpen/seed#1 (0.00s)
+    --- PASS: FuzzAuditOpen/seed#2 (0.00s)
+PASS
+ok  	example.com/srdt/secureudp	0.110s
+=== RUN   TestAuditConflictingFragmentIsAtomic
+--- PASS: TestAuditConflictingFragmentIsAtomic (0.00s)
+=== RUN   TestAuditRetiredIDCannotRedeliver
+--- PASS: TestAuditRetiredIDCannotRedeliver (0.00s)
+=== RUN   TestAuditQueueSmallMessagesBoundMetadata
+--- PASS: TestAuditQueueSmallMessagesBoundMetadata (0.00s)
+=== RUN   TestAuditRetainedMutationRejected
+--- PASS: TestAuditRetainedMutationRejected (0.00s)
+=== RUN   TestAuditSenderSizeOverflow
+--- PASS: TestAuditSenderSizeOverflow (0.00s)
+=== RUN   TestAuditRangeMetadataBoundedUnderTinyPackets
+--- PASS: TestAuditRangeMetadataBoundedUnderTinyPackets (0.02s)
+=== RUN   TestAuditRetryDoesNotAllocate
+--- PASS: TestAuditRetryDoesNotAllocate (0.00s)
+=== RUN   TestAuditRetryFairnessAcrossExpiredRanges
+--- PASS: TestAuditRetryFairnessAcrossExpiredRanges (0.00s)
+=== RUN   TestSharedBudgetAndClose
+--- PASS: TestSharedBudgetAndClose (0.00s)
+=== RUN   TestBudgetConcurrentReservation
+--- PASS: TestBudgetConcurrentReservation (0.00s)
+=== RUN   TestBudgetReleaseAfterCompletion
+--- PASS: TestBudgetReleaseAfterCompletion (0.00s)
+=== RUN   TestCongestionFreshFlightAndPacing
+--- PASS: TestCongestionFreshFlightAndPacing (0.00s)
+=== RUN   TestCongestionInvalidAndRepeatedACKDoNotGrowWindow
+--- PASS: TestCongestionInvalidAndRepeatedACKDoNotGrowWindow (0.00s)
+=== RUN   TestCongestionRetryAtFullWindowAndLossEpoch
+--- PASS: TestCongestionRetryAtFullWindowAndLossEpoch (0.00s)
+=== RUN   TestCongestionControlsNotBlockedByPacer
+--- PASS: TestCongestionControlsNotBlockedByPacer (0.00s)
+=== RUN   TestCongestionBoundedIdleBurstAndState
+    congestion_test.go:160: controller_bytes=208 hot_path_allocs=0
+--- PASS: TestCongestionBoundedIdleBurstAndState (0.00s)
+=== RUN   TestCongestionRecoveryCompletesWithRepacking
+--- PASS: TestCongestionRecoveryCompletesWithRepacking (0.00s)
+=== RUN   TestCongestionPartialACKCreditIsUnique
+--- PASS: TestCongestionPartialACKCreditIsUnique (0.00s)
+=== RUN   TestCongestionNoGrowthFromOldFlight
+--- PASS: TestCongestionNoGrowthFromOldFlight (0.00s)
+=== RUN   TestCongestionTailSizeBlackhole
+--- PASS: TestCongestionTailSizeBlackhole (0.00s)
+=== RUN   TestCongestionNoTinyFreshFragmentFromWindowRemainder
+--- PASS: TestCongestionNoTinyFreshFragmentFromWindowRemainder (0.00s)
+=== RUN   TestCongestionPacerAmortizesFastPathTimerQuantum
+--- PASS: TestCongestionPacerAmortizesFastPathTimerQuantum (0.00s)
+=== RUN   TestCongestionPacerSlowPathAndAbsoluteBurstCap
+--- PASS: TestCongestionPacerSlowPathAndAbsoluteBurstCap (0.00s)
+=== RUN   TestCreditsFrameValidation
+--- PASS: TestCreditsFrameValidation (0.00s)
+=== RUN   TestCreditsLazyReservationIdempotenceAndTransfer
+--- PASS: TestCreditsLazyReservationIdempotenceAndTransfer (0.00s)
+=== RUN   TestCreditsBlockedQueueAndReorderedControls
+--- PASS: TestCreditsBlockedQueueAndReorderedControls (0.00s)
+=== RUN   TestCreditsProbeBackoffBoundedAndNoPayload
+--- PASS: TestCreditsProbeBackoffBoundedAndNoPayload (0.00s)
+=== RUN   TestCreditsReservationExpiryAndGlobalContention
+--- PASS: TestCreditsReservationExpiryAndGlobalContention (0.00s)
+=== RUN   TestCreditsStrictReceiverAndZeroSenderID
+--- PASS: TestCreditsStrictReceiverAndZeroSenderID (0.00s)
+=== RUN   TestRejectAckOfUnsentBytes
+--- PASS: TestRejectAckOfUnsentBytes (0.00s)
+=== RUN   TestReceiverBoundedActiveBytes
+--- PASS: TestReceiverBoundedActiveBytes (0.00s)
+=== RUN   TestReceiverBoundedCompletedCache
+--- PASS: TestReceiverBoundedCompletedCache (0.00s)
+=== RUN   TestEightMiBDeterministic
+--- PASS: TestEightMiBDeterministic (0.03s)
+=== RUN   TestRetainedTransferKeepsBudgetAndReusesBuffers
+--- PASS: TestRetainedTransferKeepsBudgetAndReusesBuffers (0.00s)
+=== RUN   TestQueueCreditReleasedOnCloseAndInvalidEnqueue
+--- PASS: TestQueueCreditReleasedOnCloseAndInvalidEnqueue (0.00s)
+=== RUN   TestReceivedReleaseAndBudgetMismatch
+--- PASS: TestReceivedReleaseAndBudgetMismatch (0.00s)
+=== RUN   TestDecodeDoesNotAllocate
+--- PASS: TestDecodeDoesNotAllocate (0.00s)
+=== RUN   TestQueueRetriesUseDifferentPackingButFreshDataDoesNot
+--- PASS: TestQueueRetriesUseDifferentPackingButFreshDataDoesNot (0.00s)
+=== RUN   TestSparseACKsDoNotExplodeRetryMetadata
+--- PASS: TestSparseACKsDoNotExplodeRetryMetadata (0.00s)
+=== RUN   TestPacketCodec
+--- PASS: TestPacketCodec (0.00s)
+=== RUN   TestPacketReceiptExactAndCopiesIndependent
+--- PASS: TestPacketReceiptExactAndCopiesIndependent (0.00s)
+=== RUN   TestPacketLateReceiptAndRetransmitRTT
+--- PASS: TestPacketLateReceiptAndRetransmitRTT (0.00s)
+=== RUN   TestPacketStateBudgetAndRingBound
+--- PASS: TestPacketStateBudgetAndRingBound (0.00s)
+=== RUN   TestPacketPhysicalWindowAndLegacyAckReject
+--- PASS: TestPacketPhysicalWindowAndLegacyAckReject (0.00s)
+=== RUN   TestPacketReceiverPreservesReceiptOnDuplicate
+--- PASS: TestPacketReceiverPreservesReceiptOnDuplicate (0.00s)
+=== RUN   TestPacketNoCounterWrap
+--- PASS: TestPacketNoCounterWrap (0.00s)
+=== RUN   TestPacketClosedQueueCannotReacquireMemory
+--- PASS: TestPacketClosedQueueCannotReacquireMemory (0.00s)
+=== RUN   TestPacketClosedQueueStopsControlTimers
+--- PASS: TestPacketClosedQueueStopsControlTimers (0.00s)
+=== RUN   TestPacketAckBatchReceiverAndSender
+--- PASS: TestPacketAckBatchReceiverAndSender (0.00s)
+=== RUN   TestPacketAckBatchInvalidIsAtomic
+--- PASS: TestPacketAckBatchInvalidIsAtomic (0.00s)
+=== RUN   TestPacketStorageReleasedWhenDirectionBecomesIdle
+--- PASS: TestPacketStorageReleasedWhenDirectionBecomesIdle (0.00s)
+=== RUN   TestPacketStorageNotAllocatedWhileWaitingForGrant
+--- PASS: TestPacketStorageNotAllocatedWhileWaitingForGrant (0.00s)
+=== RUN   TestQueueMultiMessageWindowAndLoss
+--- PASS: TestQueueMultiMessageWindowAndLoss (0.00s)
+=== RUN   TestQueueFullWindowRetriesAndBadAck
+--- PASS: TestQueueFullWindowRetriesAndBadAck (0.00s)
+=== RUN   TestSelectiveRecoveryWithSizeBlackhole
+--- PASS: TestSelectiveRecoveryWithSizeBlackhole (0.00s)
+=== RUN   TestInvalidFramesAndResourceLimits
+--- PASS: TestInvalidFramesAndResourceLimits (0.00s)
+=== RUN   TestLowMemoryReceiverBudget
+--- PASS: TestLowMemoryReceiverBudget (0.00s)
+=== RUN   TestQueueInFlightAccounting
+--- PASS: TestQueueInFlightAccounting (0.00s)
+=== RUN   TestEncryptedReliableDelivery
+--- PASS: TestEncryptedReliableDelivery (0.00s)
+=== RUN   TestStage21ApplicationConfirmationRetiresPacketStateWithoutReceipt
+--- PASS: TestStage21ApplicationConfirmationRetiresPacketStateWithoutReceipt (0.00s)
+=== RUN   TestStage21ControlEnvelopeRoundTrip
+--- PASS: TestStage21ControlEnvelopeRoundTrip (0.00s)
+=== RUN   TestHundredMiBRangeRecovery
+--- PASS: TestHundredMiBRangeRecovery (0.30s)
+=== RUN   TestWindowLimitsOutstandingDataAndAllowsRetries
+--- PASS: TestWindowLimitsOutstandingDataAndAllowsRetries (0.00s)
+=== RUN   TestWindowBoundedDelivery
+--- PASS: TestWindowBoundedDelivery (0.00s)
+=== RUN   TestWindowCumulativeGrantsCannotMintCredit
+--- PASS: TestWindowCumulativeGrantsCannotMintCredit (0.00s)
+=== RUN   TestWindowCapacityBindingAndOwnership
+--- PASS: TestWindowCapacityBindingAndOwnership (0.00s)
+=== RUN   TestWindowReservationLimitsAndIrrevocability
+--- PASS: TestWindowReservationLimitsAndIrrevocability (0.00s)
+=== RUN   TestWindowProbeBackoffAndEnvelopeBounds
+--- PASS: TestWindowProbeBackoffAndEnvelopeBounds (0.00s)
+=== RUN   TestAdaptiveRTOAndKarn
+--- PASS: TestAdaptiveRTOAndKarn (0.00s)
+=== RUN   TestAdaptiveRTOBackoffAndLimits
+--- PASS: TestAdaptiveRTOBackoffAndLimits (0.00s)
+=== RUN   TestWindowMetadataChargeAndDecodeAllocations
+--- PASS: TestWindowMetadataChargeAndDecodeAllocations (0.00s)
+=== RUN   TestWindowDelayedRejectCannotRevokeGrantedIDs
+--- PASS: TestWindowDelayedRejectCannotRevokeGrantedIDs (0.00s)
+=== RUN   FuzzDecode
+=== RUN   FuzzDecode/seed#0
+=== RUN   FuzzDecode/seed#1
+=== RUN   FuzzDecode/seed#2
+=== RUN   FuzzDecode/seed#3
+=== RUN   FuzzDecode/seed#4
+=== RUN   FuzzDecode/seed#5
+=== RUN   FuzzDecode/seed#6
+=== RUN   FuzzDecode/seed#7
+=== RUN   FuzzDecode/seed#8
+--- PASS: FuzzDecode (0.00s)
+    --- PASS: FuzzDecode/seed#0 (0.00s)
+    --- PASS: FuzzDecode/seed#1 (0.00s)
+    --- PASS: FuzzDecode/seed#2 (0.00s)
+    --- PASS: FuzzDecode/seed#3 (0.00s)
+    --- PASS: FuzzDecode/seed#4 (0.00s)
+    --- PASS: FuzzDecode/seed#5 (0.00s)
+    --- PASS: FuzzDecode/seed#6 (0.00s)
+    --- PASS: FuzzDecode/seed#7 (0.00s)
+    --- PASS: FuzzDecode/seed#8 (0.00s)
+=== RUN   FuzzPacketReceipt
+=== RUN   FuzzPacketReceipt/seed#0
+=== RUN   FuzzPacketReceipt/seed#1
+=== RUN   FuzzPacketReceipt/seed#2
+--- PASS: FuzzPacketReceipt (0.00s)
+    --- PASS: FuzzPacketReceipt/seed#0 (0.00s)
+    --- PASS: FuzzPacketReceipt/seed#1 (0.00s)
+    --- PASS: FuzzPacketReceipt/seed#2 (0.00s)
+PASS
+ok  	example.com/srdt/reliable	0.364s
+=== RUN   TestAuditQueueBudgetAndReleasedSlots
+--- PASS: TestAuditQueueBudgetAndReleasedSlots (0.00s)
+=== RUN   TestAuditInvalidFloatingPointAndClock
+--- PASS: TestAuditInvalidFloatingPointAndClock (0.00s)
+=== RUN   TestDeterministic
+--- PASS: TestDeterministic (0.00s)
+=== RUN   TestFilterAndTime
+--- PASS: TestFilterAndTime (0.00s)
+=== RUN   TestInvalidConfig
+--- PASS: TestInvalidConfig (0.00s)
+=== RUN   TestBothDirections
+--- PASS: TestBothDirections (0.00s)
+=== RUN   TestLinkFIFOQueueDropsAndDrains
+--- PASS: TestLinkFIFOQueueDropsAndDrains (0.00s)
+=== RUN   TestLinkDirectionsAndReproducibility
+--- PASS: TestLinkDirectionsAndReproducibility (0.00s)
+=== RUN   TestLinkNoAllocations
+--- PASS: TestLinkNoAllocations (0.00s)
+PASS
+ok  	example.com/srdt/emulator	0.002s
+=== RUN   TestAuditGeneratorBounds
+--- PASS: TestAuditGeneratorBounds (0.00s)
+=== RUN   TestGeneratorAndVerifier
+--- PASS: TestGeneratorAndVerifier (0.02s)
+=== RUN   TestCorruption
+--- PASS: TestCorruption (0.00s)
+PASS
+ok  	example.com/srdt/testkit	0.020s

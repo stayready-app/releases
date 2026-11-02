@@ -1,0 +1,1343 @@
+--- stage17/cmd/srdt-client/main.go
++++ stage18/cmd/srdt-client/main.go
+@@ -23,6 +23,7 @@
+ 	timeout := flag.Duration("timeout", 30*time.Second, "test timeout")
+ 	dropMin := flag.Int("drop-min", 0, "drop encrypted datagrams from this size")
+ 	dropMax := flag.Int("drop-max", 0, "drop encrypted datagrams through this size")
++	noCongestion := flag.Bool("no-congestion", false, "LAB ONLY: disable DATA congestion window and pacing for A/B testing")
+ 	flag.Parse()
+ 	if *timeout <= 0 {
+ 		log.Fatal("timeout must be positive")
+@@ -45,7 +46,7 @@
+ 		}
+ 		ctx, cancel := context.WithTimeout(context.Background(), *timeout)
+ 		defer cancel()
+-		err = netreliable.ExchangeBatch(ctx, *addr, public, psk, messages, netreliable.Options{LegacyCredits: *legacyCredits, DropMin: *dropMin, DropMax: *dropMax, Timeout: *timeout})
++		err = netreliable.ExchangeBatch(ctx, *addr, public, psk, messages, netreliable.Options{DisableCongestion: *noCongestion, LegacyCredits: *legacyCredits, DropMin: *dropMin, DropMax: *dropMax, Timeout: *timeout})
+ 		if err != nil {
+ 			log.Fatal(err)
+ 		}
+@@ -56,7 +57,7 @@
+ 		if *count <= 0 || *count > netreliable.MaxFramePayload*1000 {
+ 			log.Fatal("invalid bytes count")
+ 		}
+-		err = netreliable.Exchange(context.Background(), *addr, public, psk, bytes.Repeat([]byte{0x5a}, *count), netreliable.Options{LegacyCredits: *legacyCredits, DropMin: *dropMin, DropMax: *dropMax, Timeout: *timeout})
++		err = netreliable.Exchange(context.Background(), *addr, public, psk, bytes.Repeat([]byte{0x5a}, *count), netreliable.Options{DisableCongestion: *noCongestion, LegacyCredits: *legacyCredits, DropMin: *dropMin, DropMax: *dropMax, Timeout: *timeout})
+ 		if err != nil {
+ 			log.Fatal(err)
+ 		}
+--- stage17/cmd/srdt-load/main.go
++++ stage18/cmd/srdt-load/main.go
+@@ -49,6 +49,7 @@
+ 	hold := flag.Duration("hold", 2*time.Second, "idle hold after READY, with sockets kept open")
+ 	dropMin := flag.Int("drop-min", 0, "drop client datagrams from this size")
+ 	dropMax := flag.Int("drop-max", 0, "drop client datagrams through this size")
++	noCongestion := flag.Bool("no-congestion", false, "LAB ONLY: disable DATA congestion window and pacing for A/B testing")
+ 	flag.Parse()
+ 	if *clients < 1 || *clients > 10000 || *messages < 1 || *messages > 65536 || *size < 1 || *size > 1<<20 || *timeout <= 0 || *hold < 0 || (*mode != "idle" && *mode != "active") {
+ 		fmt.Fprintln(os.Stderr, "invalid load arguments")
+@@ -115,7 +116,7 @@
+ 					payloads[j] = make([]byte, *size)
+ 					_, _ = prng.Read(payloads[j])
+ 				}
+-				err := netreliable.ExchangeBatch(ctx, *server, public, psk, payloads, netreliable.Options{
++				err := netreliable.ExchangeBatch(ctx, *server, public, psk, payloads, netreliable.Options{DisableCongestion: *noCongestion,
+ 					LegacyCredits: *legacyCredits, Timeout: *timeout, DropMin: *dropMin, DropMax: *dropMax})
+ 				results <- result{n, err}
+ 			}(n)
+--- stage17/cmd/srdt-server/main.go
++++ stage18/cmd/srdt-server/main.go
+@@ -42,6 +42,7 @@
+ 	flag.DurationVar(&c.ProgressTimeout, "progress-timeout", c.ProgressTimeout, "maximum time without new data/ACK progress with pending buffers")
+ 	flag.IntVar(&c.HelloRate, "hello-rate", c.HelloRate, "global hello processing rate per second")
+ 	flag.IntVar(&c.HelloBurst, "hello-burst", c.HelloBurst, "global hello processing burst")
++	noCongestion := flag.Bool("no-congestion", false, "LAB ONLY: disable DATA congestion window and pacing for A/B testing")
+ 	flag.Parse()
+ 	psk, err := secureudp.ParsePSK(*pskText)
+ 	if err != nil {
+@@ -53,7 +54,7 @@
+ 	}
+ 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
+ 	defer stop()
+-	o := netreliable.Options{DropMin: *dropMin, DropMax: *dropMax, Timeout: *timeout}
++	o := netreliable.Options{DisableCongestion: *noCongestion, DropMin: *dropMin, DropMax: *dropMax, Timeout: *timeout}
+ 	if *multi {
+ 		if *batch != 0 || *reliableMode {
+ 			log.Fatal("--multi cannot be combined with --batch or --reliable")
+--- stage17/emulator/emulator.go
++++ stage18/emulator/emulator.go
+@@ -5,6 +5,7 @@
+ 	"errors"
+ 	"math"
+ 	"math/rand"
++	"time"
+ )
+ 
+ type Direction string
+@@ -19,12 +20,14 @@
+ 	Max int
+ }
+ type Config struct {
+-	LossPercent      float64
+-	DuplicatePercent float64
+-	CorruptPercent   float64
+-	DelayMinMs       int64
+-	DelayMaxMs       int64
+-	DropSizes        []SizeRange
++	RateBytesPerSecond int64 // Zero disables serialization; counts UDP payload bytes.
++	BottleneckBytes    int   // Link tail-drop queue capacity; paired with nonzero rate.
++	LossPercent        float64
++	DuplicatePercent   float64
++	CorruptPercent     float64
++	DelayMinMs         int64
++	DelayMaxMs         int64
++	DropSizes          []SizeRange
+ }
+ type Packet struct {
+ 	Direction Direction
+@@ -62,6 +65,7 @@
+ 	Corrupted  int
+ 	Delivered  int
+ 	QueueDrops int
++	LinkDrops  int
+ }
+ type Emulator struct {
+ 	rng          *rand.Rand
+@@ -72,9 +76,18 @@
+ 	stats        map[Direction]*Stats
+ 	limits       Limits
+ 	pendingBytes int
++	links        map[Direction]*Link
+ }
+ 
+ func validate(c Config) error {
++	if (c.RateBytesPerSecond == 0) != (c.BottleneckBytes == 0) {
++		return errors.New("link rate and queue must both be set")
++	}
++	if c.RateBytesPerSecond != 0 {
++		if _, err := NewLink(c.RateBytesPerSecond, c.BottleneckBytes); err != nil {
++			return err
++		}
++	}
+ 	if math.IsNaN(c.LossPercent) || math.IsNaN(c.DuplicatePercent) || math.IsNaN(c.CorruptPercent) || c.DelayMaxMs == math.MaxInt64 || c.LossPercent < 0 || c.LossPercent > 100 || c.DuplicatePercent < 0 || c.DuplicatePercent > 100 || c.CorruptPercent < 0 || c.CorruptPercent > 100 || c.DelayMinMs < 0 || c.DelayMaxMs < c.DelayMinMs {
+ 		return errors.New("invalid emulator configuration")
+ 	}
+@@ -111,6 +124,12 @@
+ 		return nil, err
+ 	}
+ 	e := &Emulator{limits: limits, rng: rand.New(rand.NewSource(seed)), configs: map[Direction]Config{ClientToServer: up, ServerToClient: down}, stats: map[Direction]*Stats{ClientToServer: {}, ServerToClient: {}}}
++	e.links = make(map[Direction]*Link)
++	for d, c := range e.configs {
++		if c.RateBytesPerSecond != 0 {
++			e.links[d], _ = NewLink(c.RateBytesPerSecond, c.BottleneckBytes)
++		}
++	}
+ 	heap.Init(&e.pending)
+ 	return e, nil
+ }
+@@ -150,6 +169,22 @@
+ 		return errors.New("emulator clock/order overflow")
+ 	}
+ 	for i := 0; i < n; i++ {
++		departure := e.now
++		if link := e.links[d]; link != nil {
++			if e.now > (math.MaxInt64-int64(time.Millisecond))/int64(time.Millisecond) {
++				return errors.New("link clock overflow")
++			}
++			at, accepted := link.Schedule(time.Duration(e.now)*time.Millisecond, len(data))
++			if !accepted {
++				s.Dropped++
++				s.LinkDrops++
++				continue
++			}
++			departure = int64(at / time.Millisecond)
++			if at%time.Millisecond != 0 {
++				departure++
++			}
++		}
+ 		b := append([]byte(nil), data...)
+ 		if len(b) > 0 && e.rng.Float64()*100 < c.CorruptPercent {
+ 			b[e.rng.Intn(len(b))] ^= 1 << uint(e.rng.Intn(8))
+@@ -159,9 +194,12 @@
+ 		if c.DelayMaxMs > delay {
+ 			delay += e.rng.Int63n(c.DelayMaxMs - delay + 1)
+ 		}
++		if delay > math.MaxInt64-departure {
++			return errors.New("link delivery overflow")
++		}
+ 		e.order++
+ 		e.pendingBytes += len(b)
+-		heap.Push(&e.pending, Event{AtMs: e.now + delay, Order: e.order, Packet: Packet{Direction: d, Data: b}})
++		heap.Push(&e.pending, Event{AtMs: departure + delay, Order: e.order, Packet: Packet{Direction: d, Data: b}})
+ 	}
+ 	return nil
+ }
+--- stage17/emulator/link.go
++++ stage18/emulator/link.go
+@@ -0,0 +1,58 @@
++package emulator
++
++import (
++	"errors"
++	"math"
++	"time"
++)
++
++// Link models a FIFO serializer and a byte-bounded tail-drop queue. It owns no
++// payload, goroutine or timer. Delayed packets in flight after serialization do
++// not occupy its queue. It is a deterministic laboratory bottleneck, not an IP
++// fragmentation, kernel qdisc, or radio-link simulator.
++type Link struct {
++	rate     int64
++	capacity int
++	finish   time.Duration
++	drops    uint64
++	peak     int
++}
++
++func NewLink(bytesPerSecond int64, queueBytes int) (*Link, error) {
++	if bytesPerSecond < 1 || bytesPerSecond > 1<<40 || queueBytes < 1 || queueBytes > 64<<20 {
++		return nil, errors.New("invalid link rate/queue")
++	}
++	return &Link{rate: bytesPerSecond, capacity: queueBytes}, nil
++}
++
++// Schedule returns the last-bit departure time. now must be nonnegative and
++// monotonic. FIFO admission/drop is calculated before committing finish.
++func (l *Link) Schedule(now time.Duration, size int) (time.Duration, bool) {
++	if now < 0 || size < 1 || size > l.capacity {
++		l.drops++
++		return 0, false
++	}
++	// At most capacity bytes can be queued, so use a time horizon to avoid
++	// multiplying an arbitrary virtual timestamp by the rate.
++	backlog := max(time.Duration(0), l.finish-now)
++	limit := time.Duration(int64(l.capacity) * int64(time.Second) / l.rate)
++	if backlog > limit {
++		l.drops++
++		return 0, false
++	}
++	queued := int((int64(backlog)*l.rate + int64(time.Second) - 1) / int64(time.Second))
++	if queued > l.capacity-size {
++		l.drops++
++		return 0, false
++	}
++	duration := time.Duration((int64(size)*int64(time.Second) + l.rate - 1) / l.rate)
++	start := max(now, l.finish)
++	if start > time.Duration(math.MaxInt64)-duration {
++		l.drops++
++		return 0, false
++	}
++	l.finish = start + duration
++	l.peak = max(l.peak, queued+size)
++	return l.finish, true
++}
++func (l *Link) Stats() (drops uint64, peakQueueBytes int) { return l.drops, l.peak }
+--- stage17/emulator/link_test.go
++++ stage18/emulator/link_test.go
+@@ -0,0 +1,72 @@
++package emulator
++
++import (
++	"math"
++	"testing"
++	"time"
++)
++
++func TestLinkFIFOQueueDropsAndDrains(t *testing.T) {
++	l, err := NewLink(1000, 2000)
++	if err != nil {
++		t.Fatal(err)
++	}
++	a, ok := l.Schedule(0, 1000)
++	if !ok || a != time.Second {
++		t.Fatal(a, ok)
++	}
++	b, ok := l.Schedule(0, 1000)
++	if !ok || b != 2*time.Second {
++		t.Fatal(b, ok)
++	}
++	if _, ok = l.Schedule(0, 1); ok {
++		t.Fatal("unbounded queue")
++	}
++	c, ok := l.Schedule(time.Second, 1000)
++	if !ok || c != 3*time.Second {
++		t.Fatal(c, ok)
++	}
++	drops, peak := l.Stats()
++	if drops != 1 || peak != 2000 {
++		t.Fatal(drops, peak)
++	}
++	if _, ok = l.Schedule(time.Duration(math.MaxInt64), 1000); ok {
++		t.Fatal("overflow")
++	}
++}
++func TestLinkDirectionsAndReproducibility(t *testing.T) {
++	c := Config{RateBytesPerSecond: 1000, BottleneckBytes: 2000, DelayMinMs: 10, DelayMaxMs: 10}
++	e, err := New(1, c, c)
++	if err != nil {
++		t.Fatal(err)
++	}
++	for n := 0; n < 3; n++ {
++		if err = e.Submit(ClientToServer, make([]byte, 1000)); err != nil {
++			t.Fatal(err)
++		}
++	}
++	_ = e.Submit(ServerToClient, make([]byte, 1000))
++	if e.Stats(ClientToServer).LinkDrops != 1 {
++		t.Fatal("drop not recorded")
++	}
++	events, err := e.AdvanceTo(1010)
++	if err != nil || len(events) != 2 {
++		t.Fatal(len(events), err)
++	}
++	if len(e.Drain()) != 1 {
++		t.Fatal("FIFO delivery lost")
++	}
++	for _, bad := range []Config{{RateBytesPerSecond: 100}, {BottleneckBytes: 10}, {RateBytesPerSecond: -1, BottleneckBytes: 10}} {
++		if _, err := New(1, bad, Config{}); err == nil {
++			t.Fatal("invalid accepted")
++		}
++	}
++}
++func TestLinkNoAllocations(t *testing.T) {
++	l, _ := NewLink(1000000, 8192)
++	now := time.Duration(0)
++	n := testing.AllocsPerRun(1000, func() { now += time.Millisecond; l.Schedule(now, 900) })
++	if n != 0 {
++		t.Fatal(n)
++	}
++}
+--- stage17/netreliable/congestion_test.go
++++ stage18/netreliable/congestion_test.go
+@@ -0,0 +1,71 @@
++package netreliable
++
++import (
++	"bytes"
++	"context"
++	"example.com/srdt/emulator"
++	"testing"
++	"time"
++)
++
++// Both endpoints, real UDP relay and same deterministic bottleneck parameters.
++// No speed assertions: process scheduling is intentionally not deterministic.
++func TestCongestionRealUDPBottleneck(t *testing.T) {
++	for _, disabled := range []bool{false, true} {
++		name := "controlled"
++		if disabled {
++			name = "uncontrolled-lab-baseline"
++		}
++		t.Run(name, func(t *testing.T) {
++			_, identity, c := testMulti(t)
++			c.AllowLegacyData = false
++			c.Options.DisableCongestion = disabled
++			server, addr, stop := startMulti(t, c, identity)
++			defer stop()
++			link := emulator.Config{RateBytesPerSecond: 250000, BottleneckBytes: 6000, DelayMinMs: 20, DelayMaxMs: 20}
++			proxy, stopProxy := faultProxy(t, addr, faultSpec{up: link, down: link})
++			defer stopProxy()
++			data := make([][]byte, 64)
++			for n := range data {
++				data[n] = bytes.Repeat([]byte{byte(n)}, 4096)
++			}
++			begin := time.Now()
++			if err := ExchangeBatch(context.Background(), proxy, identity.Public, identity.PSK, data, Options{Timeout: 45 * time.Second, DisableCongestion: disabled}); err != nil {
++				t.Fatal(err)
++			}
++			stats := server.Stats()
++			t.Logf("verified=%d elapsed_ms=%d stats=%+v", len(data)*4096, time.Since(begin).Milliseconds(), stats)
++			if stats.DeliveredMessages != 64 || stats.ResourceDrops != 0 || stats.CreditViolations != 0 {
++				t.Fatal(stats)
++			}
++			if !disabled && stats.DataFreshPackets == 0 {
++				t.Fatal("controller not active")
++			}
++			if disabled && stats.DataFreshPackets != 0 {
++				t.Fatal("laboratory opt-out ignored")
++			}
++		})
++	}
++}
++
++func TestCongestionRealUDPReverseAsymmetricBottleneck(t *testing.T) {
++	_, identity, c := testMulti(t)
++	c.AllowLegacyData = false
++	server, addr, stop := startMulti(t, c, identity)
++	defer stop()
++	proxy, stopProxy := faultProxy(t, addr, faultSpec{
++		up:   emulator.Config{RateBytesPerSecond: 1000000, BottleneckBytes: 16000, DelayMinMs: 10, DelayMaxMs: 30},
++		down: emulator.Config{RateBytesPerSecond: 100000, BottleneckBytes: 4000, DelayMinMs: 20, DelayMaxMs: 40, LossPercent: 1}, inject: true,
++	})
++	defer stopProxy()
++	data := make([][]byte, 16)
++	for n := range data {
++		data[n] = bytes.Repeat([]byte{byte(n)}, 8192)
++	}
++	if err := ExchangeBatch(context.Background(), proxy, identity.Public, identity.PSK, data, Options{Timeout: 30 * time.Second}); err != nil {
++		t.Fatal(err)
++	}
++	if s := server.Stats(); s.DeliveredMessages != 16 || s.ResourceDrops != 0 {
++		t.Fatal(s)
++	}
++}
+--- stage17/netreliable/credits.go
++++ stage18/netreliable/credits.go
+@@ -20,7 +20,7 @@
+ 	_ = p.receiver.SetBudget(s.budget)
+ 	p.queue, _ = reliable.NewQueue(s.config.WindowBytes, s.config.SessionBufferBytes)
+ 	_ = p.queue.SetBudget(s.budget)
+-	_ = p.queue.EnableAdaptiveRTO()
++	s.config.Options.configureQueue(p.queue)
+ 	if p.flowMode == 3 {
+ 		_ = p.receiver.RequireCredits()
+ 		_ = p.queue.UseWindowCredits(2, 2, int(p.windowCapacity))
+--- stage17/netreliable/multi.go
++++ stage18/netreliable/multi.go
+@@ -63,7 +63,7 @@
+ 		return err
+ 	}
+ 	defer queue.Close()
+-	_ = queue.EnableAdaptiveRTO()
++	o.configureQueue(queue)
+ 	capacity := 0
+ 	for _, message := range messages {
+ 		capacity = max(capacity, len(message))
+@@ -150,7 +150,11 @@
+ 				return err
+ 			}
+ 		}
+-		_ = conn.SetReadDeadline(time.Now().Add(2 * time.Millisecond))
++		readAt := time.Now().Add(20 * time.Millisecond)
++		if at, ok := queue.Wake(time.Now()); ok && at.Before(readAt) {
++			readAt = maxTime(at, time.Now().Add(time.Millisecond))
++		}
++		_ = conn.SetReadDeadline(readAt)
+ 		n, from, e := conn.ReadFrom(buf)
+ 		if e != nil {
+ 			if secureudp.IsDatagramReadError(e) {
+@@ -247,3 +251,10 @@
+ 
+ 	}
+ }
++
++func maxTime(a, b time.Time) time.Time {
++	if a.After(b) {
++		return a
++	}
++	return b
++}
+--- stage17/netreliable/network.go
++++ stage18/netreliable/network.go
+@@ -16,12 +16,13 @@
+ const MaxFramePayload = 900
+ 
+ type Options struct {
+-	LegacyCredits bool // Explicit Stage 16 exact-message admission for compatibility tests.
+-	DropMin       int  // Drop outgoing encrypted UDP datagrams in [DropMin, DropMax].
+-	DropMax       int
+-	Fragment      int // Maximum reliable payload per frame; default 900.
+-	RetryFragment int // Payload size after first timeout; default 350.
+-	Timeout       time.Duration
++	DisableCongestion bool // Laboratory A/B only. Normal reliable UDP enables DATA control.
++	LegacyCredits     bool // Explicit Stage 16 exact-message admission for compatibility tests.
++	DropMin           int  // Drop outgoing encrypted UDP datagrams in [DropMin, DropMax].
++	DropMax           int
++	Fragment          int // Maximum reliable payload per frame; default 900.
++	RetryFragment     int // Payload size after first timeout; default 350.
++	Timeout           time.Duration
+ }
+ 
+ func (o Options) fragment() int {
+@@ -115,3 +116,14 @@
+ 	}
+ 	return secureudp.IsDatagramReadError(err)
+ }
++
++// DATA: 25 session header + 16 AEAD tag + 17 reliable header + 8 UDP + 40 IPv6.
++// Conservative for IPv4 without options. Does not include L2 or outer tunnels.
++const dataWireOverhead = 106
++
++func (o Options) configureQueue(q *reliable.Queue) {
++	_ = q.EnableAdaptiveRTO()
++	if !o.DisableCongestion {
++		_ = q.EnableCongestionControl(MaxFramePayload, dataWireOverhead)
++	}
++}
+--- stage17/netreliable/server.go
++++ stage18/netreliable/server.go
+@@ -66,34 +66,40 @@
+ }
+ 
+ type ServerStats struct {
+-	ActiveSessions      int    `json:"active_sessions"`
+-	PeakSessions        int    `json:"peak_sessions"`
+-	UsedHelloIDs        int    `json:"used_hello_ids"`
+-	BufferBytes         int64  `json:"buffer_bytes"`
+-	PeakBufferBytes     int64  `json:"peak_buffer_bytes"`
+-	ReceivedDatagrams   uint64 `json:"received_datagrams"`
+-	SentDatagrams       uint64 `json:"sent_datagrams"`
+-	DeliveredMessages   uint64 `json:"delivered_messages"`
+-	DeliveredBytes      uint64 `json:"delivered_bytes"`
+-	InvalidPackets      uint64 `json:"invalid_packets"`
+-	AdmissionRejects    uint64 `json:"admission_rejects"`
+-	RateLimited         uint64 `json:"rate_limited"`
+-	ResourceDrops       uint64 `json:"resource_drops"`
+-	WindowRequests      uint64 `json:"window_requests"`
+-	WindowGrantUpdates  uint64 `json:"window_grant_updates"`
+-	CreditRequests      uint64 `json:"credit_requests"`
+-	CreditsGranted      uint64 `json:"credits_granted"`
+-	CreditBlocked       uint64 `json:"credit_blocked"`
+-	CreditViolations    uint64 `json:"credit_violations"`
+-	CreditRejected      uint64 `json:"credit_rejected"`
+-	LegacySessions      uint64 `json:"legacy_sessions"`
+-	WaitingSessions     int    `json:"waiting_sessions"`
+-	PeakWaitingSessions int    `json:"peak_waiting_sessions"`
+-	StaleMessages       uint64 `json:"stale_messages"`
+-	RepeatedHellos      uint64 `json:"repeated_hellos"`
+-	ExpiredSessions     uint64 `json:"expired_sessions"`
+-	WriteErrors         uint64 `json:"write_errors"`
+-	FilteredDatagrams   uint64 `json:"filtered_datagrams"`
++	ActiveSessions       int    `json:"active_sessions"`
++	PeakSessions         int    `json:"peak_sessions"`
++	UsedHelloIDs         int    `json:"used_hello_ids"`
++	BufferBytes          int64  `json:"buffer_bytes"`
++	PeakBufferBytes      int64  `json:"peak_buffer_bytes"`
++	ReceivedDatagrams    uint64 `json:"received_datagrams"`
++	SentDatagrams        uint64 `json:"sent_datagrams"`
++	DeliveredMessages    uint64 `json:"delivered_messages"`
++	DeliveredBytes       uint64 `json:"delivered_bytes"`
++	InvalidPackets       uint64 `json:"invalid_packets"`
++	AdmissionRejects     uint64 `json:"admission_rejects"`
++	RateLimited          uint64 `json:"rate_limited"`
++	ResourceDrops        uint64 `json:"resource_drops"`
++	WindowRequests       uint64 `json:"window_requests"`
++	WindowGrantUpdates   uint64 `json:"window_grant_updates"`
++	CreditRequests       uint64 `json:"credit_requests"`
++	CreditsGranted       uint64 `json:"credits_granted"`
++	CreditBlocked        uint64 `json:"credit_blocked"`
++	CreditViolations     uint64 `json:"credit_violations"`
++	CreditRejected       uint64 `json:"credit_rejected"`
++	LegacySessions       uint64 `json:"legacy_sessions"`
++	WaitingSessions      int    `json:"waiting_sessions"`
++	PeakWaitingSessions  int    `json:"peak_waiting_sessions"`
++	StaleMessages        uint64 `json:"stale_messages"`
++	RepeatedHellos       uint64 `json:"repeated_hellos"`
++	ExpiredSessions      uint64 `json:"expired_sessions"`
++	WriteErrors          uint64 `json:"write_errors"`
++	DataFreshPackets     uint64 `json:"data_fresh_packets"`
++	DataRetryPackets     uint64 `json:"data_retry_packets"`
++	DataRetryBytes       uint64 `json:"data_retry_payload_bytes"`
++	CongestionEvents     uint64 `json:"congestion_timeout_events"`
++	PacingWaits          uint64 `json:"pacing_waits"`
++	PeakCongestionWindow int    `json:"peak_congestion_window"`
++	FilteredDatagrams    uint64 `json:"filtered_datagrams"`
+ }
+ 
+ type peerSession struct {
+@@ -174,6 +180,11 @@
+ 	s.mu.Lock()
+ 	defer s.mu.Unlock()
+ 	r := s.stats
++	for _, p := range s.sessions {
++		if p.queue != nil {
++			r.addControl(p.queue.CongestionStats())
++		}
++	}
+ 	r.ActiveSessions, r.UsedHelloIDs = len(s.sessions), len(s.used)
+ 	r.BufferBytes = s.budget.Used()
+ 	r.WaitingSessions = s.waitCount
+@@ -525,7 +536,7 @@
+ 	p.due = s.expires(p)
+ 	if p.queue != nil {
+ 		if sendAt, ok := p.queue.Wake(now); ok {
+-			if !immediate && sendAt.Before(now.Add(s.config.Tick)) {
++			if !immediate && s.config.Options.DisableCongestion && sendAt.Before(now.Add(s.config.Tick)) {
+ 				sendAt = now.Add(s.config.Tick)
+ 			}
+ 			if sendAt.Before(p.due) {
+@@ -599,6 +610,7 @@
+ 		p.receiver.Close()
+ 	}
+ 	if p.queue != nil {
++		s.stats.addControl(p.queue.CongestionStats())
+ 		p.queue.Close()
+ 	}
+ 	s.creditScan = s.waitCount
+@@ -648,3 +660,12 @@
+ 	err = s.Run(ctx, conn)
+ 	return s.Stats(), err
+ }
++
++func (s *ServerStats) addControl(c reliable.CongestionStats) {
++	s.DataFreshPackets += c.FreshPackets
++	s.DataRetryPackets += c.RetryPackets
++	s.DataRetryBytes += c.RetryBytes
++	s.CongestionEvents += c.LossEvents
++	s.PacingWaits += c.PacingWaits
++	s.PeakCongestionWindow = max(s.PeakCongestionWindow, c.PeakWindowBytes)
++}
+--- stage17/netreliable/server_test.go
++++ stage18/netreliable/server_test.go
+@@ -182,6 +182,7 @@
+ 	now := time.Now()
+ 	_, client, p := admit(t, s, i, 1000, now)
+ 	for id := uint64(1); id <= 401; id += 2 {
++		now = now.Add(2 * time.Millisecond) // Virtual time must permit paced tiny echoes.
+ 		sendClient(t, s, client, p, reliable.Frame{Type: reliable.TypeData, ID: id, Total: 1, Payload: []byte{3}}, now)
+ 		frame, ok := p.queue.Next(now, 1)
+ 		if !ok {
+--- stage17/reliable/congestion.go
++++ stage18/reliable/congestion.go
+@@ -0,0 +1,145 @@
++package reliable
++
++import (
++	"time"
++)
++
++// CongestionStats describes one sending direction. Payload flight and the
++// congestion window are LOGICAL bytes, not a count of outstanding UDP packets.
++// This distinction is required by the current range-ACK wire protocol.
++type CongestionStats struct {
++	WindowBytes     int    `json:"window_bytes"`
++	PeakWindowBytes int    `json:"peak_window_bytes"`
++	FreshPackets    uint64 `json:"fresh_packets"`
++	RetryPackets    uint64 `json:"retry_packets"`
++	RetryBytes      uint64 `json:"retry_payload_bytes"`
++	LossEvents      uint64 `json:"timeout_loss_events"`
++	PacingWaits     uint64 `json:"pacing_waits"`
++	WindowWaits     uint64 `json:"window_waits"`
++}
++
++// congestion is a conservative, experimental loss/window controller, not QUIC
++// or a claim of RFC 9002 compliance. It needs no per-packet record, timer, or
++// goroutine. Loss is inferred only at the existing retransmission timeout.
++// Logical range ACKs cannot identify which transmission succeeded or count
++// distinct physical copies in flight. The pacer therefore charges EVERY DATA
++// attempt (including retries) for payload + caller's wire overhead.
++type congestion struct {
++	mss, overhead, maximum, initial, minimum int
++	window, threshold, ackCredit             int
++	recoveryAt                               time.Time
++	lastSent, refillAt                       time.Time
++	tokens                                   float64
++	stats                                    CongestionStats
++}
++
++const congestionBurstPackets = 4
++const congestionMaximumBurstPackets = 64
++const congestionPacingQuantum = time.Millisecond
++const congestionInitialRTT = 100 * time.Millisecond
++
++func newCongestion(maximum, mss, overhead int) (*congestion, error) {
++	if maximum < 1 || mss < 1 || mss > 65535 || overhead < 0 || overhead > 4096 {
++		return nil, ErrFrame
++	}
++	c := &congestion{mss: mss, overhead: overhead, maximum: maximum,
++		initial: min(maximum, 10*mss), minimum: min(maximum, 2*mss), threshold: maximum}
++	c.window = c.initial
++	c.tokens = float64(2 * (mss + overhead))
++	c.stats.PeakWindowBytes = c.window
++	return c, nil
++}
++
++func (c *congestion) rtt(r *RTTEstimator) time.Duration {
++	if r == nil || r.samples == 0 {
++		return congestionInitialRTT
++	}
++	// Avoid runaway pacing from unrealistically tiny loopback/ACK-compressed RTT.
++	return max(100*time.Microsecond, r.smoothed)
++}
++func (c *congestion) rate(r *RTTEstimator) float64 {
++	// Convert logical-byte window into estimated on-wire bytes/second. No gain
++	// above window/RTT: control traffic is already sent separately.
++	return float64(c.window) * float64(c.mss+c.overhead) / float64(c.mss) / c.rtt(r).Seconds()
++}
++
++// burstLimit amortizes timer granularity without buying an unbounded burst.
++// On a slow path the four-packet limit is unchanged. On a fast path, permit
++// at most one scheduler quantum, one congestion window, and 64 full packets.
++// This is a cap in bytes: tiny packets still pay their individual overhead.
++func (c *congestion) burstLimit(r *RTTEstimator) float64 {
++	unit := float64(c.mss + c.overhead)
++	window := float64(c.window) * unit / float64(c.mss)
++	quantum := c.rate(r) * congestionPacingQuantum.Seconds()
++	return max(float64(congestionBurstPackets)*unit,
++		min(window, quantum, float64(congestionMaximumBurstPackets)*unit))
++}
++func (c *congestion) refill(now time.Time, r *RTTEstimator) {
++	if c.refillAt.IsZero() {
++		c.refillAt = now
++		return
++	}
++	if now.After(c.refillAt) {
++		c.tokens = min(c.burstLimit(r), c.tokens+now.Sub(c.refillAt).Seconds()*c.rate(r))
++		c.refillAt = now
++	}
++}
++func (c *congestion) readyAt(now time.Time, payload int, r *RTTEstimator) time.Time {
++	c.refill(now, r)
++	need := float64(min(c.mss, payload)+c.overhead) - c.tokens
++	if need <= 0 {
++		return now
++	}
++	wait := time.Duration(need/c.rate(r)*float64(time.Second)) + time.Nanosecond
++	return now.Add(max(time.Microsecond, wait))
++}
++func (c *congestion) onSend(now time.Time, payload int, retry bool, r *RTTEstimator, rto time.Duration) {
++	// Idle periods do not buy an unlimited burst or retain a formerly large cwnd.
++	if !c.lastSent.IsZero() && now.Sub(c.lastSent) >= max(rto, congestionInitialRTT) {
++		c.window = min(c.window, c.initial)
++		c.ackCredit = 0
++		c.tokens = min(c.tokens, float64(2*(c.mss+c.overhead)))
++	}
++	c.refill(now, r)
++	c.tokens -= float64(payload + c.overhead)
++	c.lastSent = now
++	if retry {
++		c.stats.RetryPackets++
++		c.stats.RetryBytes += uint64(payload)
++	} else {
++		c.stats.FreshPackets++
++	}
++}
++func (c *congestion) onTimeout(sentAt, now time.Time) {
++	// A burst of expired ranges from one original flight is ONE congestion event,
++	// not one reduction per fragment. A later timed-out retry starts a new epoch.
++	if !c.recoveryAt.IsZero() && !sentAt.After(c.recoveryAt) {
++		return
++	}
++	c.threshold = max(c.minimum, c.window/2)
++	c.window = c.minimum // RTO, not fast loss detection: use conservative restart.
++	c.ackCredit = 0
++	c.recoveryAt = now
++	c.tokens = min(c.tokens, float64(c.mss+c.overhead))
++	c.stats.LossEvents++
++}
++func (c *congestion) onAck(added, before int, eligible bool) {
++	if added <= 0 || !eligible || before < c.window/2 {
++		return
++	}
++	if c.window < c.threshold {
++		c.window = min(c.maximum, c.window+added)
++	} else {
++		// Appropriate-byte counting. Duplicated/split ACKs cannot repeatedly credit
++		// the same payload. At most roughly one MSS growth per window of new bytes.
++		c.ackCredit += added
++		for c.ackCredit >= c.window && c.window < c.maximum {
++			c.ackCredit -= c.window
++			c.window = min(c.maximum, c.window+c.mss)
++		}
++	}
++	if c.window == c.maximum {
++		c.ackCredit = 0
++	}
++	c.stats.PeakWindowBytes = max(c.stats.PeakWindowBytes, c.window)
++}
+--- stage17/reliable/congestion_test.go
++++ stage18/reliable/congestion_test.go
+@@ -0,0 +1,362 @@
++package reliable
++
++import (
++	"bytes"
++	"encoding/binary"
++	"testing"
++	"time"
++	"unsafe"
++)
++
++func controlledQueue(t *testing.T) *Queue {
++	t.Helper()
++	q, err := NewQueue(64<<10, 128<<10)
++	if err != nil {
++		t.Fatal(err)
++	}
++	if err = q.EnableCongestionControl(900, 106); err != nil {
++		t.Fatal(err)
++	}
++	return q
++}
++func TestCongestionFreshFlightAndPacing(t *testing.T) {
++	q := controlledQueue(t)
++	defer q.Close()
++	_ = q.Enqueue(1, make([]byte, 32768), time.Second)
++	now := time.Unix(100, 0)
++	// Initial immediate allowance is two packets, not the whole flight window.
++	for n := 0; n < 2; n++ {
++		if _, ok := q.Next(now, 900); !ok {
++			t.Fatal("initial DATA blocked")
++		}
++	}
++	if _, ok := q.Next(now, 900); ok {
++		t.Fatal("unpaced burst")
++	}
++	if at, ok := q.Wake(now); !ok || !at.After(now) {
++		t.Fatal("busy-loop wake", at)
++	}
++	// No ACKs: reaching the congestion window must stop new bytes.
++	for n := 0; n < 8; n++ {
++		now = now.Add(10 * time.Millisecond)
++		if _, ok := q.Next(now, 900); !ok {
++			t.Fatal("credit not replenished")
++		}
++	}
++	if q.InFlight() != 9000 {
++		t.Fatal(q.InFlight())
++	}
++	if _, ok := q.Next(now.Add(10*time.Millisecond), 900); ok {
++		t.Fatal("flight exceeds cwnd")
++	}
++}
++func TestCongestionInvalidAndRepeatedACKDoNotGrowWindow(t *testing.T) {
++	q := controlledQueue(t)
++	defer q.Close()
++	_ = q.Enqueue(1, make([]byte, 32768), time.Second)
++	now := time.Unix(100, 0)
++	var frames []Frame
++	for n := 0; n < 10; n++ {
++		now = now.Add(10 * time.Millisecond)
++		f, ok := q.Next(now, 900)
++		if !ok {
++			t.Fatal(n)
++		}
++		frames = append(frames, f)
++	}
++	before := q.CongestionStats().WindowBytes
++	bad := Frame{Type: TypeAck, ID: 1, Total: 32768, Offset: 30000, Payload: []byte{0, 0, 0, 1}}
++	if q.AckAt(bad, now) == nil || q.CongestionStats().WindowBytes != before {
++		t.Fatal("invalid ACK grew window")
++	}
++	ack := acknowledgments(frames[0])[0]
++	if err := q.AckAt(ack, now.Add(5*time.Millisecond)); err != nil {
++		t.Fatal(err)
++	}
++	grew := q.CongestionStats().WindowBytes
++	if grew <= before {
++		t.Fatal("no slow-start growth")
++	}
++	for n := 0; n < 100; n++ {
++		if err := q.AckAt(ack, now); err != nil {
++			t.Fatal(err)
++		}
++	}
++	if q.CongestionStats().WindowBytes != grew {
++		t.Fatal("duplicate ACK inflation")
++	}
++}
++func TestCongestionRetryAtFullWindowAndLossEpoch(t *testing.T) {
++	q := controlledQueue(t)
++	defer q.Close()
++	_ = q.Enqueue(1, make([]byte, 32768), time.Second)
++	start := time.Unix(100, 0)
++	for n := 0; n < 10; n++ {
++		if _, ok := q.Next(start.Add(time.Duration(n)*10*time.Millisecond), 900); !ok {
++			t.Fatal(n)
++		}
++	}
++	now := start.Add(time.Second)
++	f, ok := q.NextSized(now, 900, 350)
++	if !ok || len(f.Payload) > 350 {
++		t.Fatal("retry stopped by full flight")
++	}
++	st := q.CongestionStats()
++	if st.LossEvents != 1 || st.WindowBytes != 1800 || st.RetryPackets != 1 {
++		t.Fatal(st)
++	}
++	// Partial retransmits of one pre-loss flight do not repeatedly cut cwnd.
++	for n := 0; n < 5; n++ {
++		now = now.Add(30 * time.Millisecond)
++		q.NextSized(now, 900, 350)
++	}
++	st = q.CongestionStats()
++	if st.LossEvents != 1 || q.InFlight() != 9000 {
++		t.Fatal(st, q.InFlight())
++	}
++	// ACK of the retransmitted range is useful but not a growth/RTT sample.
++	ack := acknowledgments(f)[0]
++	_ = q.AckAt(ack, now)
++	if q.CongestionStats().WindowBytes != 1800 || q.rtt.Samples() != 0 {
++		t.Fatal("ambiguous ACK credited")
++	}
++}
++func TestCongestionControlsNotBlockedByPacer(t *testing.T) {
++	q := controlledQueue(t)
++	defer q.Close()
++	_ = q.UseWindowCredits(1, 2, 4096)
++	_ = q.Enqueue(1, make([]byte, 4096), time.Second)
++	q.congestion.tokens = 0
++	f, ok := q.Next(time.Unix(100, 0), 900)
++	if !ok || f.Type != TypeWindowOpen {
++		t.Fatal("credit probe blocked by data pacer")
++	}
++}
++func TestCongestionBoundedIdleBurstAndState(t *testing.T) {
++	c, _ := newCongestion(65536, 900, 106)
++	r := &RTTEstimator{}
++	r.Observe(time.Millisecond)
++	now := time.Unix(100, 0)
++	c.refill(now, r)
++	c.window = 65536
++	c.lastSent = now
++	now = now.Add(time.Hour)
++	c.readyAt(now, 900, r)
++	c.onSend(now, 900, false, r, time.Second)
++	if c.window != 9000 || c.tokens > 1006 {
++		t.Fatal("idle restart allows old-window burst", c)
++	}
++	if unsafe.Sizeof(*c) > 384 {
++		t.Fatal("controller too large", unsafe.Sizeof(*c))
++	}
++	allocations := testing.AllocsPerRun(1000, func() {
++		now = now.Add(time.Millisecond)
++		c.readyAt(now, 900, r)
++		c.onSend(now, 900, true, r, time.Second)
++	})
++	if allocations != 0 {
++		t.Fatal("hot-path allocation", allocations)
++	}
++	t.Logf("controller_bytes=%d hot_path_allocs=%g", unsafe.Sizeof(*c), allocations)
++}
++func TestCongestionRecoveryCompletesWithRepacking(t *testing.T) {
++	q := controlledQueue(t)
++	defer q.Close()
++	data := bytes.Repeat([]byte{1, 7, 0, 255}, 8192)
++	_ = q.Enqueue(1, data, time.Second)
++	r := NewReceiver()
++	defer r.Close()
++	now := time.Unix(100, 0)
++	done := false
++	for n := 0; n < 10000 && q.Pending() > 0; n++ {
++		now = now.Add(5 * time.Millisecond)
++		for j := 0; j < 16; j++ {
++			f, ok := q.NextSized(now, 900, 350)
++			if !ok {
++				break
++			}
++			if len(f.Payload) > 500 {
++				continue
++			}
++			acks, got, err := r.Accept(f)
++			if err != nil {
++				t.Fatal(err)
++			}
++			for _, ack := range acks {
++				if err = q.AckAt(ack, now.Add(time.Millisecond)); err != nil {
++					t.Fatal(err)
++				}
++			}
++			if got != nil {
++				if !bytes.Equal(got, data) {
++					t.Fatal("mismatch")
++				}
++				done = true
++			}
++		}
++	}
++	if !done || q.Pending() != 0 {
++		t.Fatal("no recovery", q.CongestionStats(), q.InFlight())
++	}
++	if q.CongestionStats().LossEvents == 0 || q.CongestionStats().RetryPackets == 0 {
++		t.Fatal("not exercising retries")
++	}
++}
++func TestCongestionPartialACKCreditIsUnique(t *testing.T) {
++	c, _ := newCongestion(65536, 900, 106)
++	c.window = 1800
++	c.threshold = 1800
++	for n := 0; n < 1800; n++ {
++		c.onAck(1, 1800, true)
++	}
++	if c.window != 2700 {
++		t.Fatal("byte counting", c.window)
++	}
++	c.onAck(0, 10000, true)
++	c.onAck(20000, 10000, false)
++	if c.window != 2700 {
++		t.Fatal("growth without new eligible bytes")
++	}
++}
++func BenchmarkCongestionPacer(b *testing.B) {
++	c, _ := newCongestion(65536, 900, 106)
++	r := &RTTEstimator{}
++	r.Observe(10 * time.Millisecond)
++	now := time.Unix(100, 0)
++	b.ReportAllocs()
++	b.ResetTimer()
++	for n := 0; n < b.N; n++ {
++		now = now.Add(time.Millisecond)
++		c.readyAt(now, 900, r)
++		c.onSend(now, 900, false, r, time.Second)
++	}
++}
++func TestCongestionNoGrowthFromOldFlight(t *testing.T) {
++	q := controlledQueue(t)
++	defer q.Close()
++	_ = q.Enqueue(1, make([]byte, 32768), time.Second)
++	now := time.Unix(100, 0)
++	f, _ := q.Next(now, 900)
++	q.congestion.onTimeout(now, now.Add(time.Second))
++	ack := Frame{Type: TypeAck, ID: 1, Total: 32768, Offset: f.Offset, Payload: make([]byte, 4)}
++	binary.BigEndian.PutUint32(ack.Payload, uint32(len(f.Payload)))
++	_ = q.AckAt(ack, now.Add(2*time.Second))
++	if q.CongestionStats().WindowBytes != 1800 {
++		t.Fatal("old flight grew window")
++	}
++}
++
++// A final/small original range fits below retryPayload. Merely changing the
++// global retry maximum leaves its physical size identical forever.
++func TestCongestionTailSizeBlackhole(t *testing.T) {
++	q := controlledQueue(t)
++	defer q.Close()
++	data := bytes.Repeat([]byte{0xa5}, 193)
++	if err := q.Enqueue(1, data, time.Millisecond); err != nil {
++		t.Fatal(err)
++	}
++	r := NewReceiver()
++	defer r.Close()
++	now := time.Unix(100, 0)
++	received := false
++	for n := 0; n < 1000 && q.Pending() != 0; n++ {
++		now = now.Add(20 * time.Millisecond)
++		f, ok := q.NextSized(now, 900, 350)
++		if !ok {
++			continue
++		}
++		size := 58 + len(f.Payload) // existing UDP/AEAD/frame overhead, excluding IP
++		if size >= 200 && size <= 280 {
++			continue
++		}
++		acks, got, err := r.Accept(f)
++		if err != nil {
++			t.Fatal(err)
++		}
++		for _, a := range acks {
++			if err = q.AckAt(a, now); err != nil {
++				t.Fatal(err)
++			}
++		}
++		if got != nil {
++			received = bytes.Equal(data, got)
++		}
++	}
++	if !received || q.Pending() != 0 {
++		t.Fatalf("permanent tail-size loop: pending=%d control=%+v", q.Pending(), q.CongestionStats())
++	}
++}
++
++func TestCongestionNoTinyFreshFragmentFromWindowRemainder(t *testing.T) {
++	q := controlledQueue(t)
++	defer q.Close()
++	_ = q.Enqueue(1, make([]byte, 16384), time.Second)
++	q.congestion.window = 1801
++	now := time.Unix(100, 0)
++	first, ok := q.Next(now, 900)
++	if !ok {
++		t.Fatal("first")
++	}
++	if _, ok = q.Next(now, 900); !ok {
++		t.Fatal("second")
++	}
++	now = now.Add(100 * time.Millisecond)
++	if f, ok := q.Next(now, 900); ok {
++		t.Fatalf("window sliver emitted tiny DATA: len=%d", len(f.Payload))
++	}
++	if at, ok := q.Wake(now); !ok || !at.After(now) {
++		t.Fatal("window sliver causes busy wake", at)
++	}
++	if err := q.AckAt(acknowledgments(first)[0], now); err != nil {
++		t.Fatal(err)
++	}
++	if f, ok := q.Next(now, 900); !ok || len(f.Payload) != 900 {
++		t.Fatal("full fragment not resumed", ok, len(f.Payload))
++	}
++}
++
++func TestCongestionPacerAmortizesFastPathTimerQuantum(t *testing.T) {
++	c, _ := newCongestion(65536, 900, 106)
++	r := &RTTEstimator{}
++	r.Observe(100 * time.Microsecond)
++	c.window = 16384
++	now := time.Unix(100, 0)
++	c.refill(now, r)
++	c.lastSent = now
++	now = now.Add(time.Millisecond)
++	c.refill(now, r)
++	if c.tokens <= 4*1006 || c.tokens > float64(c.window)*1006/900 {
++		t.Fatal("fast-path credit not bounded to useful quantum/window", c.tokens)
++	}
++	packets := 0
++	for !c.readyAt(now, 900, r).After(now) {
++		c.onSend(now, 900, false, r, time.Second)
++		packets++
++		if packets > 64 {
++			t.Fatal("unbounded burst")
++		}
++	}
++	if packets < 16 {
++		t.Fatal("timer tick artificially throttles fast path", packets)
++	}
++}
++
++func TestCongestionPacerSlowPathAndAbsoluteBurstCap(t *testing.T) {
++	c, _ := newCongestion(1<<24, 900, 106)
++	r := &RTTEstimator{}
++	r.Observe(80 * time.Millisecond)
++	c.window = 16384
++	if c.burstLimit(r) != 4*1006 {
++		t.Fatal("slow path burst changed", c.burstLimit(r))
++	}
++	r = &RTTEstimator{}
++	r.Observe(time.Microsecond)
++	c.window = 1 << 24
++	if c.burstLimit(r) > 64*1006 {
++		t.Fatal("large configuration permits unbounded burst")
++	}
++	c, _ = newCongestion(1, 900, 106)
++	if c.burstLimit(r) < 1006 {
++		t.Fatal("tiny flight window starves pacer")
++	}
++}
+--- stage17/reliable/queue.go
++++ stage18/reliable/queue.go
+@@ -22,6 +22,8 @@
+ 	creditWindow  *SendWindow
+ 	rtt           *RTTEstimator
+ 	nextRTTSample time.Time
++	congestion    *congestion
++	freshSize     int
+ }
+ 
+ func NewQueue(maxInFlight, maxQueued int) (*Queue, error) {
+@@ -77,6 +79,8 @@
+ 		return ErrFrame
+ 	}
+ 	before := s.InFlight()
++	flightBefore := q.inFlight
++	eligible := q.congestion != nil && s.growthEligible(f, q.congestion.recoveryAt)
+ 	var sample time.Duration
+ 	if q.rtt != nil && !now.Before(q.nextRTTSample) {
+ 		sample = s.sampleRTT(f, now)
+@@ -85,6 +89,10 @@
+ 		return err
+ 	}
+ 	q.inFlight += s.InFlight() - before
++	if q.congestion != nil {
++		q.congestion.refill(now, q.rtt)
++		q.congestion.onAck(before-s.InFlight(), flightBefore, eligible)
++	}
+ 	if q.rtt != nil && sample > 0 && s.InFlight() < before && !now.Before(q.nextRTTSample) {
+ 		q.rtt.Observe(sample)
+ 		// One statistically useful sample per RTT; ACK compression must not
+@@ -135,6 +143,20 @@
+ 		return Frame{}, false
+ 	}
+ 	available := q.maxInFlight - q.inFlight
++	dataReady := true
++	if q.congestion != nil {
++		available = min(available, q.congestion.window-q.inFlight)
++		freshPayload = min(freshPayload, q.congestion.mss)
++		q.freshSize = freshPayload
++		retryPayload = min(retryPayload, q.congestion.mss)
++		dataReady = !q.congestion.readyAt(now, max(freshPayload, retryPayload), q.rtt).After(now)
++		if !dataReady {
++			q.congestion.stats.PacingWaits++
++		}
++		if available <= 0 {
++			q.congestion.stats.WindowWaits++
++		}
++	}
+ 	for i := 0; i < count; i++ {
+ 		index := (q.cursor + i) % count
+ 		s := q.senders[index]
+@@ -144,17 +166,31 @@
+ 		before := s.InFlight()
+ 		var f Frame
+ 		var ok bool
++		retry := false
++		var previous time.Time
+ 		if q.creditWindow == nil {
+ 			f, ok = s.nextOpen(now)
+ 		}
+-		if !ok {
+-			f, ok = s.NextRetry(now, retryPayload)
+-		}
+-		if !ok && available > 0 {
++		if !ok && dataReady {
++			f, previous, ok = s.nextRetry(now, retryPayload)
++			retry = ok
++			if ok && q.congestion != nil {
++				q.congestion.onTimeout(previous, now)
++				available = min(available, q.congestion.window-q.inFlight)
++			}
++		}
++		freshAllowed := available > 0
++		if q.congestion != nil {
++			freshAllowed = q.canSendFresh(s, freshPayload)
++		}
++		if !ok && dataReady && freshAllowed {
+ 			_ = s.SetWindow(s.InFlight() + available)
+ 			f, ok = s.nextFresh(now, freshPayload)
+ 		}
+ 		if ok {
++			if f.Type == TypeData && q.congestion != nil {
++				q.congestion.onSend(now, len(f.Payload), retry, q.rtt, s.rto)
++			}
+ 			q.inFlight += s.InFlight() - before
+ 			q.cursor = (index + 1) % count
+ 			return f, true
+@@ -232,8 +268,20 @@
+ 		if q.creditWindow != nil && s.needsGrant {
+ 			continue
+ 		}
+-		if at, ok := s.wake(now, q.inFlight < q.maxInFlight); ok && (next.IsZero() || at.Before(next)) {
+-			next = at
++		fresh := q.inFlight < q.maxInFlight
++		if q.congestion != nil {
++			fresh = fresh && q.canSendFresh(s, max(1, q.freshSize))
++		}
++		if at, ok := s.wake(now, fresh); ok {
++			if q.congestion != nil && !s.needsGrant {
++				paced := q.congestion.readyAt(now, q.congestion.mss, q.rtt)
++				if paced.After(at) {
++					at = paced
++				}
++			}
++			if next.IsZero() || at.Before(next) {
++				next = at
++			}
+ 		}
+ 	}
+ 	return next, !next.IsZero()
+@@ -361,3 +409,44 @@
+ 	}
+ 	return n
+ }
++
++// EnableCongestionControl must precede enqueue/send. Callers pass their maximum
++// DATA payload and conservative framing+crypto+UDP+IP overhead. Only DATA is
++// paced; ACK/receive-credit liveness must not depend on the outbound data window.
++func (q *Queue) EnableCongestionControl(maxPayload, wireOverhead int) error {
++	if len(q.senders) != 0 || q.inFlight != 0 || q.congestion != nil {
++		return ErrFrame
++	}
++	c, err := newCongestion(q.maxInFlight, maxPayload, wireOverhead)
++	if err != nil {
++		return err
++	}
++	q.congestion = c
++	q.freshSize = maxPayload
++	if q.rtt == nil {
++		q.rtt = &RTTEstimator{}
++	}
++	return nil
++}
++func (q *Queue) CongestionStats() CongestionStats {
++	if q.congestion == nil {
++		return CongestionStats{}
++	}
++	s := q.congestion.stats
++	s.WindowBytes = q.congestion.window
++	return s
++}
++
++// Do not turn small ACK/window increments into persistent tiny DATA ranges.
++// Wait for one complete configured fragment (or the actual message tail), bounded
++// by configured flight/window capacity. Otherwise congestion shrink can create
++// thousands of tiny original ranges and magnify retries/CPU. ACKs still wake us.
++func (q *Queue) canSendFresh(s *Sender, payload int) bool {
++	remaining := len(s.data) - s.next
++	if remaining <= 0 {
++		return false
++	}
++	window := min(q.maxInFlight, q.congestion.window)
++	need := min(payload, remaining, window)
++	return window-q.inFlight >= need
++}
+--- stage17/reliable/sender.go
++++ stage18/reliable/sender.go
+@@ -13,6 +13,7 @@
+ 	retry         int
+ 	retransmitted bool
+ 	attempts      uint8
++	packingRound  uint8 // Cycles independently of capped RTO backoff.
+ }
+ 
+ type Sender struct {
+@@ -94,8 +95,14 @@
+ 
+ // NextRetry only retransmits previously sent, expired ranges.
+ func (s *Sender) NextRetry(now time.Time, maxPayload int) (Frame, bool) {
++	f, _, ok := s.nextRetry(now, maxPayload)
++	return f, ok
++}
++
++// nextRetry also reports the previous attempt's time for a bounded loss epoch.
++func (s *Sender) nextRetry(now time.Time, maxPayload int) (Frame, time.Time, bool) {
+ 	if maxPayload <= 0 || s.complete || s.needsGrant {
+-		return Frame{}, false
++		return Frame{}, time.Time{}, false
+ 	}
+ 	// A range is one ORIGINAL transmission. A cursor repacks retries without
+ 	// splitting/allocating records, even when retryPayload is one byte.
+@@ -111,7 +118,13 @@
+ 			r.retry = r.start
+ 			continue
+ 		}
+-		end := start + min(maxPayload, r.end-start)
++		// Repack even a short original range that already fits below maxPayload.
++		// Otherwise a filter matching its fixed tail length prevents recovery forever.
++		// Four bounded shapes rotate; no extra descriptors/copies and no permanently
++		// tiny-packet mode after a long outage. ACK/range addressing is unchanged.
++		packingLimit := min(maxPayload, max(1, (r.end-r.start)>>r.packingRound))
++		end := start + min(packingLimit, r.end-start)
++		previous := r.at
+ 		r.retry = end
+ 		r.retransmitted = true
+ 		if end == r.end {
+@@ -120,11 +133,12 @@
+ 			}
+ 			r.at = now
+ 			r.retry = r.start
++			r.packingRound = (r.packingRound + 1) % 4
+ 		}
+ 		s.retryCursor = (idx + 1) % len(s.ranges)
+-		return Frame{Type: TypeData, ID: s.id, Offset: uint32(start), Total: uint32(len(s.data)), Payload: s.data[start:end]}, true
+-	}
+-	return Frame{}, false
++		return Frame{Type: TypeData, ID: s.id, Offset: uint32(start), Total: uint32(len(s.data)), Payload: s.data[start:end]}, previous, true
++	}
++	return Frame{}, time.Time{}, false
+ }
+ 
+ func (s *Sender) Ack(f Frame) error {
+@@ -243,3 +257,26 @@
+ 	}
+ 	return 0
+ }
++
++// growthEligible is conservative after congestion: old/retransmitted ranges
++// cannot inflate the window even when a delayed valid ACK makes progress.
++func (s *Sender) growthEligible(f Frame, recovery time.Time) bool {
++	if f.Type != TypeAck || len(f.Payload) != 4 {
++		return false
++	}
++	start := uint64(f.Offset)
++	end := start + uint64(binary.BigEndian.Uint32(f.Payload))
++	first := sort.Search(len(s.ranges), func(i int) bool { return uint64(s.ranges[i].end) > start })
++	if first == len(s.ranges) {
++		return false
++	}
++	for _, r := range s.ranges[first:] {
++		if uint64(r.start) >= end {
++			break
++		}
++		if r.retransmitted || (!recovery.IsZero() && !r.at.After(recovery)) {
++			return false
++		}
++	}
++	return true
++}

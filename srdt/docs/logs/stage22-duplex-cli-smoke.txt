@@ -1,0 +1,5 @@
+client_rc= 0
+sent_bytes= 1048576 received_bytes= 1048576 sha256_in= 3a814d27145f9540c495715da2f85208f3805c323d7da3e9867df2992be4432d sha256_out= 3a814d27145f9540c495715da2f85208f3805c323d7da3e9867df2992be4432d
+exact_match= True
+DUPLEX_LISTEN=127.0.0.1:33549
+PASS: duplex TCP bridge sent=1048576 received=1048576 chunks_out=66 chunks_in=66 peak_transactions=4 peak_queue=65536

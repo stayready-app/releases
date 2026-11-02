@@ -1,0 +1,26 @@
+{
+  "stage16": {
+    "runs": 3,
+    "verified_bytes_per_run_one_direction": 131072,
+    "rtt_added_ms": 80,
+    "elapsed_ms": [
+      2361,
+      2547,
+      2382
+    ],
+    "median_ms": 2382,
+    "notes": "40ms each direction; echo application; includes handshake and 300ms client linger; Linux loopback relay, not remote WAN"
+  },
+  "stage17": {
+    "runs": 3,
+    "verified_bytes_per_run_one_direction": 131072,
+    "rtt_added_ms": 80,
+    "elapsed_ms": [
+      1114,
+      1310,
+      1122
+    ],
+    "median_ms": 1122,
+    "notes": "40ms each direction; echo application; includes handshake and 300ms client linger; Linux loopback relay, not remote WAN"
+  }
+}

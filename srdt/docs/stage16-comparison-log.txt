@@ -1,0 +1,32 @@
+stage15 1 4.89469373299994 {'rss_kib': 34536, 'threads': 8, 'cpu_seconds': 4.89}
+stage16 1 4.587238144000139 {'rss_kib': 35588, 'threads': 8, 'cpu_seconds': 4.36}
+stage15 2 5.632878548999997 {'rss_kib': 34828, 'threads': 8, 'cpu_seconds': 5.21}
+stage16 2 4.208722118999958 {'rss_kib': 36104, 'threads': 8, 'cpu_seconds': 4.18}
+stage15 3 4.985424499000146 {'rss_kib': 34464, 'threads': 8, 'cpu_seconds': 4.73}
+stage16 3 4.165901168000119 {'rss_kib': 34416, 'threads': 7, 'cpu_seconds': 4.06}
+{
+  "stage15": {
+    "runs": 3,
+    "elapsed_seconds_median": 4.985424499000146,
+    "server_cpu_seconds_median": 4.89,
+    "sampled_server_rss_kib_median": 34536,
+    "resource_drops": [
+      184406,
+      186966,
+      177715
+    ],
+    "data_verified_all_runs": true
+  },
+  "stage16": {
+    "runs": 3,
+    "elapsed_seconds_median": 4.208722118999958,
+    "server_cpu_seconds_median": 4.18,
+    "sampled_server_rss_kib_median": 35588,
+    "resource_drops": [
+      0,
+      0,
+      0
+    ],
+    "data_verified_all_runs": true
+  }
+}

@@ -1,0 +1,5 @@
+--- FAIL: TestPacketAckBatchReceiverAndSender (0.00s)
+    packets_test.go:326: first receipt should be deferred [{10 1 0 6 [0 0 0 3] 101}] [] <nil>
+FAIL
+FAIL	example.com/srdt/reliable	0.363s
+FAIL

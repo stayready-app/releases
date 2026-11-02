@@ -1,0 +1,8 @@
+=== RUN   TestPacketClosedQueueStopsControlTimers
+    stage19_close_regression_test.go:6: closed queue emitted control
+--- FAIL: TestPacketClosedQueueStopsControlTimers (0.00s)
+FAIL
+FAIL	example.com/srdt/reliable	0.003s
+FAIL
+
+BASELINE_EXIT=1 (failure expected)

@@ -1,0 +1,30 @@
+$ go version
+go version go1.23.2 linux/amd64
+$ go build ./...
+$ go test -count=1 ./...
+?   	example.com/srdt/cmd/srdt-client	[no test files]
+?   	example.com/srdt/cmd/srdt-server	[no test files]
+?   	example.com/srdt/cmd/srdt-test	[no test files]
+ok  	example.com/srdt/emulator	0.006s
+ok  	example.com/srdt/netreliable	0.305s
+ok  	example.com/srdt/reliable	0.008s
+ok  	example.com/srdt/secureudp	0.104s
+ok  	example.com/srdt/testkit	0.017s
+$ go test -race -count=1 ./...
+?   	example.com/srdt/cmd/srdt-client	[no test files]
+?   	example.com/srdt/cmd/srdt-server	[no test files]
+?   	example.com/srdt/cmd/srdt-test	[no test files]
+ok  	example.com/srdt/emulator	1.057s
+ok  	example.com/srdt/netreliable	1.329s
+ok  	example.com/srdt/reliable	1.024s
+ok  	example.com/srdt/secureudp	1.128s
+ok  	example.com/srdt/testkit	1.181s
+$ go vet ./...
+$ cross-build GOOS=linux/windows GOARCH=amd64
+total 19M
+-rwxr-xr-x 1 root oai_shared 3.4M Nov  1 05:09 srdt-client-linux-amd64
+-rwxr-xr-x 1 root oai_shared 3.5M Nov  1 05:09 srdt-client-windows-amd64.exe
+-rwxr-xr-x 1 root oai_shared 3.4M Nov  1 05:09 srdt-server-linux-amd64
+-rwxr-xr-x 1 root oai_shared 3.6M Nov  1 05:09 srdt-server-windows-amd64.exe
+-rwxr-xr-x 1 root oai_shared 2.6M Nov  1 05:09 srdt-test-linux-amd64
+-rwxr-xr-x 1 root oai_shared 2.7M Nov  1 05:09 srdt-test-windows-amd64.exe

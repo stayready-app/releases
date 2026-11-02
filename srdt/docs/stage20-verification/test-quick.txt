@@ -1,0 +1,7 @@
+$ go version
+go version go1.23.2 linux/amd64
+$ go test ./reliable ./secureudp ./testkit ./emulator -count=1
+ok  	example.com/srdt/reliable	0.357s
+ok  	example.com/srdt/secureudp	0.107s
+ok  	example.com/srdt/testkit	0.016s
+ok  	example.com/srdt/emulator	0.002s

@@ -1,0 +1,34 @@
+=== toolchain ===
+go version go1.23.2 linux/amd64
+Linux 2079cf4f3d51 6.18.57 #1 SMP Tue Oct 20 21:56:04 UTC 2026 x86_64 GNU/Linux
+=== formatting ===
+=== build ===
+=== unit and real-socket tests ===
+?   	example.com/srdt/cmd/srdt-client	[no test files]
+?   	example.com/srdt/cmd/srdt-load	[no test files]
+?   	example.com/srdt/cmd/srdt-server	[no test files]
+?   	example.com/srdt/cmd/srdt-test	[no test files]
+ok  	example.com/srdt/emulator	0.003s
+ok  	example.com/srdt/netreliable	38.132s
+ok  	example.com/srdt/reliable	0.368s
+ok  	example.com/srdt/secureudp	0.106s
+ok  	example.com/srdt/testkit	0.016s
+=== race detector (full suite) ===
+?   	example.com/srdt/cmd/srdt-client	[no test files]
+?   	example.com/srdt/cmd/srdt-load	[no test files]
+?   	example.com/srdt/cmd/srdt-server	[no test files]
+?   	example.com/srdt/cmd/srdt-test	[no test files]
+ok  	example.com/srdt/emulator	1.012s
+ok  	example.com/srdt/netreliable	39.863s
+ok  	example.com/srdt/reliable	3.909s
+ok  	example.com/srdt/secureudp	1.124s
+ok  	example.com/srdt/testkit	1.181s
+=== vet ===
+=== focused repeated regression tests ===
+--- FAIL: TestWindowControlPaddingSizeBlackholes (20.42s)
+    --- FAIL: TestWindowControlPaddingSizeBlackholes/200-280 (20.07s)
+        windowcredits_test.go:128: batch timeout: received 10/12, pending 2
+        fault_test.go:147: relay: up={Submitted:148 Dropped:30 Duplicated:4 Corrupted:0 Delivered:122 QueueDrops:0 LinkDrops:0} down={Submitted:129 Dropped:4 Duplicated:4 Corrupted:0 Delivered:129 QueueDrops:0 LinkDrops:0} forged=35 write_drops=0
+FAIL
+FAIL	example.com/srdt/netreliable	118.294s
+FAIL

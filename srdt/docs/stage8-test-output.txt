@@ -1,0 +1,26 @@
+Stage 8 verification
+Sun Nov  1 05:20:25 UTC 2026
+go version go1.23.2 linux/amd64
+== go build ./...
+== go test -count=1 ./...
+?   	example.com/srdt/cmd/srdt-client	[no test files]
+?   	example.com/srdt/cmd/srdt-server	[no test files]
+?   	example.com/srdt/cmd/srdt-test	[no test files]
+ok  	example.com/srdt/emulator	0.004s
+ok  	example.com/srdt/netreliable	0.312s
+ok  	example.com/srdt/reliable	1.634s
+ok  	example.com/srdt/secureudp	0.128s
+ok  	example.com/srdt/testkit	0.015s
+== go test -race -count=1 ./...
+?   	example.com/srdt/cmd/srdt-client	[no test files]
+?   	example.com/srdt/cmd/srdt-server	[no test files]
+?   	example.com/srdt/cmd/srdt-test	[no test files]
+ok  	example.com/srdt/emulator	1.015s
+ok  	example.com/srdt/netreliable	1.325s
+ok  	example.com/srdt/reliable	16.990s
+ok  	example.com/srdt/secureudp	1.140s
+ok  	example.com/srdt/testkit	1.184s
+== go vet ./...
+== linux binaries
+== windows binaries
+PASS

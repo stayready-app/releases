@@ -1,0 +1,31 @@
+=== toolchain ===
+go version go1.23.2 linux/amd64
+Linux dee82507c750 6.18.57 #1 SMP Tue Oct 20 21:56:04 UTC 2026 x86_64 GNU/Linux
+=== formatting ===
+=== build ===
+=== unit and real-socket tests ===
+?   	example.com/srdt/cmd/srdt-client	[no test files]
+?   	example.com/srdt/cmd/srdt-load	[no test files]
+?   	example.com/srdt/cmd/srdt-server	[no test files]
+?   	example.com/srdt/cmd/srdt-test	[no test files]
+ok  	example.com/srdt/emulator	0.012s
+ok  	example.com/srdt/netreliable	20.578s
+ok  	example.com/srdt/reliable	0.753s
+ok  	example.com/srdt/secureudp	0.122s
+ok  	example.com/srdt/testkit	0.029s
+=== race detector (full suite) ===
+?   	example.com/srdt/cmd/srdt-client	[no test files]
+?   	example.com/srdt/cmd/srdt-load	[no test files]
+?   	example.com/srdt/cmd/srdt-server	[no test files]
+?   	example.com/srdt/cmd/srdt-test	[no test files]
+ok  	example.com/srdt/emulator	1.037s
+--- FAIL: TestWindowControlPaddingSizeBlackholes (20.51s)
+    --- FAIL: TestWindowControlPaddingSizeBlackholes/58-58 (20.07s)
+        fault_test.go:134: write udp 127.0.0.1:46651->127.0.0.1:52817: i/o timeout
+        windowcredits_test.go:128: batch timeout: received 4/12, pending 4
+FAIL
+FAIL	example.com/srdt/netreliable	48.254s
+ok  	example.com/srdt/reliable	6.104s
+ok  	example.com/srdt/secureudp	1.154s
+ok  	example.com/srdt/testkit	1.301s
+FAIL

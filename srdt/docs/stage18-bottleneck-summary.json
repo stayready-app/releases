@@ -1,0 +1,82 @@
+{
+  "parameters": {
+    "bytes_per_second_each_direction": 250000,
+    "queue_bytes_each_direction": 6000,
+    "one_way_delay_ms": 20,
+    "payload_bytes_each_direction": 262144
+  },
+  "runs": [
+    {
+      "mode": "controlled",
+      "elapsed_ms": 2524,
+      "link_drops_up": 5,
+      "link_drops_down": 1,
+      "link_drops_sum": 6
+    },
+    {
+      "mode": "uncontrolled-lab-baseline",
+      "elapsed_ms": 2263,
+      "link_drops_up": 50,
+      "link_drops_down": 19,
+      "link_drops_sum": 69
+    },
+    {
+      "mode": "controlled",
+      "elapsed_ms": 2544,
+      "link_drops_up": 6,
+      "link_drops_down": 1,
+      "link_drops_sum": 7
+    },
+    {
+      "mode": "uncontrolled-lab-baseline",
+      "elapsed_ms": 2333,
+      "link_drops_up": 54,
+      "link_drops_down": 18,
+      "link_drops_sum": 72
+    },
+    {
+      "mode": "controlled",
+      "elapsed_ms": 2526,
+      "link_drops_up": 5,
+      "link_drops_down": 2,
+      "link_drops_sum": 7
+    },
+    {
+      "mode": "uncontrolled-lab-baseline",
+      "elapsed_ms": 2385,
+      "link_drops_up": 49,
+      "link_drops_down": 18,
+      "link_drops_sum": 67
+    }
+  ],
+  "summary": {
+    "controlled": {
+      "elapsed_ms": [
+        2524,
+        2544,
+        2526
+      ],
+      "link_drops": [
+        6,
+        7,
+        7
+      ],
+      "median_elapsed_ms": 2526,
+      "median_link_drops": 7
+    },
+    "uncontrolled-lab-baseline": {
+      "elapsed_ms": [
+        2263,
+        2333,
+        2385
+      ],
+      "link_drops": [
+        69,
+        72,
+        67
+      ],
+      "median_elapsed_ms": 2333,
+      "median_link_drops": 69
+    }
+  }
+}

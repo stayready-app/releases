@@ -1,0 +1,83 @@
+Files /mnt/data/srdt-stage19-baseline/srdt-stage19/bin/srdt-client-linux-amd64 and /mnt/data/srdt-stage20/bin/srdt-client-linux-amd64 differ
+Files /mnt/data/srdt-stage19-baseline/srdt-stage19/bin/srdt-client-windows-amd64.exe and /mnt/data/srdt-stage20/bin/srdt-client-windows-amd64.exe differ
+Files /mnt/data/srdt-stage19-baseline/srdt-stage19/bin/srdt-load-linux-amd64 and /mnt/data/srdt-stage20/bin/srdt-load-linux-amd64 differ
+Files /mnt/data/srdt-stage19-baseline/srdt-stage19/bin/srdt-load-windows-amd64.exe and /mnt/data/srdt-stage20/bin/srdt-load-windows-amd64.exe differ
+Files /mnt/data/srdt-stage19-baseline/srdt-stage19/bin/srdt-server-linux-amd64 and /mnt/data/srdt-stage20/bin/srdt-server-linux-amd64 differ
+Files /mnt/data/srdt-stage19-baseline/srdt-stage19/bin/srdt-server-windows-amd64.exe and /mnt/data/srdt-stage20/bin/srdt-server-windows-amd64.exe differ
+Files /mnt/data/srdt-stage19-baseline/srdt-stage19/bin/srdt-test-linux-amd64 and /mnt/data/srdt-stage20/bin/srdt-test-linux-amd64 differ
+Files /mnt/data/srdt-stage19-baseline/srdt-stage19/bin/srdt-test-windows-amd64.exe and /mnt/data/srdt-stage20/bin/srdt-test-windows-amd64.exe differ
+Files /mnt/data/srdt-stage19-baseline/srdt-stage19/cmd/srdt-client/main.go and /mnt/data/srdt-stage20/cmd/srdt-client/main.go differ
+Files /mnt/data/srdt-stage19-baseline/srdt-stage19/cmd/srdt-load/main.go and /mnt/data/srdt-stage20/cmd/srdt-load/main.go differ
+Files /mnt/data/srdt-stage19-baseline/srdt-stage19/cmd/srdt-server/main.go and /mnt/data/srdt-stage20/cmd/srdt-server/main.go differ
+Files /mnt/data/srdt-stage19-baseline/srdt-stage19/docs/stage19-active1000-load.json and /mnt/data/srdt-stage20/docs/stage19-active1000-load.json differ
+Files /mnt/data/srdt-stage19-baseline/srdt-stage19/docs/stage19-active1000-load.log and /mnt/data/srdt-stage20/docs/stage19-active1000-load.log differ
+Files /mnt/data/srdt-stage19-baseline/srdt-stage19/docs/stage19-active1000-server.json and /mnt/data/srdt-stage20/docs/stage19-active1000-server.json differ
+Files /mnt/data/srdt-stage19-baseline/srdt-stage19/docs/stage19-active1000-server.log and /mnt/data/srdt-stage20/docs/stage19-active1000-server.log differ
+Files /mnt/data/srdt-stage19-baseline/srdt-stage19/docs/stage19-bulk-load.json and /mnt/data/srdt-stage20/docs/stage19-bulk-load.json differ
+Files /mnt/data/srdt-stage19-baseline/srdt-stage19/docs/stage19-bulk-load.log and /mnt/data/srdt-stage20/docs/stage19-bulk-load.log differ
+Files /mnt/data/srdt-stage19-baseline/srdt-stage19/docs/stage19-bulk-server.json and /mnt/data/srdt-stage20/docs/stage19-bulk-server.json differ
+Files /mnt/data/srdt-stage19-baseline/srdt-stage19/docs/stage19-bulk-server.log and /mnt/data/srdt-stage20/docs/stage19-bulk-server.log differ
+Files /mnt/data/srdt-stage19-baseline/srdt-stage19/docs/stage19-filter-load.json and /mnt/data/srdt-stage20/docs/stage19-filter-load.json differ
+Files /mnt/data/srdt-stage19-baseline/srdt-stage19/docs/stage19-filter-load.log and /mnt/data/srdt-stage20/docs/stage19-filter-load.log differ
+Files /mnt/data/srdt-stage19-baseline/srdt-stage19/docs/stage19-filter-server.json and /mnt/data/srdt-stage20/docs/stage19-filter-server.json differ
+Files /mnt/data/srdt-stage19-baseline/srdt-stage19/docs/stage19-filter-server.log and /mnt/data/srdt-stage20/docs/stage19-filter-server.log differ
+Files /mnt/data/srdt-stage19-baseline/srdt-stage19/docs/stage19-idle-load.json and /mnt/data/srdt-stage20/docs/stage19-idle-load.json differ
+Files /mnt/data/srdt-stage19-baseline/srdt-stage19/docs/stage19-idle-load.log and /mnt/data/srdt-stage20/docs/stage19-idle-load.log differ
+Files /mnt/data/srdt-stage19-baseline/srdt-stage19/docs/stage19-idle-server.json and /mnt/data/srdt-stage20/docs/stage19-idle-server.json differ
+Files /mnt/data/srdt-stage19-baseline/srdt-stage19/docs/stage19-idle-server.log and /mnt/data/srdt-stage20/docs/stage19-idle-server.log differ
+Files /mnt/data/srdt-stage19-baseline/srdt-stage19/docs/stage19-process-tests-active1000.json and /mnt/data/srdt-stage20/docs/stage19-process-tests-active1000.json differ
+Files /mnt/data/srdt-stage19-baseline/srdt-stage19/docs/stage19-process-tests-bulk.json and /mnt/data/srdt-stage20/docs/stage19-process-tests-bulk.json differ
+Files /mnt/data/srdt-stage19-baseline/srdt-stage19/docs/stage19-process-tests-filter.json and /mnt/data/srdt-stage20/docs/stage19-process-tests-filter.json differ
+Files /mnt/data/srdt-stage19-baseline/srdt-stage19/docs/stage19-process-tests-idle.json and /mnt/data/srdt-stage20/docs/stage19-process-tests-idle.json differ
+Only in /mnt/data/srdt-stage20/docs: stage20-active1000-load.json
+Only in /mnt/data/srdt-stage20/docs: stage20-active1000-load.log
+Only in /mnt/data/srdt-stage20/docs: stage20-active1000-server.json
+Only in /mnt/data/srdt-stage20/docs: stage20-active1000-server.log
+Only in /mnt/data/srdt-stage20/docs: stage20-asym-bulk-server.json
+Only in /mnt/data/srdt-stage20/docs: stage20-bulk-load.json
+Only in /mnt/data/srdt-stage20/docs: stage20-bulk-load.log
+Only in /mnt/data/srdt-stage20/docs: stage20-bulk-server.json
+Only in /mnt/data/srdt-stage20/docs: stage20-bulk-server.log
+Only in /mnt/data/srdt-stage20/docs: stage20-comparison
+Only in /mnt/data/srdt-stage20/docs: stage20-diff-files.txt
+Only in /mnt/data/srdt-stage20/docs: stage20-filter-load.json
+Only in /mnt/data/srdt-stage20/docs: stage20-filter-load.log
+Only in /mnt/data/srdt-stage20/docs: stage20-filter-server.json
+Only in /mnt/data/srdt-stage20/docs: stage20-filter-server.log
+Only in /mnt/data/srdt-stage20/docs: stage20-final-comparison
+Only in /mnt/data/srdt-stage20/docs: stage20-idle-load.json
+Only in /mnt/data/srdt-stage20/docs: stage20-idle-load.log
+Only in /mnt/data/srdt-stage20/docs: stage20-idle-server.json
+Only in /mnt/data/srdt-stage20/docs: stage20-idle-server.log
+Only in /mnt/data/srdt-stage20/docs: stage20-long-batch-legacy-acks-server.json
+Only in /mnt/data/srdt-stage20/docs: stage20-long-batch-load.json
+Only in /mnt/data/srdt-stage20/docs: stage20-long-batch-load.log
+Only in /mnt/data/srdt-stage20/docs: stage20-long-batch-server.json
+Only in /mnt/data/srdt-stage20/docs: stage20-long-batch-server.log
+Only in /mnt/data/srdt-stage20/docs: stage20-long-both-batch.json
+Only in /mnt/data/srdt-stage20/docs: stage20-long-both-legacy.json
+Only in /mnt/data/srdt-stage20/docs: stage20-long-client-legacy.json
+Only in /mnt/data/srdt-stage20/docs: stage20-long-server-legacy.json
+Only in /mnt/data/srdt-stage20/docs: stage20-process-tests-active1000.json
+Only in /mnt/data/srdt-stage20/docs: stage20-process-tests-bulk.json
+Only in /mnt/data/srdt-stage20/docs: stage20-process-tests-filter.json
+Only in /mnt/data/srdt-stage20/docs: stage20-process-tests-idle.json
+Only in /mnt/data/srdt-stage20/docs: stage20-process-tests-long-batch.json
+Only in /mnt/data/srdt-stage20/docs: stage20-verification
+Only in /mnt/data/srdt-stage20/docs: stage20-wan-repeat-debug.txt
+Only in /mnt/data/srdt-stage20: full-test.log
+Files /mnt/data/srdt-stage19-baseline/srdt-stage19/netreliable/credits.go and /mnt/data/srdt-stage20/netreliable/credits.go differ
+Files /mnt/data/srdt-stage19-baseline/srdt-stage19/netreliable/multi.go and /mnt/data/srdt-stage20/netreliable/multi.go differ
+Files /mnt/data/srdt-stage19-baseline/srdt-stage19/netreliable/network.go and /mnt/data/srdt-stage20/netreliable/network.go differ
+Files /mnt/data/srdt-stage19-baseline/srdt-stage19/netreliable/packets_test.go and /mnt/data/srdt-stage20/netreliable/packets_test.go differ
+Files /mnt/data/srdt-stage19-baseline/srdt-stage19/netreliable/server.go and /mnt/data/srdt-stage20/netreliable/server.go differ
+Only in /mnt/data/srdt-stage20: netreliable-direct.log
+Only in /mnt/data/srdt-stage20: netreliable-verbose.log
+Files /mnt/data/srdt-stage19-baseline/srdt-stage19/reliable/packets.go and /mnt/data/srdt-stage20/reliable/packets.go differ
+Files /mnt/data/srdt-stage19-baseline/srdt-stage19/reliable/packets_test.go and /mnt/data/srdt-stage20/reliable/packets_test.go differ
+Files /mnt/data/srdt-stage19-baseline/srdt-stage19/reliable/queue.go and /mnt/data/srdt-stage20/reliable/queue.go differ
+Files /mnt/data/srdt-stage19-baseline/srdt-stage19/reliable/reliable.go and /mnt/data/srdt-stage20/reliable/reliable.go differ
+Files /mnt/data/srdt-stage19-baseline/srdt-stage19/reliable/sender.go and /mnt/data/srdt-stage20/reliable/sender.go differ
+Only in /mnt/data/srdt-stage20/scripts: __pycache__
+Files /mnt/data/srdt-stage19-baseline/srdt-stage19/scripts/compare.py and /mnt/data/srdt-stage20/scripts/compare.py differ
+Files /mnt/data/srdt-stage19-baseline/srdt-stage19/scripts/integration.py and /mnt/data/srdt-stage20/scripts/integration.py differ

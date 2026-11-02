@@ -1,0 +1,103 @@
+{
+  "state": "done",
+  "completed": [
+    {
+      "name": "comparison",
+      "exit": 0,
+      "elapsed": 50.08614775399997,
+      "command": [
+        "python3",
+        "scripts/compare.py",
+        "--baseline",
+        "/mnt/data/srdt-stage17-baseline",
+        "--runs",
+        "3"
+      ]
+    },
+    {
+      "name": "default",
+      "exit": 0,
+      "elapsed": 5.336106803999883,
+      "command": [
+        "python3",
+        "scripts/integration.py"
+      ]
+    },
+    {
+      "name": "active1000",
+      "exit": 0,
+      "elapsed": 6.611638145000143,
+      "command": [
+        "python3",
+        "scripts/integration.py",
+        "--only",
+        "active1000"
+      ]
+    },
+    {
+      "name": "long-batch",
+      "exit": 0,
+      "elapsed": 18.973127687999977,
+      "command": [
+        "python3",
+        "scripts/integration.py",
+        "--only",
+        "long-batch"
+      ]
+    },
+    {
+      "name": "pressure",
+      "exit": 0,
+      "elapsed": 5.9864632849999,
+      "command": [
+        "python3",
+        "scripts/integration.py",
+        "--only",
+        "pressure"
+      ]
+    },
+    {
+      "name": "cli",
+      "exit": 0,
+      "elapsed": 5.02887111799987,
+      "command": [
+        "python3",
+        "scripts/cli_smoke.py",
+        "--baseline",
+        "/mnt/data/srdt-stage17-baseline"
+      ]
+    },
+    {
+      "name": "bottleneck-repeated",
+      "exit": 0,
+      "elapsed": 14.664526496000008,
+      "command": [
+        "go",
+        "test",
+        "./netreliable",
+        "-run",
+        "^TestCongestionRealUDPBottleneck$",
+        "-count",
+        "3",
+        "-v"
+      ]
+    },
+    {
+      "name": "bench",
+      "exit": 0,
+      "elapsed": 4.14417008800001,
+      "command": [
+        "go",
+        "test",
+        "./reliable",
+        "-run",
+        "^$",
+        "-bench",
+        "Benchmark(CongestionPacer|AuditRetry|AuditDuplicateACK|AuditReceiveDuplicate)$",
+        "-benchmem",
+        "-benchtime=200ms",
+        "-count=3"
+      ]
+    }
+  ]
+}

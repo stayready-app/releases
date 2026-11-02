@@ -1,0 +1,98 @@
+[
+  {
+    "file": "cmd/srdt-client/main.go",
+    "new": false,
+    "lines_before": 70,
+    "lines_after": 71
+  },
+  {
+    "file": "cmd/srdt-load/main.go",
+    "new": false,
+    "lines_before": 274,
+    "lines_after": 275
+  },
+  {
+    "file": "cmd/srdt-server/main.go",
+    "new": false,
+    "lines_before": 109,
+    "lines_after": 110
+  },
+  {
+    "file": "emulator/emulator.go",
+    "new": false,
+    "lines_before": 194,
+    "lines_after": 232
+  },
+  {
+    "file": "emulator/link.go",
+    "new": true,
+    "lines_before": 0,
+    "lines_after": 58
+  },
+  {
+    "file": "emulator/link_test.go",
+    "new": true,
+    "lines_before": 0,
+    "lines_after": 72
+  },
+  {
+    "file": "netreliable/congestion_test.go",
+    "new": true,
+    "lines_before": 0,
+    "lines_after": 71
+  },
+  {
+    "file": "netreliable/credits.go",
+    "new": false,
+    "lines_before": 255,
+    "lines_after": 255
+  },
+  {
+    "file": "netreliable/multi.go",
+    "new": false,
+    "lines_before": 249,
+    "lines_after": 260
+  },
+  {
+    "file": "netreliable/network.go",
+    "new": false,
+    "lines_before": 117,
+    "lines_after": 129
+  },
+  {
+    "file": "netreliable/server.go",
+    "new": false,
+    "lines_before": 650,
+    "lines_after": 671
+  },
+  {
+    "file": "netreliable/server_test.go",
+    "new": false,
+    "lines_before": 420,
+    "lines_after": 421
+  },
+  {
+    "file": "reliable/congestion.go",
+    "new": true,
+    "lines_before": 0,
+    "lines_after": 145
+  },
+  {
+    "file": "reliable/congestion_test.go",
+    "new": true,
+    "lines_before": 0,
+    "lines_after": 362
+  },
+  {
+    "file": "reliable/queue.go",
+    "new": false,
+    "lines_before": 363,
+    "lines_after": 452
+  },
+  {
+    "file": "reliable/sender.go",
+    "new": false,
+    "lines_before": 245,
+    "lines_after": 282
+  }
+]

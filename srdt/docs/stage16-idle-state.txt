@@ -1,0 +1,5 @@
+=== RUN   TestMultiThousandIdleState
+    server_test.go:253: 1000 idle manager sessions: retained heap delta=2343624, bytes/session=2343.6, goroutine delta=0, payload credit=0
+--- PASS: TestMultiThousandIdleState (0.18s)
+PASS
+ok  	example.com/srdt/netreliable	0.188s

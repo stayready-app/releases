@@ -1,0 +1,44 @@
+=== toolchain ===
+go version go1.23.2 linux/amd64
+Linux dee82507c750 6.18.57 #1 SMP Tue Oct 20 21:56:04 UTC 2026 x86_64 GNU/Linux
+=== formatting ===
+=== build ===
+=== unit and real-socket tests ===
+?   	example.com/srdt/cmd/srdt-client	[no test files]
+?   	example.com/srdt/cmd/srdt-load	[no test files]
+?   	example.com/srdt/cmd/srdt-server	[no test files]
+?   	example.com/srdt/cmd/srdt-test	[no test files]
+ok  	example.com/srdt/emulator	0.003s
+ok  	example.com/srdt/netreliable	19.839s
+ok  	example.com/srdt/reliable	0.579s
+ok  	example.com/srdt/secureudp	5.138s
+ok  	example.com/srdt/testkit	0.025s
+=== race detector (full suite) ===
+?   	example.com/srdt/cmd/srdt-client	[no test files]
+?   	example.com/srdt/cmd/srdt-load	[no test files]
+?   	example.com/srdt/cmd/srdt-server	[no test files]
+?   	example.com/srdt/cmd/srdt-test	[no test files]
+ok  	example.com/srdt/emulator	1.069s
+ok  	example.com/srdt/netreliable	26.332s
+ok  	example.com/srdt/reliable	7.315s
+ok  	example.com/srdt/secureudp	1.164s
+ok  	example.com/srdt/testkit	1.350s
+=== vet ===
+=== focused repeated regression tests ===
+ok  	example.com/srdt/netreliable	51.267s
+=== frame parser fuzz (3 seconds, 2 workers) ===
+fuzz: elapsed: 0s, gathering baseline coverage: 0/23 completed
+fuzz: elapsed: 0s, gathering baseline coverage: 23/23 completed, now fuzzing with 2 workers
+fuzz: elapsed: 3s, execs: 100956 (33616/sec), new interesting: 0 (total: 23)
+fuzz: elapsed: 3s, execs: 100956 (0/sec), new interesting: 0 (total: 23)
+PASS
+ok  	example.com/srdt/reliable	3.062s
+=== authenticated packet fuzz (3 seconds, 2 workers) ===
+fuzz: elapsed: 0s, gathering baseline coverage: 0/5 completed
+fuzz: elapsed: 0s, gathering baseline coverage: 5/5 completed, now fuzzing with 2 workers
+fuzz: elapsed: 3s, execs: 73465 (24482/sec), new interesting: 1 (total: 6)
+fuzz: elapsed: 3s, execs: 73465 (0/sec), new interesting: 1 (total: 6)
+PASS
+ok  	example.com/srdt/secureudp	3.060s
+=== Linux amd64 and Windows amd64 builds ===
+=== PASS ===

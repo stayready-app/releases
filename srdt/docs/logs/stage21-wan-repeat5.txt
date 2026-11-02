@@ -1,0 +1,26 @@
+=== RUN   TestAuditRealUDPNetworkFaults
+=== RUN   TestAuditRealUDPNetworkFaults/wan-rtt-above-fixed-rto
+    fault_test.go:218: verified=131072 bytes; invalid=56 resources=0
+    fault_test.go:173: relay: up={Submitted:367 Dropped:2 Duplicated:0 Corrupted:0 Delivered:365 QueueDrops:0 LinkDrops:0} down={Submitted:356 Dropped:4 Duplicated:0 Corrupted:0 Delivered:352 QueueDrops:0 LinkDrops:0} forged=102 direct_drops=0 write_drops=0
+--- PASS: TestAuditRealUDPNetworkFaults (8.31s)
+    --- PASS: TestAuditRealUDPNetworkFaults/wan-rtt-above-fixed-rto (8.31s)
+=== RUN   TestAuditRealUDPNetworkFaults
+=== RUN   TestAuditRealUDPNetworkFaults/wan-rtt-above-fixed-rto
+    fault_test.go:218: verified=131072 bytes; invalid=45 resources=0
+    fault_test.go:173: relay: up={Submitted:364 Dropped:4 Duplicated:0 Corrupted:0 Delivered:360 QueueDrops:0 LinkDrops:0} down={Submitted:349 Dropped:2 Duplicated:0 Corrupted:0 Delivered:347 QueueDrops:0 LinkDrops:0} forged=101 direct_drops=0 write_drops=0
+--- PASS: TestAuditRealUDPNetworkFaults (8.00s)
+    --- PASS: TestAuditRealUDPNetworkFaults/wan-rtt-above-fixed-rto (8.00s)
+=== RUN   TestAuditRealUDPNetworkFaults
+=== RUN   TestAuditRealUDPNetworkFaults/wan-rtt-above-fixed-rto
+    fault_test.go:218: verified=131072 bytes; invalid=52 resources=0
+    fault_test.go:173: relay: up={Submitted:369 Dropped:2 Duplicated:0 Corrupted:0 Delivered:367 QueueDrops:0 LinkDrops:0} down={Submitted:357 Dropped:4 Duplicated:0 Corrupted:0 Delivered:353 QueueDrops:0 LinkDrops:0} forged=102 direct_drops=0 write_drops=0
+--- PASS: TestAuditRealUDPNetworkFaults (6.91s)
+    --- PASS: TestAuditRealUDPNetworkFaults/wan-rtt-above-fixed-rto (6.91s)
+=== RUN   TestAuditRealUDPNetworkFaults
+=== RUN   TestAuditRealUDPNetworkFaults/wan-rtt-above-fixed-rto
+    fault_test.go:218: verified=131072 bytes; invalid=52 resources=0
+    fault_test.go:173: relay: up={Submitted:370 Dropped:3 Duplicated:0 Corrupted:0 Delivered:367 QueueDrops:0 LinkDrops:0} down={Submitted:357 Dropped:3 Duplicated:0 Corrupted:0 Delivered:354 QueueDrops:0 LinkDrops:0} forged=103 direct_drops=0 write_drops=0
+--- PASS: TestAuditRealUDPNetworkFaults (6.69s)
+    --- PASS: TestAuditRealUDPNetworkFaults/wan-rtt-above-fixed-rto (6.69s)
+=== RUN   TestAuditRealUDPNetworkFaults
+=== RUN   TestAuditRealUDPNetworkFaults/wan-rtt-above-fixed-rto

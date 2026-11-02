@@ -1,0 +1,5 @@
+=== RUN   TestCongestionBoundedIdleBurstAndState
+    congestion_test.go:160: controller_bytes=208 hot_path_allocs=0
+--- PASS: TestCongestionBoundedIdleBurstAndState (0.00s)
+PASS
+ok  	example.com/srdt/reliable	0.003s

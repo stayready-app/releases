@@ -1,0 +1,15 @@
+stage16 1 7.183798449000051 {'rss_kib': 34488, 'threads': 8, 'cpu_seconds': 7.12}
+stage17 1 8.005425262000017 {'rss_kib': 35496, 'threads': 7, 'cpu_seconds': 5.63}
+Traceback (most recent call last):
+  File "/mnt/data/srdt-stage17/scripts/compare.py", line 70, in <module>
+    main()
+    ~~~~^^
+  File "/mnt/data/srdt-stage17/scripts/compare.py", line 34, in main
+    subprocess.run(['python3', 'scripts/integration.py', '--only', 'bulk'], cwd=tree,
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                   stdout=handle, stderr=subprocess.STDOUT, timeout=180, check=True)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/subprocess.py", line 577, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '['python3', 'scripts/integration.py', '--only', 'bulk']' returned non-zero exit status 1.

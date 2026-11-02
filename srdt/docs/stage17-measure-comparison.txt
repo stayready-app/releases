@@ -1,0 +1,66 @@
+stage16 1 PASS 7.183798449000051 {'rss_kib': 34488, 'threads': 8, 'cpu_seconds': 7.12}
+stage17 1 PASS 8.005425262000017 {'rss_kib': 35496, 'threads': 7, 'cpu_seconds': 5.63}
+stage16 2 FAIL 120.02213118099985 {'rss_kib': 35008, 'threads': 8, 'cpu_seconds': 13.98}
+stage17 2 PASS 7.279628130999754 {'rss_kib': 36516, 'threads': 8, 'cpu_seconds': 5.82}
+stage16 3 FAIL 120.03073347500003 {'rss_kib': 34968, 'threads': 8, 'cpu_seconds': 14.49}
+stage17 3 PASS 7.012976379000065 {'rss_kib': 35976, 'threads': 8, 'cpu_seconds': 5.66}
+{
+  "stage16": {
+    "runs": 3,
+    "completed_runs": 1,
+    "failed_runs": 2,
+    "elapsed_seconds_all_attempts": [
+      7.183798449000051,
+      120.02213118099985,
+      120.03073347500003
+    ],
+    "server_cpu_seconds_all_attempts": [
+      7.12,
+      13.98,
+      14.49
+    ],
+    "sampled_server_rss_kib_all_attempts": [
+      34488,
+      35008,
+      34968
+    ],
+    "elapsed_seconds_completed_median": 7.183798449000051,
+    "server_cpu_seconds_completed_median": 7.12,
+    "sampled_server_rss_kib_completed_median": 34488,
+    "resource_drops": [
+      0,
+      0,
+      0
+    ],
+    "data_verified_all_runs": false
+  },
+  "stage17": {
+    "runs": 3,
+    "completed_runs": 3,
+    "failed_runs": 0,
+    "elapsed_seconds_all_attempts": [
+      8.005425262000017,
+      7.279628130999754,
+      7.012976379000065
+    ],
+    "server_cpu_seconds_all_attempts": [
+      5.63,
+      5.82,
+      5.66
+    ],
+    "sampled_server_rss_kib_all_attempts": [
+      35496,
+      36516,
+      35976
+    ],
+    "elapsed_seconds_completed_median": 7.279628130999754,
+    "server_cpu_seconds_completed_median": 5.66,
+    "sampled_server_rss_kib_completed_median": 35976,
+    "resource_drops": [
+      0,
+      0,
+      0
+    ],
+    "data_verified_all_runs": true
+  }
+}

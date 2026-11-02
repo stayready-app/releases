@@ -1,0 +1,27 @@
+=== RUN   TestAuditRangeMetadataBoundedUnderTinyPackets
+--- PASS: TestAuditRangeMetadataBoundedUnderTinyPackets (0.02s)
+=== RUN   TestAuditRetryDoesNotAllocate
+--- PASS: TestAuditRetryDoesNotAllocate (0.00s)
+=== RUN   TestAuditRetryFairnessAcrossExpiredRanges
+--- PASS: TestAuditRetryFairnessAcrossExpiredRanges (0.00s)
+=== RUN   TestCongestionFreshFlightAndPacing
+--- PASS: TestCongestionFreshFlightAndPacing (0.00s)
+=== RUN   TestCongestionInvalidAndRepeatedACKDoNotGrowWindow
+--- PASS: TestCongestionInvalidAndRepeatedACKDoNotGrowWindow (0.00s)
+=== RUN   TestCongestionRetryAtFullWindowAndLossEpoch
+--- PASS: TestCongestionRetryAtFullWindowAndLossEpoch (0.00s)
+=== RUN   TestCongestionControlsNotBlockedByPacer
+--- PASS: TestCongestionControlsNotBlockedByPacer (0.00s)
+=== RUN   TestCongestionBoundedIdleBurstAndState
+    congestion_test.go:160: controller_bytes=208 hot_path_allocs=0
+--- PASS: TestCongestionBoundedIdleBurstAndState (0.00s)
+=== RUN   TestCongestionRecoveryCompletesWithRepacking
+--- PASS: TestCongestionRecoveryCompletesWithRepacking (0.00s)
+=== RUN   TestCongestionPartialACKCreditIsUnique
+--- PASS: TestCongestionPartialACKCreditIsUnique (0.00s)
+=== RUN   TestCongestionNoGrowthFromOldFlight
+--- PASS: TestCongestionNoGrowthFromOldFlight (0.00s)
+=== RUN   TestCongestionTailSizeBlackhole
+--- PASS: TestCongestionTailSizeBlackhole (0.00s)
+PASS
+ok  	example.com/srdt/reliable	0.021s

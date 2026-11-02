@@ -1,0 +1,47 @@
+=== quick core package tests ===
+ok  	example.com/srdt/emulator	0.035s
+ok  	example.com/srdt/testkit	0.021s
+ok  	example.com/srdt/reliable	0.586s
+ok  	example.com/srdt/secureudp	0.112s
+PASS
+=== fresh Linux/Windows builds ===
+built srdt-server
+built srdt-client
+built srdt-load
+built srdt-test
+built srdt-upstream-echo
+PASS
+=== Linux binary smoke ===
+flag provided but not defined: -count
+Usage of ./bin/srdt-test-linux-amd64:
+  -drop-max int
+    	size filter max (default -1)
+  -drop-min int
+    	size filter min (default -1)
+  -loss float
+    	percent lost
+  -max-size int
+    	max bytes (default 8192)
+  -messages int
+    	message count (default 1000)
+  -min-size int
+    	min bytes (default 1)
+  -seed int
+    	test seed (default 42)
+=== corrected Linux binary smoke ===
+{
+  "Status": "PASS",
+  "Messages": 1000,
+  "Verified": 1000,
+  "Invalid": 0,
+  "Network": {
+    "Submitted": 1000,
+    "Dropped": 0,
+    "Duplicated": 0,
+    "Corrupted": 0,
+    "Delivered": 1000,
+    "QueueDrops": 0,
+    "LinkDrops": 0
+  }
+}
+PASS

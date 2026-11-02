@@ -1,0 +1,14 @@
+=== RUN   TestStage16WANComparison
+    wan_comparison_test.go:28: verified_bytes=131072 elapsed_ms=1044 stats={ActiveSessions:1 PeakSessions:1 UsedHelloIDs:1 BufferBytes:0 PeakBufferBytes:22528 ReceivedDatagrams:1056 SentDatagrams:1056 DeliveredMessages:32 DeliveredBytes:131072 InvalidPackets:406 AdmissionRejects:0 RateLimited:0 ResourceDrops:0 StaleMessages:0 RepeatedHellos:0 ExpiredSessions:0 WriteErrors:0 FilteredDatagrams:0}
+    fault_test.go:117: relay: up={Submitted:1056 Dropped:0 Duplicated:0 Corrupted:0 Delivered:1056 QueueDrops:0} down={Submitted:1056 Dropped:0 Duplicated:0 Corrupted:0 Delivered:1056 QueueDrops:0} forged=0
+--- PASS: TestStage16WANComparison (1.07s)
+=== RUN   TestStage16WANComparison
+    wan_comparison_test.go:28: verified_bytes=131072 elapsed_ms=1043 stats={ActiveSessions:1 PeakSessions:1 UsedHelloIDs:1 BufferBytes:0 PeakBufferBytes:22528 ReceivedDatagrams:1070 SentDatagrams:1070 DeliveredMessages:32 DeliveredBytes:131072 InvalidPackets:380 AdmissionRejects:0 RateLimited:0 ResourceDrops:0 StaleMessages:0 RepeatedHellos:0 ExpiredSessions:0 WriteErrors:0 FilteredDatagrams:0}
+    fault_test.go:117: relay: up={Submitted:1070 Dropped:0 Duplicated:0 Corrupted:0 Delivered:1070 QueueDrops:0} down={Submitted:1070 Dropped:0 Duplicated:0 Corrupted:0 Delivered:1070 QueueDrops:0} forged=0
+--- PASS: TestStage16WANComparison (1.06s)
+=== RUN   TestStage16WANComparison
+    wan_comparison_test.go:28: verified_bytes=131072 elapsed_ms=1042 stats={ActiveSessions:1 PeakSessions:1 UsedHelloIDs:1 BufferBytes:0 PeakBufferBytes:22528 ReceivedDatagrams:1110 SentDatagrams:1110 DeliveredMessages:32 DeliveredBytes:131072 InvalidPackets:392 AdmissionRejects:0 RateLimited:0 ResourceDrops:0 StaleMessages:0 RepeatedHellos:0 ExpiredSessions:0 WriteErrors:0 FilteredDatagrams:0}
+    fault_test.go:117: relay: up={Submitted:1110 Dropped:0 Duplicated:0 Corrupted:0 Delivered:1110 QueueDrops:0} down={Submitted:1110 Dropped:0 Duplicated:0 Corrupted:0 Delivered:1110 QueueDrops:0} forged=0
+--- PASS: TestStage16WANComparison (1.06s)
+PASS
+ok  	example.com/srdt/netreliable	3.197s

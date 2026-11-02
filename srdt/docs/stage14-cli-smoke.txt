@@ -1,0 +1,49 @@
+Filtered: False Client exit: 0
+PASS: 12 independent messages, 4096 bytes each, verified echo
+
+SERVER_STATS={
+  "active_sessions": 0,
+  "peak_sessions": 1,
+  "used_hello_ids": 1,
+  "buffer_bytes": 0,
+  "peak_buffer_bytes": 18432,
+  "received_datagrams": 121,
+  "sent_datagrams": 121,
+  "delivered_messages": 12,
+  "delivered_bytes": 49152,
+  "invalid_packets": 0,
+  "admission_rejects": 0,
+  "rate_limited": 0,
+  "resource_drops": 0,
+  "stale_messages": 0,
+  "repeated_hellos": 0,
+  "expired_sessions": 0,
+  "write_errors": 0,
+  "filtered_datagrams": 0
+}
+
+Filtered: True Client exit: 0
+PASS: 12 independent messages, 4096 bytes each, verified echo
+
+SERVER_STATS={
+  "active_sessions": 0,
+  "peak_sessions": 1,
+  "used_hello_ids": 1,
+  "buffer_bytes": 0,
+  "peak_buffer_bytes": 18432,
+  "received_datagrams": 313,
+  "sent_datagrams": 313,
+  "delivered_messages": 12,
+  "delivered_bytes": 49152,
+  "invalid_packets": 0,
+  "admission_rejects": 0,
+  "rate_limited": 0,
+  "resource_drops": 0,
+  "stale_messages": 0,
+  "repeated_hellos": 0,
+  "expired_sessions": 0,
+  "write_errors": 0,
+  "filtered_datagrams": 48
+}
+
+PASS: native client CLI + multi server, baseline and size filtering

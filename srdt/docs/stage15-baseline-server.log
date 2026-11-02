@@ -1,0 +1,22 @@
+SERVER_PUBLIC=4d099011643b9d37443c4fd5d68cf17484668d48ec867d939086affe8b0f491e
+LISTEN_ADDR=127.0.0.1:54099
+SERVER_STATS={
+  "active_sessions": 0,
+  "peak_sessions": 32,
+  "used_hello_ids": 32,
+  "buffer_bytes": 0,
+  "peak_buffer_bytes": 540672,
+  "received_datagrams": 4790,
+  "sent_datagrams": 4941,
+  "delivered_messages": 384,
+  "delivered_bytes": 1572864,
+  "invalid_packets": 0,
+  "admission_rejects": 0,
+  "rate_limited": 0,
+  "resource_drops": 12,
+  "stale_messages": 0,
+  "repeated_hellos": 0,
+  "expired_sessions": 0,
+  "write_errors": 0,
+  "filtered_datagrams": 0
+}

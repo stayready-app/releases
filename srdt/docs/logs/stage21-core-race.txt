@@ -1,0 +1,4 @@
+ok  	example.com/srdt/secureudp	1.133s
+ok  	example.com/srdt/reliable	4.701s
+ok  	example.com/srdt/emulator	1.010s
+ok  	example.com/srdt/testkit	1.174s

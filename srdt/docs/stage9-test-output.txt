@@ -1,0 +1,17 @@
+go version go1.23.2 linux/amd64
+BUILD PASS
+?   	example.com/srdt/cmd/srdt-client	[no test files]
+?   	example.com/srdt/cmd/srdt-server	[no test files]
+?   	example.com/srdt/cmd/srdt-test	[no test files]
+ok  	example.com/srdt/emulator	0.004s
+ok  	example.com/srdt/netreliable	5.471s
+ok  	example.com/srdt/reliable	1.717s
+ok  	example.com/srdt/secureudp	0.125s
+ok  	example.com/srdt/testkit	0.021s
+TEST PASS
+VET PASS
+ok  	example.com/srdt/netreliable	6.483s
+ok  	example.com/srdt/reliable	17.544s
+RACE PASS
+WINDOWS CLIENT BUILD PASS
+LINUX SERVER BUILD PASS

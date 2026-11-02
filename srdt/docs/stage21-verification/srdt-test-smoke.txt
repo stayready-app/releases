@@ -1,0 +1,15 @@
+{
+  "Status": "PASS",
+  "Messages": 1000,
+  "Verified": 1000,
+  "Invalid": 0,
+  "Network": {
+    "Submitted": 1000,
+    "Dropped": 0,
+    "Duplicated": 0,
+    "Corrupted": 0,
+    "Delivered": 1000,
+    "QueueDrops": 0,
+    "LinkDrops": 0
+  }
+}

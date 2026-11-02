@@ -1,0 +1,12 @@
+{
+  "mode": "idle",
+  "clients": 1000,
+  "succeeded": 1000,
+  "messages_per_client": 1,
+  "message_bytes": 1,
+  "verified_bytes_one_direction": 1000,
+  "seconds": 1.3470384260000001,
+  "verified_one_direction_mbps": 0.005938954558078805,
+  "verification": "byte-for-byte echo of every message",
+  "seed": 1
+}

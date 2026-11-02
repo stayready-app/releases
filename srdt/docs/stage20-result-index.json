@@ -1,0 +1,25 @@
+{
+  "stage": 20,
+  "status": "laboratory-prototype",
+  "tests": {
+    "normal_all": "PASS",
+    "race_all": "PASS",
+    "vet": "PASS",
+    "gofmt": "PASS",
+    "focused_count3": "PASS",
+    "fuzz": "PASS",
+    "compatibility": "PASS"
+  },
+  "comparison": "docs/stage20-final-comparison/summary.json",
+  "process_tests": {
+    "idle1000": "docs/stage20-process-tests-idle.json",
+    "bulk200": "docs/stage20-process-tests-bulk.json",
+    "active1000": "docs/stage20-process-tests-active1000.json",
+    "long100MiB": "docs/stage20-process-tests-long-batch.json",
+    "size_filter": "docs/stage20-process-tests-filter.json"
+  },
+  "verification_dir": "docs/stage20-verification",
+  "spec": "docs/STAGE20.md",
+  "report": "docs/BUILD-REPORT.md",
+  "security": "docs/SECURITY.md"
+}

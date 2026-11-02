@@ -1,0 +1,14 @@
+===== keepalive =====
+{
+  "mode": "bridge-idle",
+  "clients": 1,
+  "succeeded": 1,
+  "messages_per_client": 1,
+  "message_bytes": 1,
+  "verified_bytes_one_direction": 1,
+  "seconds": 4.309877781,
+  "verified_one_direction_mbps": 0.0000018562011283168682,
+  "verification": "verified bridge open, idle keepalive hold, then exact one-byte echo and half-close",
+  "seed": 1
+}
+WALL=4.31 MAXRSS_KIB=4588

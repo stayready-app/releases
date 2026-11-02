@@ -1,0 +1,179 @@
+=== RUN   TestAuditInvalidACKCannotConfirmOrRefresh
+--- PASS: TestAuditInvalidACKCannotConfirmOrRefresh (0.00s)
+=== RUN   TestAuditExpiredTimersStillPermitInput
+--- PASS: TestAuditExpiredTimersStillPermitInput (0.00s)
+=== RUN   TestAuditServiceHasGlobalWorkBound
+--- PASS: TestAuditServiceHasGlobalWorkBound (0.07s)
+=== RUN   TestAuditIdentityReuseCannotReopenTranscript
+--- PASS: TestAuditIdentityReuseCannotReopenTranscript (0.00s)
+=== RUN   TestAuditClientHandshakeInjectionDoesNotAmplify
+--- PASS: TestAuditClientHandshakeInjectionDoesNotAmplify (0.40s)
+=== RUN   TestAuditOversizePacketDoesNotStopServer
+--- PASS: TestAuditOversizePacketDoesNotStopServer (0.41s)
+=== RUN   TestAuditLegacyLargeMessagePreserved
+--- PASS: TestAuditLegacyLargeMessagePreserved (0.45s)
+=== RUN   TestAuditGlobalBudgetUnderIncompleteFlood
+--- PASS: TestAuditGlobalBudgetUnderIncompleteFlood (1.42s)
+=== RUN   TestCongestionRealUDPBottleneck
+=== RUN   TestCongestionRealUDPBottleneck/controlled
+    congestion_test.go:37: verified=262144 elapsed_ms=2500 stats={PacketStateBytes:0 PeakPacketStateBytes:8192 PacketTrackedSends:329 PacketReceipts:327 PacketReceiptFrames:327 PacketBatchReceiptFrames:0 PacketDuplicateReceipts:0 PacketLateReceipts:0 PacketTimeoutLosses:1 PacketThresholdLosses:1 PacketRingWaits:0 PacketWireInFlight:0 PeakSessionWireInFlight:18054 PeakSessionTrackedPackets:19 ActiveSessions:1 PeakSessions:1 UsedHelloIDs:1 BufferBytes:0 PeakBufferBytes:45056 ReceivedDatagrams:775 SentDatagrams:664 DeliveredMessages:64 DeliveredBytes:262144 InvalidPackets:0 AdmissionRejects:0 RateLimited:0 ResourceDrops:0 WindowRequests:57 WindowGrantUpdates:73 CreditRequests:0 CreditsGranted:64 CreditBlocked:0 CreditViolations:0 CreditRejected:0 LegacySessions:0 WaitingSessions:0 PeakWaitingSessions:1 StaleMessages:0 RepeatedHellos:0 ExpiredSessions:0 WriteErrors:0 DataFreshPackets:320 DataRetryPackets:9 DataRetryBytes:2646 CongestionEvents:1 PacingWaits:223 PeakCongestionWindow:18550 FilteredDatagrams:0}
+    fault_test.go:147: relay: up={Submitted:781 Dropped:6 Duplicated:0 Corrupted:0 Delivered:775 QueueDrops:0 LinkDrops:6} down={Submitted:664 Dropped:2 Duplicated:0 Corrupted:0 Delivered:662 QueueDrops:0 LinkDrops:2} forged=0 write_drops=0
+=== RUN   TestCongestionRealUDPBottleneck/uncontrolled-lab-baseline
+    congestion_test.go:37: verified=262144 elapsed_ms=2237 stats={PacketStateBytes:0 PeakPacketStateBytes:8192 PacketTrackedSends:377 PacketReceipts:355 PacketReceiptFrames:355 PacketBatchReceiptFrames:0 PacketDuplicateReceipts:0 PacketLateReceipts:6 PacketTimeoutLosses:17 PacketThresholdLosses:11 PacketRingWaits:0 PacketWireInFlight:0 PeakSessionWireInFlight:18664 PeakSessionTrackedPackets:27 ActiveSessions:1 PeakSessions:1 UsedHelloIDs:1 BufferBytes:0 PeakBufferBytes:45056 ReceivedDatagrams:860 SentDatagrams:735 DeliveredMessages:64 DeliveredBytes:262144 InvalidPackets:0 AdmissionRejects:0 RateLimited:0 ResourceDrops:0 WindowRequests:57 WindowGrantUpdates:69 CreditRequests:0 CreditsGranted:64 CreditBlocked:0 CreditViolations:0 CreditRejected:0 LegacySessions:0 WaitingSessions:0 PeakWaitingSessions:1 StaleMessages:0 RepeatedHellos:0 ExpiredSessions:0 WriteErrors:0 DataFreshPackets:0 DataRetryPackets:0 DataRetryBytes:0 CongestionEvents:0 PacingWaits:0 PeakCongestionWindow:0 FilteredDatagrams:0}
+    fault_test.go:147: relay: up={Submitted:924 Dropped:64 Duplicated:0 Corrupted:0 Delivered:860 QueueDrops:0 LinkDrops:64} down={Submitted:735 Dropped:22 Duplicated:0 Corrupted:0 Delivered:713 QueueDrops:0 LinkDrops:22} forged=0 write_drops=0
+--- PASS: TestCongestionRealUDPBottleneck (4.77s)
+    --- PASS: TestCongestionRealUDPBottleneck/controlled (2.51s)
+    --- PASS: TestCongestionRealUDPBottleneck/uncontrolled-lab-baseline (2.26s)
+=== RUN   TestCongestionRealUDPReverseAsymmetricBottleneck
+    fault_test.go:147: relay: up={Submitted:370 Dropped:0 Duplicated:0 Corrupted:0 Delivered:370 QueueDrops:0 LinkDrops:0} down={Submitted:345 Dropped:13 Duplicated:0 Corrupted:0 Delivered:332 QueueDrops:0 LinkDrops:9} forged=100 write_drops=0
+--- PASS: TestCongestionRealUDPReverseAsymmetricBottleneck (3.93s)
+=== RUN   TestCreditsDataNeedsPermissionAndNoDowngrade
+--- PASS: TestCreditsDataNeedsPermissionAndNoDowngrade (0.00s)
+=== RUN   TestCreditsReservationLossDuplicateAndConflictingLength
+--- PASS: TestCreditsReservationLossDuplicateAndConflictingLength (0.00s)
+=== RUN   TestCreditsWaitQueueFairnessReleaseAndNoPolling
+--- PASS: TestCreditsWaitQueueFairnessReleaseAndNoPolling (0.00s)
+=== RUN   TestCreditsPendingRequestsBoundedAndDuplicatesDoNotPin
+--- PASS: TestCreditsPendingRequestsBoundedAndDuplicatesDoNotPin (0.00s)
+=== RUN   TestCreditsManyWaitersFairBoundedPass
+--- PASS: TestCreditsManyWaitersFairBoundedPass (0.11s)
+=== RUN   TestCreditsRealUDPMinimalGlobalBudget
+    credits_test.go:206: minimal budget: {PacketStateBytes:0 PeakPacketStateBytes:131072 PacketTrackedSends:640 PacketReceipts:640 PacketReceiptFrames:640 PacketBatchReceiptFrames:0 PacketDuplicateReceipts:0 PacketLateReceipts:0 PacketTimeoutLosses:0 PacketThresholdLosses:0 PacketRingWaits:0 PacketWireInFlight:0 PeakSessionWireInFlight:4666 PeakSessionTrackedPackets:5 ActiveSessions:16 PeakSessions:16 UsedHelloIDs:16 BufferBytes:0 PeakBufferBytes:5632 ReceivedDatagrams:1344 SentDatagrams:1200 DeliveredMessages:128 DeliveredBytes:524288 InvalidPackets:0 AdmissionRejects:0 RateLimited:0 ResourceDrops:0 WindowRequests:16 WindowGrantUpdates:128 CreditRequests:0 CreditsGranted:128 CreditBlocked:0 CreditViolations:0 CreditRejected:0 LegacySessions:0 WaitingSessions:0 PeakWaitingSessions:16 StaleMessages:0 RepeatedHellos:0 ExpiredSessions:0 WriteErrors:0 DataFreshPackets:640 DataRetryPackets:0 DataRetryBytes:0 CongestionEvents:0 PacingWaits:32 PeakCongestionWindow:10140 FilteredDatagrams:0}
+--- PASS: TestCreditsRealUDPMinimalGlobalBudget (0.49s)
+=== RUN   TestCreditsTooLargeMessageFailsExplicitly
+--- PASS: TestCreditsTooLargeMessageFailsExplicitly (0.10s)
+=== RUN   TestCreditsControlWorkBound
+--- PASS: TestCreditsControlWorkBound (0.05s)
+=== RUN   TestCreditsPermanentControlSizeFilter
+    fault_test.go:147: relay: up={Submitted:4 Dropped:3 Duplicated:0 Corrupted:0 Delivered:1 QueueDrops:0 LinkDrops:0} down={Submitted:1 Dropped:0 Duplicated:0 Corrupted:0 Delivered:1 QueueDrops:0 LinkDrops:0} forged=0 write_drops=0
+--- PASS: TestCreditsPermanentControlSizeFilter (0.61s)
+=== RUN   TestAuditRealUDPNetworkFaults
+=== RUN   TestAuditRealUDPNetworkFaults/loss-reorder-corrupt-replay-inject
+    fault_test.go:192: verified=131072 bytes; invalid=104 resources=0
+    fault_test.go:147: relay: up={Submitted:462 Dropped:22 Duplicated:26 Corrupted:8 Delivered:466 QueueDrops:0 LinkDrops:0} down={Submitted:413 Dropped:21 Duplicated:22 Corrupted:8 Delivered:414 QueueDrops:0 LinkDrops:0} forged=125 write_drops=0
+=== RUN   TestAuditRealUDPNetworkFaults/size-blackhole-and-loss
+    fault_test.go:192: verified=131072 bytes; invalid=167 resources=0
+    fault_test.go:147: relay: up={Submitted:1078 Dropped:158 Duplicated:28 Corrupted:0 Delivered:948 QueueDrops:0 LinkDrops:0} down={Submitted:951 Dropped:158 Duplicated:25 Corrupted:0 Delivered:818 QueueDrops:0 LinkDrops:0} forged=252 write_drops=0
+=== RUN   TestAuditRealUDPNetworkFaults/lost-welcome
+    fault_test.go:192: verified=131072 bytes; invalid=0 resources=0
+    fault_test.go:147: relay: up={Submitted:341 Dropped:0 Duplicated:0 Corrupted:0 Delivered:341 QueueDrops:0 LinkDrops:0} down={Submitted:268 Dropped:0 Duplicated:0 Corrupted:0 Delivered:268 QueueDrops:0 LinkDrops:0} forged=0 write_drops=0
+=== RUN   TestAuditRealUDPNetworkFaults/wan-rtt-above-fixed-rto
+    fault_test.go:192: verified=131072 bytes; invalid=50 resources=0
+    fault_test.go:147: relay: up={Submitted:362 Dropped:3 Duplicated:0 Corrupted:0 Delivered:359 QueueDrops:0 LinkDrops:0} down={Submitted:341 Dropped:3 Duplicated:0 Corrupted:0 Delivered:338 QueueDrops:0 LinkDrops:0} forged=99 write_drops=0
+=== RUN   TestAuditRealUDPNetworkFaults/ack-blackout
+    fault_test.go:192: verified=131072 bytes; invalid=0 resources=0
+    fault_test.go:147: relay: up={Submitted:367 Dropped:0 Duplicated:0 Corrupted:0 Delivered:367 QueueDrops:0 LinkDrops:0} down={Submitted:305 Dropped:0 Duplicated:0 Corrupted:0 Delivered:305 QueueDrops:0 LinkDrops:0} forged=0 write_drops=0
+=== RUN   TestAuditRealUDPNetworkFaults/lost-open-and-grant
+    fault_test.go:192: verified=131072 bytes; invalid=0 resources=0
+    fault_test.go:147: relay: up={Submitted:340 Dropped:0 Duplicated:0 Corrupted:0 Delivered:340 QueueDrops:0 LinkDrops:0} down={Submitted:268 Dropped:0 Duplicated:0 Corrupted:0 Delivered:268 QueueDrops:0 LinkDrops:0} forged=0 write_drops=0
+=== RUN   TestAuditRealUDPNetworkFaults/credit-control-blackout
+    fault_test.go:192: verified=131072 bytes; invalid=0 resources=0
+    fault_test.go:147: relay: up={Submitted:340 Dropped:0 Duplicated:0 Corrupted:0 Delivered:340 QueueDrops:0 LinkDrops:0} down={Submitted:268 Dropped:0 Duplicated:0 Corrupted:0 Delivered:268 QueueDrops:0 LinkDrops:0} forged=0 write_drops=0
+--- PASS: TestAuditRealUDPNetworkFaults (21.57s)
+    --- PASS: TestAuditRealUDPNetworkFaults/loss-reorder-corrupt-replay-inject (2.39s)
+    --- PASS: TestAuditRealUDPNetworkFaults/size-blackhole-and-loss (9.09s)
+    --- PASS: TestAuditRealUDPNetworkFaults/lost-welcome (0.57s)
+    --- PASS: TestAuditRealUDPNetworkFaults/wan-rtt-above-fixed-rto (7.01s)
+    --- PASS: TestAuditRealUDPNetworkFaults/ack-blackout (0.86s)
+    --- PASS: TestAuditRealUDPNetworkFaults/lost-open-and-grant (0.52s)
+    --- PASS: TestAuditRealUDPNetworkFaults/credit-control-blackout (1.12s)
+=== RUN   TestAuditPermanentBlackholeTimesOut
+    fault_test.go:147: relay: up={Submitted:1 Dropped:0 Duplicated:0 Corrupted:0 Delivered:1 QueueDrops:0 LinkDrops:0} down={Submitted:0 Dropped:0 Duplicated:0 Corrupted:0 Delivered:0 QueueDrops:0 LinkDrops:0} forged=0 write_drops=0
+--- PASS: TestAuditPermanentBlackholeTimesOut (0.40s)
+=== RUN   TestAuditLegacyReliableRecoversLostWelcome
+=== RUN   TestAuditLegacyReliableRecoversLostWelcome/1
+    fault_test.go:147: relay: up={Submitted:8 Dropped:0 Duplicated:0 Corrupted:0 Delivered:8 QueueDrops:0 LinkDrops:0} down={Submitted:7 Dropped:0 Duplicated:0 Corrupted:0 Delivered:7 QueueDrops:0 LinkDrops:0} forged=0 write_drops=0
+=== RUN   TestAuditLegacyReliableRecoversLostWelcome/4
+    fault_test.go:147: relay: up={Submitted:20 Dropped:0 Duplicated:0 Corrupted:0 Delivered:20 QueueDrops:0 LinkDrops:0} down={Submitted:20 Dropped:0 Duplicated:0 Corrupted:0 Delivered:20 QueueDrops:0 LinkDrops:0} forged=0 write_drops=0
+--- PASS: TestAuditLegacyReliableRecoversLostWelcome (0.93s)
+    --- PASS: TestAuditLegacyReliableRecoversLostWelcome/1 (0.46s)
+    --- PASS: TestAuditLegacyReliableRecoversLostWelcome/4 (0.46s)
+=== RUN   TestBatchRealUDP
+=== RUN   TestBatchRealUDP/baseline
+=== RUN   TestBatchRealUDP/size-filter
+--- PASS: TestBatchRealUDP (1.37s)
+    --- PASS: TestBatchRealUDP/baseline (0.33s)
+    --- PASS: TestBatchRealUDP/size-filter (1.04s)
+=== RUN   TestRealUDPReliability
+=== RUN   TestRealUDPReliability/baseline
+=== RUN   TestRealUDPReliability/selective-size-drop
+--- PASS: TestRealUDPReliability (0.74s)
+    --- PASS: TestRealUDPReliability/baseline (0.33s)
+    --- PASS: TestRealUDPReliability/selective-size-drop (0.41s)
+=== RUN   TestPacketModernAndExplicitLegacy
+=== RUN   TestPacketModernAndExplicitLegacy/packet-receipts
+=== RUN   TestPacketModernAndExplicitLegacy/range-only-compatibility
+--- PASS: TestPacketModernAndExplicitLegacy (0.81s)
+    --- PASS: TestPacketModernAndExplicitLegacy/packet-receipts (0.40s)
+    --- PASS: TestPacketModernAndExplicitLegacy/range-only-compatibility (0.41s)
+=== RUN   TestPacketBudgetPreflightAndMixedMode
+--- PASS: TestPacketBudgetPreflightAndMixedMode (0.00s)
+=== RUN   TestPacketThousandMetadataBound
+    packets_test.go:91: 1000 packet-capable sessions: idle ring charge=0; per-active-direction cap=8192
+--- PASS: TestPacketThousandMetadataBound (1.48s)
+=== RUN   TestPacketAckBatchAndExplicitStage19Compatibility
+=== RUN   TestPacketAckBatchAndExplicitStage19Compatibility/batched-acks
+=== RUN   TestPacketAckBatchAndExplicitStage19Compatibility/stage19-one-packet-acks
+--- PASS: TestPacketAckBatchAndExplicitStage19Compatibility (0.71s)
+    --- PASS: TestPacketAckBatchAndExplicitStage19Compatibility/batched-acks (0.31s)
+    --- PASS: TestPacketAckBatchAndExplicitStage19Compatibility/stage19-one-packet-acks (0.41s)
+=== RUN   TestWindowTransientSendErrorRetainsUnacknowledgedData
+--- PASS: TestWindowTransientSendErrorRetainsUnacknowledgedData (0.00s)
+=== RUN   TestWindowFiniteCompletionNeedsSingleSession
+--- PASS: TestWindowFiniteCompletionNeedsSingleSession (0.00s)
+=== RUN   TestMultiHelloIdempotentAndRetirement
+--- PASS: TestMultiHelloIdempotentAndRetirement (0.00s)
+=== RUN   TestMultiLimitsAndExpiredCredit
+--- PASS: TestMultiLimitsAndExpiredCredit (0.00s)
+=== RUN   TestMultiGlobalBudgetAndSlowPeer
+--- PASS: TestMultiGlobalBudgetAndSlowPeer (0.00s)
+=== RUN   TestMultiStaleIDsCannotRedeliverAfterCacheEviction
+--- PASS: TestMultiStaleIDsCannotRedeliverAfterCacheEviction (0.01s)
+=== RUN   TestMultiInjectionDoesNotKeepSessionAlive
+--- PASS: TestMultiInjectionDoesNotKeepSessionAlive (0.00s)
+=== RUN   TestMultiHelloRateBeforeStateAllocation
+--- PASS: TestMultiHelloRateBeforeStateAllocation (0.00s)
+=== RUN   TestMultiThousandIdleState
+    server_test.go:254: 1000 idle manager sessions: retained heap delta=2402640, bytes/session=2402.6, goroutine delta=0, payload credit=0
+--- PASS: TestMultiThousandIdleState (1.47s)
+=== RUN   TestMultiRealUDPConcurrentClients
+=== RUN   TestMultiRealUDPConcurrentClients/baseline
+    server_test.go:334: {"packet_state_bytes":0,"peak_packet_state_bytes":262144,"packet_tracked_sends":2294,"packet_receipts":2160,"packet_receipt_frames":2160,"packet_batch_receipt_frames":0,"packet_duplicate_receipts":0,"packet_late_receipts":0,"packet_timeout_losses":30,"packet_threshold_losses":104,"packet_ring_waits":0,"packet_wire_in_flight":0,"peak_session_wire_in_flight":18054,"peak_session_tracked_packets":19,"active_sessions":32,"peak_sessions":32,"used_hello_ids":32,"buffer_bytes":0,"peak_buffer_bytes":1441792,"received_datagrams":4891,"sent_datagrams":4268,"delivered_messages":384,"delivered_bytes":1572864,"invalid_packets":0,"admission_rejects":0,"rate_limited":0,"resource_drops":0,"window_requests":152,"window_grant_updates":403,"credit_requests":0,"credits_granted":384,"credit_blocked":0,"credit_violations":0,"credit_rejected":0,"legacy_sessions":0,"waiting_sessions":0,"peak_waiting_sessions":8,"stale_messages":0,"repeated_hellos":0,"expired_sessions":0,"write_errors":0,"data_fresh_packets":1920,"data_retry_packets":374,"data_retry_payload_bytes":109978,"congestion_timeout_events":56,"pacing_waits":1029,"peak_congestion_window":18550,"filtered_datagrams":0}
+=== RUN   TestMultiRealUDPConcurrentClients/size-filter
+    server_test.go:334: {"packet_state_bytes":0,"peak_packet_state_bytes":262144,"packet_tracked_sends":6556,"packet_receipts":5020,"packet_receipt_frames":5020,"packet_batch_receipt_frames":0,"packet_duplicate_receipts":0,"packet_late_receipts":0,"packet_timeout_losses":1281,"packet_threshold_losses":255,"packet_ring_waits":0,"packet_wire_in_flight":0,"peak_session_wire_in_flight":10140,"peak_session_tracked_packets":12,"active_sessions":32,"peak_sessions":32,"used_hello_ids":32,"buffer_bytes":0,"peak_buffer_bytes":1441792,"received_datagrams":10396,"sent_datagrams":8787,"delivered_messages":384,"delivered_bytes":1572864,"invalid_packets":0,"admission_rejects":0,"rate_limited":0,"resource_drops":0,"window_requests":160,"window_grant_updates":416,"credit_requests":0,"credits_granted":384,"credit_blocked":0,"credit_violations":0,"credit_rejected":0,"legacy_sessions":0,"waiting_sessions":0,"peak_waiting_sessions":1,"stale_messages":0,"repeated_hellos":0,"expired_sessions":0,"write_errors":0,"data_fresh_packets":1920,"data_retry_packets":4636,"data_retry_payload_bytes":1392200,"congestion_timeout_events":564,"pacing_waits":1257,"peak_congestion_window":10140,"filtered_datagrams":1536}
+--- PASS: TestMultiRealUDPConcurrentClients (3.15s)
+    --- PASS: TestMultiRealUDPConcurrentClients/baseline (0.59s)
+    --- PASS: TestMultiRealUDPConcurrentClients/size-filter (2.56s)
+=== RUN   TestMultiShutdownReleasesPendingBuffers
+--- PASS: TestMultiShutdownReleasesPendingBuffers (0.10s)
+=== RUN   TestMultiBatchLargerThanReceiverWindow
+--- PASS: TestMultiBatchLargerThanReceiverWindow (0.45s)
+=== RUN   TestStage16WANComparison
+    wan_comparison_test.go:28: verified_bytes=131072 elapsed_ms=1424 stats={PacketStateBytes:0 PeakPacketStateBytes:8192 PacketTrackedSends:160 PacketReceipts:160 PacketReceiptFrames:160 PacketBatchReceiptFrames:0 PacketDuplicateReceipts:0 PacketLateReceipts:0 PacketTimeoutLosses:0 PacketThresholdLosses:0 PacketRingWaits:0 PacketWireInFlight:0 PeakSessionWireInFlight:18054 PeakSessionTrackedPackets:19 ActiveSessions:1 PeakSessions:1 UsedHelloIDs:1 BufferBytes:0 PeakBufferBytes:45056 ReceivedDatagrams:372 SentDatagrams:322 DeliveredMessages:32 DeliveredBytes:131072 InvalidPackets:0 AdmissionRejects:0 RateLimited:0 ResourceDrops:0 WindowRequests:25 WindowGrantUpdates:36 CreditRequests:0 CreditsGranted:32 CreditBlocked:0 CreditViolations:0 CreditRejected:0 LegacySessions:0 WaitingSessions:0 PeakWaitingSessions:1 StaleMessages:0 RepeatedHellos:0 ExpiredSessions:0 WriteErrors:0 DataFreshPackets:160 DataRetryPackets:0 DataRetryBytes:0 CongestionEvents:0 PacingWaits:91 PeakCongestionWindow:18550 FilteredDatagrams:0}
+    fault_test.go:147: relay: up={Submitted:372 Dropped:0 Duplicated:0 Corrupted:0 Delivered:372 QueueDrops:0 LinkDrops:0} down={Submitted:322 Dropped:0 Duplicated:0 Corrupted:0 Delivered:322 QueueDrops:0 LinkDrops:0} forged=0 write_drops=0
+--- PASS: TestStage16WANComparison (1.46s)
+=== RUN   TestWindowServerCapacityReplayModeAndExpiry
+--- PASS: TestWindowServerCapacityReplayModeAndExpiry (0.00s)
+=== RUN   TestWindowFairnessWithExactAdmissionWaiters
+--- PASS: TestWindowFairnessWithExactAdmissionWaiters (0.00s)
+=== RUN   TestWindowVariableSizesAndBoundedLookahead
+    fault_test.go:147: relay: up={Submitted:1769 Dropped:36 Duplicated:0 Corrupted:0 Delivered:1733 QueueDrops:0 LinkDrops:0} down={Submitted:1682 Dropped:0 Duplicated:0 Corrupted:0 Delivered:1682 QueueDrops:0 LinkDrops:0} forged=0 write_drops=0
+--- PASS: TestWindowVariableSizesAndBoundedLookahead (1.12s)
+=== RUN   TestWindowControlPaddingSizeBlackholes
+=== RUN   TestWindowControlPaddingSizeBlackholes/58-58
+    fault_test.go:147: relay: up={Submitted:133 Dropped:0 Duplicated:5 Corrupted:0 Delivered:138 QueueDrops:0 LinkDrops:0} down={Submitted:115 Dropped:0 Duplicated:3 Corrupted:0 Delivered:118 QueueDrops:0 LinkDrops:0} forged=36 write_drops=0
+=== RUN   TestWindowControlPaddingSizeBlackholes/200-280
+    fault_test.go:147: relay: up={Submitted:135 Dropped:4 Duplicated:3 Corrupted:0 Delivered:134 QueueDrops:0 LinkDrops:0} down={Submitted:118 Dropped:5 Duplicated:5 Corrupted:0 Delivered:118 QueueDrops:0 LinkDrops:0} forged=36 write_drops=0
+--- PASS: TestWindowControlPaddingSizeBlackholes (1.85s)
+    --- PASS: TestWindowControlPaddingSizeBlackholes/58-58 (0.41s)
+    --- PASS: TestWindowControlPaddingSizeBlackholes/200-280 (1.44s)
+=== RUN   TestWindowExplicitLegacyCompatibility
+--- PASS: TestWindowExplicitLegacyCompatibility (0.40s)
+=== RUN   TestWindowPerSessionBudgetNeverMultiplies
+--- PASS: TestWindowPerSessionBudgetNeverMultiplies (0.00s)
+=== RUN   TestWindowFixedHelloFilterFailsClosed
+    fault_test.go:147: relay: up={Submitted:3 Dropped:3 Duplicated:0 Corrupted:0 Delivered:0 QueueDrops:0 LinkDrops:0} down={Submitted:0 Dropped:0 Duplicated:0 Corrupted:0 Delivered:0 QueueDrops:0 LinkDrops:0} forged=0 write_drops=0
+--- PASS: TestWindowFixedHelloFilterFailsClosed (0.40s)
+=== RUN   TestWindowFutureReverseGrantsCannotPinIdleReservations
+--- PASS: TestWindowFutureReverseGrantsCannotPinIdleReservations (0.00s)
+PASS

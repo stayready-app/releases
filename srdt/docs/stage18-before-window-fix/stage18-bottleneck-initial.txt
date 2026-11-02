@@ -1,0 +1,15 @@
+=== RUN   TestCongestionRealUDPBottleneck
+=== RUN   TestCongestionRealUDPBottleneck/controlled
+    congestion_test.go:37: verified=262144 elapsed_ms=2805 stats={ActiveSessions:1 PeakSessions:1 UsedHelloIDs:1 BufferBytes:0 PeakBufferBytes:45056 ReceivedDatagrams:850 SentDatagrams:870 DeliveredMessages:64 DeliveredBytes:262144 InvalidPackets:4 AdmissionRejects:0 RateLimited:0 ResourceDrops:0 WindowRequests:57 WindowGrantUpdates:78 CreditRequests:0 CreditsGranted:64 CreditBlocked:0 CreditViolations:0 CreditRejected:0 LegacySessions:0 WaitingSessions:0 PeakWaitingSessions:1 StaleMessages:0 RepeatedHellos:0 ExpiredSessions:0 WriteErrors:0 DataFreshPackets:372 DataRetryPackets:4 DataRetryBytes:1400 CongestionEvents:2 PacingWaits:267 PeakCongestionWindow:16384 FilteredDatagrams:0}
+    fault_test.go:147: relay: up={Submitted:858 Dropped:8 Duplicated:0 Corrupted:0 Delivered:850 QueueDrops:0 LinkDrops:8} down={Submitted:870 Dropped:0 Duplicated:0 Corrupted:0 Delivered:870 QueueDrops:0 LinkDrops:0} forged=0 write_drops=0
+=== RUN   TestCongestionRealUDPBottleneck/uncontrolled-lab-baseline
+    congestion_test.go:37: verified=262144 elapsed_ms=2247 stats={ActiveSessions:1 PeakSessions:1 UsedHelloIDs:1 BufferBytes:0 PeakBufferBytes:45056 ReceivedDatagrams:841 SentDatagrams:872 DeliveredMessages:64 DeliveredBytes:262144 InvalidPackets:0 AdmissionRejects:0 RateLimited:0 ResourceDrops:0 WindowRequests:57 WindowGrantUpdates:70 CreditRequests:0 CreditsGranted:64 CreditBlocked:0 CreditViolations:0 CreditRejected:0 LegacySessions:0 WaitingSessions:0 PeakWaitingSessions:1 StaleMessages:0 RepeatedHellos:0 ExpiredSessions:0 WriteErrors:0 DataFreshPackets:0 DataRetryPackets:0 DataRetryBytes:0 CongestionEvents:0 PacingWaits:0 PeakCongestionWindow:0 FilteredDatagrams:0}
+    fault_test.go:147: relay: up={Submitted:891 Dropped:50 Duplicated:0 Corrupted:0 Delivered:841 QueueDrops:0 LinkDrops:50} down={Submitted:872 Dropped:19 Duplicated:0 Corrupted:0 Delivered:853 QueueDrops:0 LinkDrops:19} forged=0 write_drops=0
+--- PASS: TestCongestionRealUDPBottleneck (5.10s)
+    --- PASS: TestCongestionRealUDPBottleneck/controlled (2.83s)
+    --- PASS: TestCongestionRealUDPBottleneck/uncontrolled-lab-baseline (2.27s)
+=== RUN   TestCongestionRealUDPReverseAsymmetricBottleneck
+    fault_test.go:147: relay: up={Submitted:378 Dropped:0 Duplicated:0 Corrupted:0 Delivered:378 QueueDrops:0 LinkDrops:0} down={Submitted:404 Dropped:16 Duplicated:0 Corrupted:0 Delivered:388 QueueDrops:0 LinkDrops:14} forged=109 write_drops=0
+--- PASS: TestCongestionRealUDPReverseAsymmetricBottleneck (3.14s)
+PASS
+ok  	example.com/srdt/netreliable	8.241s

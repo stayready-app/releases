@@ -1,0 +1,22 @@
+=== RUN   TestCreditsDataNeedsPermissionAndNoDowngrade
+--- PASS: TestCreditsDataNeedsPermissionAndNoDowngrade (0.00s)
+=== RUN   TestCreditsReservationLossDuplicateAndConflictingLength
+--- PASS: TestCreditsReservationLossDuplicateAndConflictingLength (0.00s)
+=== RUN   TestCreditsWaitQueueFairnessReleaseAndNoPolling
+--- PASS: TestCreditsWaitQueueFairnessReleaseAndNoPolling (0.01s)
+=== RUN   TestCreditsPendingRequestsBoundedAndDuplicatesDoNotPin
+--- PASS: TestCreditsPendingRequestsBoundedAndDuplicatesDoNotPin (0.00s)
+=== RUN   TestCreditsManyWaitersFairBoundedPass
+--- PASS: TestCreditsManyWaitersFairBoundedPass (0.09s)
+=== RUN   TestCreditsRealUDPMinimalGlobalBudget
+    credits_test.go:206: minimal budget: {PacketStateBytes:0 PeakPacketStateBytes:131072 PacketTrackedSends:640 PacketReceipts:640 PacketReceiptFrames:640 PacketBatchReceiptFrames:0 PacketDuplicateReceipts:0 PacketLateReceipts:0 PacketTimeoutLosses:0 PacketThresholdLosses:0 PacketRingWaits:0 PacketWireInFlight:0 PeakSessionWireInFlight:4666 PeakSessionTrackedPackets:5 ActiveSessions:16 V1Sessions:16 LegacyHandshakeSessions:0 PeakSessions:16 UsedHelloIDs:16 BufferBytes:0 PeakBufferBytes:5632 ReceivedDatagrams:1344 SentDatagrams:1200 DeliveredMessages:128 DeliveredBytes:524288 InvalidPackets:0 AdmissionRejects:0 RateLimited:0 ResourceDrops:0 WindowRequests:16 WindowGrantUpdates:128 CreditRequests:0 CreditsGranted:128 CreditBlocked:0 CreditViolations:0 CreditRejected:0 LegacySessions:0 WaitingSessions:0 PeakWaitingSessions:16 StaleMessages:0 RepeatedHellos:0 ExpiredSessions:0 WriteErrors:0 DataFreshPackets:640 DataRetryPackets:0 DataRetryBytes:0 CongestionEvents:0 PacingWaits:31 PeakCongestionWindow:10140 FilteredDatagrams:0}
+--- PASS: TestCreditsRealUDPMinimalGlobalBudget (0.47s)
+=== RUN   TestCreditsTooLargeMessageFailsExplicitly
+--- PASS: TestCreditsTooLargeMessageFailsExplicitly (0.10s)
+=== RUN   TestCreditsControlWorkBound
+--- PASS: TestCreditsControlWorkBound (0.05s)
+=== RUN   TestCreditsPermanentControlSizeFilter
+    fault_test.go:147: relay: up={Submitted:4 Dropped:3 Duplicated:0 Corrupted:0 Delivered:1 QueueDrops:0 LinkDrops:0} down={Submitted:1 Dropped:0 Duplicated:0 Corrupted:0 Delivered:1 QueueDrops:0 LinkDrops:0} forged=0 write_drops=0
+--- PASS: TestCreditsPermanentControlSizeFilter (0.60s)
+PASS
+ok  	example.com/srdt/netreliable	2.346s

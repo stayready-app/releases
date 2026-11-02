@@ -1,0 +1,42 @@
+{
+  "BenchmarkAuditDuplicateACK": {
+    "ns_per_op": [
+      4.12,
+      5.582,
+      3.67
+    ],
+    "bytes_per_op": 0,
+    "allocs_per_op": 0,
+    "median_ns_per_op": 4.12
+  },
+  "BenchmarkAuditReceiveDuplicate": {
+    "ns_per_op": [
+      212.5,
+      208.0,
+      221.3
+    ],
+    "bytes_per_op": 52,
+    "allocs_per_op": 2,
+    "median_ns_per_op": 212.5
+  },
+  "BenchmarkAuditRetry": {
+    "ns_per_op": [
+      26.9,
+      28.19,
+      25.41
+    ],
+    "bytes_per_op": 0,
+    "allocs_per_op": 0,
+    "median_ns_per_op": 26.9
+  },
+  "BenchmarkCongestionPacer": {
+    "ns_per_op": [
+      51.54,
+      53.04,
+      54.53
+    ],
+    "bytes_per_op": 0,
+    "allocs_per_op": 0,
+    "median_ns_per_op": 53.04
+  }
+}

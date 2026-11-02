@@ -1,0 +1,5 @@
+fuzz: elapsed: 0s, gathering baseline coverage: 0/3 completed
+fuzz: elapsed: 0s, gathering baseline coverage: 3/3 completed, now fuzzing with 5 workers
+fuzz: elapsed: 2s, execs: 150144 (71811/sec), new interesting: 3 (total: 6)
+PASS
+ok  	example.com/srdt/secureudp	2.094s

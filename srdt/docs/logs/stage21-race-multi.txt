@@ -1,0 +1,29 @@
+=== RUN   TestMultiHelloIdempotentAndRetirement
+--- PASS: TestMultiHelloIdempotentAndRetirement (0.00s)
+=== RUN   TestMultiLimitsAndExpiredCredit
+--- PASS: TestMultiLimitsAndExpiredCredit (0.00s)
+=== RUN   TestMultiGlobalBudgetAndSlowPeer
+--- PASS: TestMultiGlobalBudgetAndSlowPeer (0.00s)
+=== RUN   TestMultiStaleIDsCannotRedeliverAfterCacheEviction
+--- PASS: TestMultiStaleIDsCannotRedeliverAfterCacheEviction (0.01s)
+=== RUN   TestMultiInjectionDoesNotKeepSessionAlive
+--- PASS: TestMultiInjectionDoesNotKeepSessionAlive (0.00s)
+=== RUN   TestMultiHelloRateBeforeStateAllocation
+--- PASS: TestMultiHelloRateBeforeStateAllocation (0.00s)
+=== RUN   TestMultiThousandIdleState
+    server_test.go:255: 1000 idle manager sessions: retained heap delta=2456200, bytes/session=2456.2, goroutine delta=0, payload credit=0
+--- PASS: TestMultiThousandIdleState (1.54s)
+=== RUN   TestMultiRealUDPConcurrentClients
+=== RUN   TestMultiRealUDPConcurrentClients/baseline
+    server_test.go:335: {"packet_state_bytes":0,"peak_packet_state_bytes":262144,"packet_tracked_sends":2261,"packet_receipts":2132,"packet_receipt_frames":2132,"packet_batch_receipt_frames":0,"packet_duplicate_receipts":0,"packet_late_receipts":0,"packet_timeout_losses":50,"packet_threshold_losses":79,"packet_ring_waits":0,"packet_wire_in_flight":0,"peak_session_wire_in_flight":13998,"peak_session_tracked_packets":15,"active_sessions":32,"v1_sessions":32,"legacy_handshake_sessions":0,"peak_sessions":32,"used_hello_ids":32,"buffer_bytes":0,"peak_buffer_bytes":1441792,"received_datagrams":4730,"sent_datagrams":4154,"delivered_messages":384,"delivered_bytes":1572864,"invalid_packets":0,"admission_rejects":0,"rate_limited":0,"resource_drops":0,"window_requests":137,"window_grant_updates":406,"credit_requests":0,"credits_granted":384,"credit_blocked":0,"credit_violations":0,"credit_rejected":0,"legacy_sessions":0,"waiting_sessions":0,"peak_waiting_sessions":12,"stale_messages":0,"repeated_hellos":0,"expired_sessions":0,"write_errors":0,"data_fresh_packets":1920,"data_retry_packets":341,"data_retry_payload_bytes":98914,"congestion_timeout_events":42,"pacing_waits":1129,"peak_congestion_window":18550,"filtered_datagrams":0}
+=== RUN   TestMultiRealUDPConcurrentClients/size-filter
+    server_test.go:335: {"packet_state_bytes":0,"peak_packet_state_bytes":262144,"packet_tracked_sends":6559,"packet_receipts":5023,"packet_receipt_frames":5023,"packet_batch_receipt_frames":0,"packet_duplicate_receipts":0,"packet_late_receipts":0,"packet_timeout_losses":1254,"packet_threshold_losses":282,"packet_ring_waits":0,"packet_wire_in_flight":0,"peak_session_wire_in_flight":10140,"peak_session_tracked_packets":12,"active_sessions":32,"v1_sessions":32,"legacy_handshake_sessions":0,"peak_sessions":32,"used_hello_ids":32,"buffer_bytes":0,"peak_buffer_bytes":1441792,"received_datagrams":10399,"sent_datagrams":8785,"delivered_messages":384,"delivered_bytes":1572864,"invalid_packets":0,"admission_rejects":0,"rate_limited":0,"resource_drops":0,"window_requests":160,"window_grant_updates":416,"credit_requests":0,"credits_granted":384,"credit_blocked":0,"credit_violations":0,"credit_rejected":0,"legacy_sessions":0,"waiting_sessions":0,"peak_waiting_sessions":1,"stale_messages":0,"repeated_hellos":0,"expired_sessions":0,"write_errors":0,"data_fresh_packets":1920,"data_retry_packets":4639,"data_retry_payload_bytes":1393250,"congestion_timeout_events":565,"pacing_waits":1075,"peak_congestion_window":10140,"filtered_datagrams":1536}
+--- PASS: TestMultiRealUDPConcurrentClients (3.23s)
+    --- PASS: TestMultiRealUDPConcurrentClients/baseline (0.68s)
+    --- PASS: TestMultiRealUDPConcurrentClients/size-filter (2.54s)
+=== RUN   TestMultiShutdownReleasesPendingBuffers
+--- PASS: TestMultiShutdownReleasesPendingBuffers (0.10s)
+=== RUN   TestMultiBatchLargerThanReceiverWindow
+--- PASS: TestMultiBatchLargerThanReceiverWindow (0.45s)
+PASS
+ok  	example.com/srdt/netreliable	6.354s

@@ -1,0 +1,27 @@
+$ go build ./...
+$ go test -count=1 ./...
+?   	example.com/srdt/cmd/srdt-client	[no test files]
+?   	example.com/srdt/cmd/srdt-server	[no test files]
+?   	example.com/srdt/cmd/srdt-test	[no test files]
+ok  	example.com/srdt/emulator	0.007s
+ok  	example.com/srdt/netreliable	0.302s
+ok  	example.com/srdt/reliable	11.222s
+ok  	example.com/srdt/secureudp	0.104s
+ok  	example.com/srdt/testkit	0.016s
+$ go vet ./...
+$ go test -race -count=1 ./...
+?   	example.com/srdt/cmd/srdt-client	[no test files]
+?   	example.com/srdt/cmd/srdt-server	[no test files]
+?   	example.com/srdt/cmd/srdt-test	[no test files]
+ok  	example.com/srdt/emulator	1.013s
+ok  	example.com/srdt/netreliable	1.337s
+Race suite excluding large deterministic transfer:
+?   	example.com/srdt/cmd/srdt-client	[no test files]
+?   	example.com/srdt/cmd/srdt-server	[no test files]
+?   	example.com/srdt/cmd/srdt-test	[no test files]
+ok  	example.com/srdt/emulator	1.013s
+ok  	example.com/srdt/netreliable	1.327s
+ok  	example.com/srdt/reliable	1.045s
+ok  	example.com/srdt/secureudp	1.137s
+ok  	example.com/srdt/testkit	1.188s
+Cross builds:

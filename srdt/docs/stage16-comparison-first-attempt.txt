@@ -1,0 +1,13 @@
+stage15 1 4.965115136999998 {'rss_kib': 34948, 'threads': 7, 'cpu_seconds': 4.94}
+stage16 1 4.895720204000099 {'rss_kib': 35132, 'threads': 8, 'cpu_seconds': 5.13}
+stage15 2 5.248529909000013 {'rss_kib': 34212, 'threads': 8, 'cpu_seconds': 5.17}
+stage16 2 4.44765315199993 {'rss_kib': 35444, 'threads': 8, 'cpu_seconds': 4.43}
+stage15 3 4.888644726000052 {'rss_kib': 33940, 'threads': 8, 'cpu_seconds': 4.9}
+stage16 3 4.605353136999952 {'rss_kib': 35008, 'threads': 8, 'cpu_seconds': 4.47}
+Traceback (most recent call last):
+  File "/mnt/data/srdt-stage16/scripts/compare.py", line 70, in <module>
+    main()
+    ~~~~^^
+  File "/mnt/data/srdt-stage16/scripts/compare.py", line 50, in main
+    raise RuntimeError('baseline WAN comparison file differs; refusing overwrite')
+RuntimeError: baseline WAN comparison file differs; refusing overwrite

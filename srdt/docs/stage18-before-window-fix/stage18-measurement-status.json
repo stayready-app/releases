@@ -1,0 +1,103 @@
+{
+  "state": "done",
+  "completed": [
+    {
+      "name": "comparison",
+      "exit": 0,
+      "elapsed": 51.43131996200009,
+      "command": [
+        "python3",
+        "scripts/compare.py",
+        "--baseline",
+        "/mnt/data/srdt-stage17-baseline",
+        "--runs",
+        "3"
+      ]
+    },
+    {
+      "name": "default",
+      "exit": 0,
+      "elapsed": 5.788541813999927,
+      "command": [
+        "python3",
+        "scripts/integration.py"
+      ]
+    },
+    {
+      "name": "active1000",
+      "exit": 1,
+      "elapsed": 120.84484919399983,
+      "command": [
+        "python3",
+        "scripts/integration.py",
+        "--only",
+        "active1000"
+      ]
+    },
+    {
+      "name": "long-batch",
+      "exit": 0,
+      "elapsed": 19.016405360999897,
+      "command": [
+        "python3",
+        "scripts/integration.py",
+        "--only",
+        "long-batch"
+      ]
+    },
+    {
+      "name": "pressure",
+      "exit": 0,
+      "elapsed": 5.831046678999883,
+      "command": [
+        "python3",
+        "scripts/integration.py",
+        "--only",
+        "pressure"
+      ]
+    },
+    {
+      "name": "cli",
+      "exit": 0,
+      "elapsed": 4.429127690000087,
+      "command": [
+        "python3",
+        "scripts/cli_smoke.py",
+        "--baseline",
+        "/mnt/data/srdt-stage17-baseline"
+      ]
+    },
+    {
+      "name": "bottleneck-repeated",
+      "exit": 0,
+      "elapsed": 15.617207822999944,
+      "command": [
+        "go",
+        "test",
+        "./netreliable",
+        "-run",
+        "^TestCongestionRealUDPBottleneck$",
+        "-count",
+        "3",
+        "-v"
+      ]
+    },
+    {
+      "name": "bench",
+      "exit": 0,
+      "elapsed": 4.085588376000032,
+      "command": [
+        "go",
+        "test",
+        "./reliable",
+        "-run",
+        "^$",
+        "-bench",
+        "Benchmark(CongestionPacer|AuditRetry|AuditDuplicateACK|AuditReceiveDuplicate)$",
+        "-benchmem",
+        "-benchtime=200ms",
+        "-count=3"
+      ]
+    }
+  ]
+}

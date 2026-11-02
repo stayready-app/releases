@@ -1,0 +1,16 @@
+{
+  "mode": "active",
+  "clients": 200,
+  "succeeded": 198,
+  "messages_per_client": 32,
+  "message_bytes": 16384,
+  "verified_bytes_one_direction": 103809024,
+  "seconds": 120.003428625,
+  "verified_one_direction_mbps": 6.920403871085646,
+  "verification": "byte-for-byte echo of every message",
+  "seed": 1,
+  "errors": [
+    "client 146: context deadline exceeded",
+    "client 183: context deadline exceeded"
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "18": {
+    "runs": {
+      "controlled": [
+        {
+          "elapsed_ms": 2766,
+          "up_link_drops": 5,
+          "down_link_drops": 2,
+          "link_drops": 7
+        },
+        {
+          "elapsed_ms": 3016,
+          "up_link_drops": 6,
+          "down_link_drops": 2,
+          "link_drops": 8
+        },
+        {
+          "elapsed_ms": 3111,
+          "up_link_drops": 6,
+          "down_link_drops": 1,
+          "link_drops": 7
+        }
+      ],
+      "uncontrolled-lab-baseline": [
+        {
+          "elapsed_ms": 2682,
+          "up_link_drops": 67,
+          "down_link_drops": 49,
+          "link_drops": 116
+        },
+        {
+          "elapsed_ms": 2236,
+          "up_link_drops": 44,
+          "down_link_drops": 15,
+          "link_drops": 59
+        },
+        {
+          "elapsed_ms": 2422,
+          "up_link_drops": 56,
+          "down_link_drops": 21,
+          "link_drops": 77
+        }
+      ]
+    },
+    "medians": {
+      "controlled": {
+        "elapsed_ms": 3016,
+        "link_drops": 7
+      },
+      "uncontrolled-lab-baseline": {
+        "elapsed_ms": 2422,
+        "link_drops": 77
+      }
+    }
+  },
+  "19": {
+    "runs": {
+      "controlled": [
+        {
+          "elapsed_ms": 3297,
+          "up_link_drops": 6,
+          "down_link_drops": 2,
+          "link_drops": 8
+        },
+        {
+          "elapsed_ms": 2877,
+          "up_link_drops": 5,
+          "down_link_drops": 2,
+          "link_drops": 7
+        },
+        {
+          "elapsed_ms": 3208,
+          "up_link_drops": 5,
+          "down_link_drops": 2,
+          "link_drops": 7
+        }
+      ],
+      "uncontrolled-lab-baseline": [
+        {
+          "elapsed_ms": 2155,
+          "up_link_drops": 38,
+          "down_link_drops": 16,
+          "link_drops": 54
+        },
+        {
+          "elapsed_ms": 2557,
+          "up_link_drops": 65,
+          "down_link_drops": 52,
+          "link_drops": 117
+        },
+        {
+          "elapsed_ms": 2386,
+          "up_link_drops": 64,
+          "down_link_drops": 19,
+          "link_drops": 83
+        }
+      ]
+    },
+    "medians": {
+      "controlled": {
+        "elapsed_ms": 3208,
+        "link_drops": 7
+      },
+      "uncontrolled-lab-baseline": {
+        "elapsed_ms": 2386,
+        "link_drops": 83
+      }
+    }
+  }
+}

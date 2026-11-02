@@ -1,0 +1,12 @@
+RUN /mnt/data/work/srdt-stage16 ['bash', '-lc', 'go version; for tool in srdt-server srdt-client srdt-test srdt-load; do GOOS=linux GOARCH=amd64 go build -o "bin/${tool}-linux-amd64" "./cmd/${tool}" || exit; done']
+PASS stage17-baseline-build.txt
+RUN /mnt/data/srdt-stage17 ['python3', 'scripts/compare.py', '--baseline', '/mnt/data/work/srdt-stage16', '--runs', '3', '--resume']
+PASS stage17-measure-comparison.txt
+RUN /mnt/data/srdt-stage17 ['python3', 'scripts/cli_smoke.py', '--baseline', '/mnt/data/work/srdt-stage16']
+PASS stage17-cli-smoke-log.txt
+RUN /mnt/data/srdt-stage17 ['python3', 'scripts/integration.py', '--bulk']
+PASS stage17-process-log.txt
+RUN /mnt/data/srdt-stage17 ['python3', 'scripts/integration.py', '--only', 'active500']
+PASS stage17-process-active500-log.txt
+RUN /mnt/data/srdt-stage17 ['python3', 'scripts/integration.py', '--only', 'active1000']
+PASS stage17-process-active1000-log.txt

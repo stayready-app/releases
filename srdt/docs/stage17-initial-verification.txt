@@ -1,0 +1,44 @@
+=== toolchain ===
+go version go1.23.2 linux/amd64
+Linux dee82507c750 6.18.57 #1 SMP Tue Oct 20 21:56:04 UTC 2026 x86_64 GNU/Linux
+=== formatting ===
+=== build ===
+=== unit and real-socket tests ===
+?   	example.com/srdt/cmd/srdt-client	[no test files]
+?   	example.com/srdt/cmd/srdt-load	[no test files]
+?   	example.com/srdt/cmd/srdt-server	[no test files]
+?   	example.com/srdt/cmd/srdt-test	[no test files]
+ok  	example.com/srdt/emulator	0.008s
+ok  	example.com/srdt/netreliable	20.069s
+ok  	example.com/srdt/reliable	0.642s
+ok  	example.com/srdt/secureudp	0.111s
+ok  	example.com/srdt/testkit	0.025s
+=== race detector (full suite) ===
+?   	example.com/srdt/cmd/srdt-client	[no test files]
+?   	example.com/srdt/cmd/srdt-load	[no test files]
+?   	example.com/srdt/cmd/srdt-server	[no test files]
+?   	example.com/srdt/cmd/srdt-test	[no test files]
+ok  	example.com/srdt/emulator	1.024s
+ok  	example.com/srdt/netreliable	30.580s
+ok  	example.com/srdt/reliable	8.542s
+ok  	example.com/srdt/secureudp	1.165s
+ok  	example.com/srdt/testkit	1.386s
+=== vet ===
+=== focused repeated regression tests ===
+ok  	example.com/srdt/netreliable	54.952s
+=== frame parser fuzz (3 seconds, 2 workers) ===
+fuzz: elapsed: 0s, gathering baseline coverage: 0/6 completed
+fuzz: elapsed: 0s, gathering baseline coverage: 6/6 completed, now fuzzing with 2 workers
+fuzz: elapsed: 3s, execs: 89098 (29673/sec), new interesting: 14 (total: 20)
+fuzz: elapsed: 3s, execs: 89098 (0/sec), new interesting: 14 (total: 20)
+PASS
+ok  	example.com/srdt/reliable	3.057s
+=== authenticated packet fuzz (3 seconds, 2 workers) ===
+fuzz: elapsed: 0s, gathering baseline coverage: 0/3 completed
+fuzz: elapsed: 0s, gathering baseline coverage: 3/3 completed, now fuzzing with 2 workers
+fuzz: elapsed: 3s, execs: 83871 (27954/sec), new interesting: 2 (total: 5)
+fuzz: elapsed: 3s, execs: 83871 (0/sec), new interesting: 2 (total: 5)
+PASS
+ok  	example.com/srdt/secureudp	3.069s
+=== Linux amd64 and Windows amd64 builds ===
+=== PASS ===

@@ -1,0 +1,37 @@
+{"name": "modern", "passed": true, "expected_success": true, "client_exit": 0, "server": {"active_sessions": 0, "peak_sessions": 1, "used_hello_ids": 1, "buffer_bytes": 0, "peak_buffer_bytes": 22528, "received_datagrams": 145, "sent_datagrams": 145, "delivered_messages": 12, "delivered_bytes": 49152, "invalid_packets": 0, "admission_rejects": 0, "rate_limited": 0, "resource_drops": 0, "credit_requests": 12, "credits_granted": 12, "credit_blocked": 0, "credit_violations": 0, "credit_rejected": 0, "legacy_sessions": 0, "waiting_sessions": 0, "peak_waiting_sessions": 0, "stale_messages": 0, "repeated_hellos": 0, "expired_sessions": 0, "write_errors": 0, "filtered_datagrams": 0}}
+{"name": "filtered", "passed": true, "expected_success": true, "client_exit": 0, "server": {"active_sessions": 0, "peak_sessions": 1, "used_hello_ids": 1, "buffer_bytes": 0, "peak_buffer_bytes": 22528, "received_datagrams": 337, "sent_datagrams": 337, "delivered_messages": 12, "delivered_bytes": 49152, "invalid_packets": 0, "admission_rejects": 0, "rate_limited": 0, "resource_drops": 0, "credit_requests": 12, "credits_granted": 12, "credit_blocked": 0, "credit_violations": 0, "credit_rejected": 0, "legacy_sessions": 0, "waiting_sessions": 0, "peak_waiting_sessions": 0, "stale_messages": 0, "repeated_hellos": 0, "expired_sessions": 0, "write_errors": 0, "filtered_datagrams": 48}}
+Traceback (most recent call last):
+  File "/mnt/data/srdt-stage16/scripts/cli_smoke.py", line 55, in <module>
+    if __name__ == '__main__': main()
+                               ~~~~^^
+  File "/mnt/data/srdt-stage16/scripts/cli_smoke.py", line 49, in main
+    results += [run_case('legacy-opt-in',ROOT,base,legacy=True),
+                ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/srdt-stage16/scripts/cli_smoke.py", line 28, in run_case
+    c = subprocess.run(command,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True,timeout=15)
+  File "/usr/lib/python3.13/subprocess.py", line 554, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/subprocess.py", line 1039, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        pass_fds, cwd, env,
+                        ^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+                        gid, gids, uid, umask,
+                        ^^^^^^^^^^^^^^^^^^^^^^
+                        start_new_session, process_group)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/subprocess.py", line 1857, in _execute_child
+    self._posix_spawn(args, executable, env, restore_signals, close_fds,
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                      p2cread, p2cwrite,
+                      ^^^^^^^^^^^^^^^^^^
+                      c2pread, c2pwrite,
+                      ^^^^^^^^^^^^^^^^^^
+                      errread, errwrite)
+                      ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/subprocess.py", line 1801, in _posix_spawn
+    self.pid = os.posix_spawn(executable, args, env, **kwargs)
+               ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 13] Permission denied: '/mnt/data/baseline15/srdt-stage15/bin/srdt-client-linux-amd64'

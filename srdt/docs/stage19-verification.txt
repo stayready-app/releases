@@ -1,0 +1,52 @@
+=== toolchain ===
+go version go1.23.2 linux/amd64
+Linux ffc6162fb8c6 6.18.57 #1 SMP Tue Oct 20 21:56:04 UTC 2026 x86_64 GNU/Linux
+=== formatting ===
+=== build ===
+=== unit and real-socket tests ===
+?   	example.com/srdt/cmd/srdt-client	[no test files]
+?   	example.com/srdt/cmd/srdt-load	[no test files]
+?   	example.com/srdt/cmd/srdt-server	[no test files]
+?   	example.com/srdt/cmd/srdt-test	[no test files]
+ok  	example.com/srdt/emulator	0.006s
+ok  	example.com/srdt/netreliable	43.922s
+ok  	example.com/srdt/reliable	0.381s
+ok  	example.com/srdt/secureudp	0.106s
+ok  	example.com/srdt/testkit	0.014s
+=== race detector (full suite) ===
+?   	example.com/srdt/cmd/srdt-client	[no test files]
+?   	example.com/srdt/cmd/srdt-load	[no test files]
+?   	example.com/srdt/cmd/srdt-server	[no test files]
+?   	example.com/srdt/cmd/srdt-test	[no test files]
+ok  	example.com/srdt/emulator	1.026s
+ok  	example.com/srdt/netreliable	47.883s
+ok  	example.com/srdt/reliable	4.532s
+ok  	example.com/srdt/secureudp	1.134s
+ok  	example.com/srdt/testkit	1.248s
+=== vet ===
+=== focused repeated regression tests ===
+ok  	example.com/srdt/netreliable	120.778s
+=== frame parser fuzz (3 seconds, 2 workers) ===
+fuzz: elapsed: 0s, gathering baseline coverage: 0/9 completed
+fuzz: elapsed: 0s, gathering baseline coverage: 9/9 completed, now fuzzing with 2 workers
+fuzz: elapsed: 3s, execs: 124190 (41384/sec), new interesting: 18 (total: 27)
+fuzz: elapsed: 3s, execs: 124190 (0/sec), new interesting: 18 (total: 27)
+PASS
+ok  	example.com/srdt/reliable	3.054s
+=== physical receipt fuzz (3 seconds, 2 workers) ===
+fuzz: elapsed: 0s, gathering baseline coverage: 0/3 completed
+fuzz: elapsed: 0s, gathering baseline coverage: 3/3 completed, now fuzzing with 2 workers
+fuzz: elapsed: 3s, execs: 12432 (4141/sec), new interesting: 12 (total: 15)
+fuzz: elapsed: 4s, execs: 12432 (0/sec), new interesting: 12 (total: 15)
+PASS
+ok  	example.com/srdt/reliable	4.017s
+=== authenticated packet fuzz (3 seconds, 2 workers) ===
+fuzz: elapsed: 0s, gathering baseline coverage: 0/3 completed
+fuzz: elapsed: 0s, gathering baseline coverage: 3/3 completed, now fuzzing with 2 workers
+fuzz: elapsed: 3s, execs: 125307 (41766/sec), new interesting: 3 (total: 6)
+fuzz: elapsed: 3s, execs: 125307 (0/sec), new interesting: 3 (total: 6)
+PASS
+ok  	example.com/srdt/secureudp	3.108s
+=== Linux amd64 and Windows amd64 builds ===
+=== PASS ===
+EXIT=0

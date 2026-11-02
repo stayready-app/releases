@@ -1,0 +1,20 @@
+=== RUN   TestAuditQueueBudgetAndReleasedSlots
+--- PASS: TestAuditQueueBudgetAndReleasedSlots (0.00s)
+=== RUN   TestAuditInvalidFloatingPointAndClock
+--- PASS: TestAuditInvalidFloatingPointAndClock (0.00s)
+=== RUN   TestDeterministic
+--- PASS: TestDeterministic (0.00s)
+=== RUN   TestFilterAndTime
+--- PASS: TestFilterAndTime (0.00s)
+=== RUN   TestInvalidConfig
+--- PASS: TestInvalidConfig (0.00s)
+=== RUN   TestBothDirections
+--- PASS: TestBothDirections (0.00s)
+=== RUN   TestLinkFIFOQueueDropsAndDrains
+--- PASS: TestLinkFIFOQueueDropsAndDrains (0.00s)
+=== RUN   TestLinkDirectionsAndReproducibility
+--- PASS: TestLinkDirectionsAndReproducibility (0.00s)
+=== RUN   TestLinkNoAllocations
+--- PASS: TestLinkNoAllocations (0.00s)
+PASS
+ok  	example.com/srdt/emulator	0.003s

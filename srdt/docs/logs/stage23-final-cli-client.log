@@ -1,0 +1,2 @@
+BRIDGE_LISTEN=127.0.0.1:35995
+PASS: independent TCP bridge sent=1048576 received=1048576 chunks_out=66 chunks_in=64 peak_transactions=4 peak_queue=65536

@@ -1,0 +1,23 @@
+Stage 21 verification summary
+=============================
+- gofmt: PASS
+- go build ./...: PASS
+- go vet ./...: PASS
+- all 56 netreliable tests covered by split functional groups: PASS
+- secureudp/reliable/emulator/testkit normal tests: PASS
+- race detector across core and every netreliable functional group: PASS
+- final changed fault/V1 retry tests under race: PASS
+- Stage21 focused tests repeated x3: PASS
+- control-padding size-blackhole test repeated x3: PASS
+- FuzzDecode / FuzzPacketReceipt / FuzzAuditOpen, 3 seconds each: PASS
+- Linux amd64 builds: PASS
+- Windows amd64 cross-builds: PASS
+- Stage21 client -> Stage20 server explicit legacy handshake: PASS
+- Stage20 client -> Stage21 server explicit legacy server opt-in: PASS
+- 100 MiB bounded stream: PASS
+- 1000-session active workload: PASS
+- 1000-session idle workload: PASS
+
+A single monolithic all-network-test invocation can exceed the execution window of the
+artifact environment; verification therefore uses the checked-in scripts/verify.sh split.
+See docs/BUILD-REPORT.md and docs/logs/ for details.

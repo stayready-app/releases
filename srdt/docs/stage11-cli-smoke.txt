@@ -1,0 +1,6 @@
+PASS: 12 independent messages, 4096 bytes each, verified echo
+SERVER_PUBLIC=14dce0bf7b2538529ff9e214257ad75164c7083bdd9141aa9ae9653697554a19
+PASS: batch completed
+Size filter [800,1100]:
+PASS: 12 independent messages, 4096 bytes each, verified echo
+PASS: batch completed

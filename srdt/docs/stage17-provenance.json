@@ -1,0 +1,301 @@
+{
+  "base_archive_sha256": "88c72d497c5b3c28fac224bc90599159b9a48e0bdec0eaee01fbdf414109552e",
+  "baseline_source_matches_input": true,
+  "baseline_source_checks": [
+    {
+      "path": "cmd/srdt-client/main.go",
+      "matches": true
+    },
+    {
+      "path": "cmd/srdt-load/main.go",
+      "matches": true
+    },
+    {
+      "path": "cmd/srdt-server/main.go",
+      "matches": true
+    },
+    {
+      "path": "cmd/srdt-test/main.go",
+      "matches": true
+    },
+    {
+      "path": "emulator/audit_test.go",
+      "matches": true
+    },
+    {
+      "path": "emulator/emulator.go",
+      "matches": true
+    },
+    {
+      "path": "emulator/emulator_test.go",
+      "matches": true
+    },
+    {
+      "path": "go.mod",
+      "matches": true
+    },
+    {
+      "path": "netreliable/audit_test.go",
+      "matches": true
+    },
+    {
+      "path": "netreliable/credits.go",
+      "matches": true
+    },
+    {
+      "path": "netreliable/credits_test.go",
+      "matches": true
+    },
+    {
+      "path": "netreliable/fault_test.go",
+      "matches": true
+    },
+    {
+      "path": "netreliable/handshake.go",
+      "matches": true
+    },
+    {
+      "path": "netreliable/multi.go",
+      "matches": true
+    },
+    {
+      "path": "netreliable/multi_test.go",
+      "matches": true
+    },
+    {
+      "path": "netreliable/network.go",
+      "matches": true
+    },
+    {
+      "path": "netreliable/network_test.go",
+      "matches": true
+    },
+    {
+      "path": "netreliable/server.go",
+      "matches": true
+    },
+    {
+      "path": "netreliable/server_test.go",
+      "matches": true
+    },
+    {
+      "path": "netreliable/wan_comparison_test.go",
+      "matches": true
+    },
+    {
+      "path": "reliable/audit_test.go",
+      "matches": true
+    },
+    {
+      "path": "reliable/bitmap.go",
+      "matches": true
+    },
+    {
+      "path": "reliable/budget.go",
+      "matches": true
+    },
+    {
+      "path": "reliable/budget_test.go",
+      "matches": true
+    },
+    {
+      "path": "reliable/credits_test.go",
+      "matches": true
+    },
+    {
+      "path": "reliable/hardening_test.go",
+      "matches": true
+    },
+    {
+      "path": "reliable/large_test.go",
+      "matches": true
+    },
+    {
+      "path": "reliable/ownership_test.go",
+      "matches": true
+    },
+    {
+      "path": "reliable/queue.go",
+      "matches": true
+    },
+    {
+      "path": "reliable/queue_test.go",
+      "matches": true
+    },
+    {
+      "path": "reliable/reliable.go",
+      "matches": true
+    },
+    {
+      "path": "reliable/reliable_test.go",
+      "matches": true
+    },
+    {
+      "path": "reliable/resource_test.go",
+      "matches": true
+    },
+    {
+      "path": "reliable/secure_integration_test.go",
+      "matches": true
+    },
+    {
+      "path": "reliable/sender.go",
+      "matches": true
+    },
+    {
+      "path": "reliable/stage6_test.go",
+      "matches": true
+    },
+    {
+      "path": "reliable/window_test.go",
+      "matches": true
+    },
+    {
+      "path": "secureudp/audit_test.go",
+      "matches": true
+    },
+    {
+      "path": "secureudp/integration_test.go",
+      "matches": true
+    },
+    {
+      "path": "secureudp/protocol.go",
+      "matches": true
+    },
+    {
+      "path": "secureudp/protocol_test.go",
+      "matches": true
+    },
+    {
+      "path": "secureudp/readerror.go",
+      "matches": true
+    },
+    {
+      "path": "secureudp/udp.go",
+      "matches": true
+    },
+    {
+      "path": "testkit/audit_test.go",
+      "matches": true
+    },
+    {
+      "path": "testkit/data.go",
+      "matches": true
+    },
+    {
+      "path": "testkit/data_test.go",
+      "matches": true
+    }
+  ],
+  "stage17_go_changes": [
+    {
+      "path": "cmd/srdt-client/main.go",
+      "status": "modified",
+      "sha256": "8bcb0d6555821bff0a8d645b4f34a4bcb7d808f7d37c624e8958ce7406a2b31b"
+    },
+    {
+      "path": "cmd/srdt-load/main.go",
+      "status": "modified",
+      "sha256": "15ced6d5f3807a6d1d8055da1aeff8ee7736c89d17745f2e18ca41e7de96dc9b"
+    },
+    {
+      "path": "netreliable/credits.go",
+      "status": "modified",
+      "sha256": "cf555d7c15f81f25d4e1449aa5fc532b9ca9b4fdd993213a14f74e21aa57b758"
+    },
+    {
+      "path": "netreliable/credits_test.go",
+      "status": "modified",
+      "sha256": "2768735ac0b4be0bc81019ae6635326d59d1490e23215fdf4659571731a7dbc1"
+    },
+    {
+      "path": "netreliable/encoding.go",
+      "status": "added",
+      "sha256": "0592174ab179d8c7b6b2ed4a79ea2f9a9092375644abef83fdfe63a7b78379a4"
+    },
+    {
+      "path": "netreliable/fault_test.go",
+      "status": "modified",
+      "sha256": "f79f290967179fb6b1221ce37fb6f825f87fe732abe93667abe2727f0569850c"
+    },
+    {
+      "path": "netreliable/handshake.go",
+      "status": "modified",
+      "sha256": "5630d29df51f202728e2bc31de016420675b19fc3c2be9a4a0aac5515af5c0bb"
+    },
+    {
+      "path": "netreliable/multi.go",
+      "status": "modified",
+      "sha256": "b1fd1cfc75c32ac84d68a62c6065b3c2b8159abfaedd37b1b0b3e0c193035b60"
+    },
+    {
+      "path": "netreliable/network.go",
+      "status": "modified",
+      "sha256": "9dece96449742c8d7ff2814a8c4413df84a15a0d5f11461acc01ae4bf69b40b8"
+    },
+    {
+      "path": "netreliable/send_test.go",
+      "status": "added",
+      "sha256": "a2164553240a6745b7f6e3236ec7867ef9e6f04013238aeba98af205e07fe789"
+    },
+    {
+      "path": "netreliable/server.go",
+      "status": "modified",
+      "sha256": "e6048d29216c2e283ba5adf47a2e6ed74415f8e2115f437ca160c3d6118d5322"
+    },
+    {
+      "path": "netreliable/windowcredits.go",
+      "status": "added",
+      "sha256": "ff53dc36ad9c04c727c98cb92a9220d098df35ce770aac2dca1723d42934004e"
+    },
+    {
+      "path": "netreliable/windowcredits_test.go",
+      "status": "added",
+      "sha256": "a00a554be8de50185876a88a447adcaaf22e8e9690516b252d158c7a9cd85258"
+    },
+    {
+      "path": "reliable/envelope.go",
+      "status": "added",
+      "sha256": "ee04faa3c09aaa082ffee55870cbfbe5591caf2fb56cd88c85a9abfeb5866ad0"
+    },
+    {
+      "path": "reliable/ownership_test.go",
+      "status": "modified",
+      "sha256": "a8a3bcd9f6b4b2d7465a7fb4a76a8f83eab5ce1b1fcbb09faf296572b45ceff1"
+    },
+    {
+      "path": "reliable/queue.go",
+      "status": "modified",
+      "sha256": "2bdc9baaa5b92c4dc00eae1265d24fdebc502b034e991dabe00b1348c18994ac"
+    },
+    {
+      "path": "reliable/reliable.go",
+      "status": "modified",
+      "sha256": "7222a119e5a3941b4363710c9cbe55ff6c8a9152895ce894cedc706b207e31b0"
+    },
+    {
+      "path": "reliable/rtt.go",
+      "status": "added",
+      "sha256": "6c73a9298d01502df51ea75495c7717620858cc2f96bcb0c097001b8efc12ad7"
+    },
+    {
+      "path": "reliable/sender.go",
+      "status": "modified",
+      "sha256": "bc542a2014c510deacaecc7a9178642fe6dd26e78fcef39994b28fdbdf21517c"
+    },
+    {
+      "path": "reliable/windowcredits.go",
+      "status": "added",
+      "sha256": "838e7babed227b8a37f46c7f3a8704d5e17c2bb88c7699941c9eb97786c55e65"
+    },
+    {
+      "path": "reliable/windowcredits_test.go",
+      "status": "added",
+      "sha256": "b3ca223a9fdbb798aafc2839414589994f5d79fed7c0f4c2bed9f9085aaa0840"
+    }
+  ],
+  "installed_go": "go1.23.2 linux/amd64",
+  "actual_native_platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "host_cpu_visible": 5,
+  "limits_note": "GOMAXPROCS=2; GOMEMLIMIT=128MiB soft runtime budget; not a physical 2GB VPS or CPU emulator"
+}

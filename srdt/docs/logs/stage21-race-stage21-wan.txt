@@ -1,0 +1,15 @@
+=== RUN   TestStage21V1CapabilitySession
+--- PASS: TestStage21V1CapabilitySession (0.40s)
+=== RUN   TestStage21LegacyHandshakeRequiresExplicitServerOptIn
+--- PASS: TestStage21LegacyHandshakeRequiresExplicitServerOptIn (0.55s)
+=== RUN   TestStage21StreamingEchoBoundedAndOrdered
+--- PASS: TestStage21StreamingEchoBoundedAndOrdered (0.69s)
+=== RUN   TestStage21StreamingEchoThroughFaultRelay
+    fault_test.go:147: relay: up={Submitted:1511 Dropped:37 Duplicated:20 Corrupted:0 Delivered:1494 QueueDrops:0 LinkDrops:0} down={Submitted:1276 Dropped:27 Duplicated:32 Corrupted:0 Delivered:1281 QueueDrops:0 LinkDrops:0} forged=396 write_drops=0
+--- PASS: TestStage21StreamingEchoThroughFaultRelay (4.52s)
+=== RUN   TestStage16WANComparison
+    wan_comparison_test.go:28: verified_bytes=131072 elapsed_ms=1421 stats={PacketStateBytes:0 PeakPacketStateBytes:8192 PacketTrackedSends:160 PacketReceipts:160 PacketReceiptFrames:160 PacketBatchReceiptFrames:0 PacketDuplicateReceipts:0 PacketLateReceipts:0 PacketTimeoutLosses:0 PacketThresholdLosses:0 PacketRingWaits:0 PacketWireInFlight:0 PeakSessionWireInFlight:18054 PeakSessionTrackedPackets:19 ActiveSessions:1 V1Sessions:1 LegacyHandshakeSessions:0 PeakSessions:1 UsedHelloIDs:1 BufferBytes:0 PeakBufferBytes:45056 ReceivedDatagrams:372 SentDatagrams:323 DeliveredMessages:32 DeliveredBytes:131072 InvalidPackets:0 AdmissionRejects:0 RateLimited:0 ResourceDrops:0 WindowRequests:25 WindowGrantUpdates:36 CreditRequests:0 CreditsGranted:32 CreditBlocked:0 CreditViolations:0 CreditRejected:0 LegacySessions:0 WaitingSessions:0 PeakWaitingSessions:1 StaleMessages:0 RepeatedHellos:0 ExpiredSessions:0 WriteErrors:0 DataFreshPackets:160 DataRetryPackets:0 DataRetryBytes:0 CongestionEvents:0 PacingWaits:102 PeakCongestionWindow:18550 FilteredDatagrams:0}
+    fault_test.go:147: relay: up={Submitted:372 Dropped:0 Duplicated:0 Corrupted:0 Delivered:372 QueueDrops:0 LinkDrops:0} down={Submitted:323 Dropped:0 Duplicated:0 Corrupted:0 Delivered:323 QueueDrops:0 LinkDrops:0} forged=0 write_drops=0
+--- PASS: TestStage16WANComparison (1.46s)
+PASS
+ok  	example.com/srdt/netreliable	8.640s

@@ -1,0 +1,16 @@
+[
+  {
+    "case": "baseline",
+    "expected_exit": 0,
+    "actual_exit": 0,
+    "stdout": "{\n  \"Status\": \"PASS\",\n  \"Messages\": 1000,\n  \"Verified\": 1000,\n  \"Invalid\": 0,\n  \"Network\": {\n    \"Submitted\": 1000,\n    \"Dropped\": 0,\n    \"Duplicated\": 0,\n    \"Corrupted\": 0,\n    \"Delivered\": 1000,\n    \"QueueDrops\": 0,\n    \"LinkDrops\": 0\n  }\n}\n",
+    "stderr": ""
+  },
+  {
+    "case": "expected-loss",
+    "expected_exit": 1,
+    "actual_exit": 1,
+    "stdout": "{\n  \"Status\": \"FAIL\",\n  \"Messages\": 1000,\n  \"Verified\": 939,\n  \"Invalid\": 0,\n  \"Network\": {\n    \"Submitted\": 1000,\n    \"Dropped\": 61,\n    \"Duplicated\": 0,\n    \"Corrupted\": 0,\n    \"Delivered\": 939,\n    \"QueueDrops\": 0,\n    \"LinkDrops\": 0\n  }\n}\n",
+    "stderr": ""
+  }
+]

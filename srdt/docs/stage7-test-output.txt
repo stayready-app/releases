@@ -1,0 +1,23 @@
+$ go build ./...
+$ go test -count=1 ./...
+?   	example.com/srdt/cmd/srdt-client	[no test files]
+?   	example.com/srdt/cmd/srdt-server	[no test files]
+?   	example.com/srdt/cmd/srdt-test	[no test files]
+ok  	example.com/srdt/emulator	0.004s
+ok  	example.com/srdt/netreliable	0.304s
+ok  	example.com/srdt/reliable	1.693s
+ok  	example.com/srdt/secureudp	0.104s
+ok  	example.com/srdt/testkit	0.019s
+$ go test -race -count=1 ./...
+?   	example.com/srdt/cmd/srdt-client	[no test files]
+?   	example.com/srdt/cmd/srdt-server	[no test files]
+?   	example.com/srdt/cmd/srdt-test	[no test files]
+ok  	example.com/srdt/emulator	1.025s
+ok  	example.com/srdt/netreliable	1.320s
+ok  	example.com/srdt/reliable	17.454s
+ok  	example.com/srdt/secureudp	1.120s
+ok  	example.com/srdt/testkit	1.168s
+$ go vet ./...
+$ cross-build windows
+$ cross-build linux
+All commands succeeded

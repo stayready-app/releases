@@ -1,0 +1,60 @@
+{
+  "stage16": {
+    "runs": 3,
+    "completed_runs": 1,
+    "failed_runs": 2,
+    "elapsed_seconds_all_attempts": [
+      7.183798449000051,
+      120.02213118099985,
+      120.03073347500003
+    ],
+    "server_cpu_seconds_all_attempts": [
+      7.12,
+      13.98,
+      14.49
+    ],
+    "sampled_server_rss_kib_all_attempts": [
+      34488,
+      35008,
+      34968
+    ],
+    "elapsed_seconds_completed_median": 7.183798449000051,
+    "server_cpu_seconds_completed_median": 7.12,
+    "sampled_server_rss_kib_completed_median": 34488,
+    "resource_drops": [
+      0,
+      0,
+      0
+    ],
+    "data_verified_all_runs": false
+  },
+  "stage17": {
+    "runs": 3,
+    "completed_runs": 3,
+    "failed_runs": 0,
+    "elapsed_seconds_all_attempts": [
+      8.005425262000017,
+      7.279628130999754,
+      7.012976379000065
+    ],
+    "server_cpu_seconds_all_attempts": [
+      5.63,
+      5.82,
+      5.66
+    ],
+    "sampled_server_rss_kib_all_attempts": [
+      35496,
+      36516,
+      35976
+    ],
+    "elapsed_seconds_completed_median": 7.279628130999754,
+    "server_cpu_seconds_completed_median": 5.66,
+    "sampled_server_rss_kib_completed_median": 35976,
+    "resource_drops": [
+      0,
+      0,
+      0
+    ],
+    "data_verified_all_runs": true
+  }
+}

@@ -1,0 +1,14 @@
+=== RUN   TestStage16WANComparison
+    wan_comparison_test.go:28: verified_bytes=131072 elapsed_ms=1118 stats={ActiveSessions:1 PeakSessions:1 UsedHelloIDs:1 BufferBytes:0 PeakBufferBytes:45056 ReceivedDatagrams:372 SentDatagrams:384 DeliveredMessages:32 DeliveredBytes:131072 InvalidPackets:0 AdmissionRejects:0 RateLimited:0 ResourceDrops:0 WindowRequests:25 WindowGrantUpdates:38 CreditRequests:0 CreditsGranted:32 CreditBlocked:0 CreditViolations:0 CreditRejected:0 LegacySessions:0 WaitingSessions:0 PeakWaitingSessions:1 StaleMessages:0 RepeatedHellos:0 ExpiredSessions:0 WriteErrors:0 FilteredDatagrams:0}
+    fault_test.go:147: relay: up={Submitted:372 Dropped:0 Duplicated:0 Corrupted:0 Delivered:372 QueueDrops:0} down={Submitted:384 Dropped:0 Duplicated:0 Corrupted:0 Delivered:384 QueueDrops:0} forged=0 write_drops=0
+--- PASS: TestStage16WANComparison (1.16s)
+=== RUN   TestStage16WANComparison
+    wan_comparison_test.go:28: verified_bytes=131072 elapsed_ms=1114 stats={ActiveSessions:1 PeakSessions:1 UsedHelloIDs:1 BufferBytes:0 PeakBufferBytes:45056 ReceivedDatagrams:372 SentDatagrams:384 DeliveredMessages:32 DeliveredBytes:131072 InvalidPackets:0 AdmissionRejects:0 RateLimited:0 ResourceDrops:0 WindowRequests:25 WindowGrantUpdates:38 CreditRequests:0 CreditsGranted:32 CreditBlocked:0 CreditViolations:0 CreditRejected:0 LegacySessions:0 WaitingSessions:0 PeakWaitingSessions:1 StaleMessages:0 RepeatedHellos:0 ExpiredSessions:0 WriteErrors:0 FilteredDatagrams:0}
+    fault_test.go:147: relay: up={Submitted:372 Dropped:0 Duplicated:0 Corrupted:0 Delivered:372 QueueDrops:0} down={Submitted:384 Dropped:0 Duplicated:0 Corrupted:0 Delivered:384 QueueDrops:0} forged=0 write_drops=0
+--- PASS: TestStage16WANComparison (1.16s)
+=== RUN   TestStage16WANComparison
+    wan_comparison_test.go:28: verified_bytes=131072 elapsed_ms=1115 stats={ActiveSessions:1 PeakSessions:1 UsedHelloIDs:1 BufferBytes:0 PeakBufferBytes:45056 ReceivedDatagrams:372 SentDatagrams:384 DeliveredMessages:32 DeliveredBytes:131072 InvalidPackets:0 AdmissionRejects:0 RateLimited:0 ResourceDrops:0 WindowRequests:25 WindowGrantUpdates:38 CreditRequests:0 CreditsGranted:32 CreditBlocked:0 CreditViolations:0 CreditRejected:0 LegacySessions:0 WaitingSessions:0 PeakWaitingSessions:1 StaleMessages:0 RepeatedHellos:0 ExpiredSessions:0 WriteErrors:0 FilteredDatagrams:0}
+    fault_test.go:147: relay: up={Submitted:372 Dropped:0 Duplicated:0 Corrupted:0 Delivered:372 QueueDrops:0} down={Submitted:384 Dropped:0 Duplicated:0 Corrupted:0 Delivered:384 QueueDrops:0} forged=0 write_drops=0
+--- PASS: TestStage16WANComparison (1.16s)
+PASS
+ok  	example.com/srdt/netreliable	3.474s

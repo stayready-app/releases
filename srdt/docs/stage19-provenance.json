@@ -1,0 +1,10 @@
+{
+  "stage": 19,
+  "base_archive": "srdt-stage18-full.zip",
+  "base_sha256": "5cce07c8ae7495c17a1da4e9f42eeac0c7d90f49e49a57269154cd5e75185331",
+  "base_manifest_entries_checked": 725,
+  "base_manifest_errors": [],
+  "toolchain": "go1.23.2 linux/amd64",
+  "new_toolchain_download": "go.dev DNS unavailable; container.download attempt also failed",
+  "govulncheck": "not run"
+}

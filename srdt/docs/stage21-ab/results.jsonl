@@ -1,0 +1,6 @@
+{"stage": 20, "run": 1, "wall_s": 4.216782239, "server_cpu_s": 4.32, "max_rss_kib": 21024, "sent_datagrams": 330458, "retries": 53325, "v1_sessions": 0}
+{"stage": 21, "run": 2, "wall_s": 4.139994422, "server_cpu_s": 4.34, "max_rss_kib": 21136, "sent_datagrams": 332737, "retries": 55246, "v1_sessions": 200}
+{"stage": 20, "run": 2, "wall_s": 4.372204242, "server_cpu_s": 4.11, "max_rss_kib": 20520, "sent_datagrams": 329094, "retries": 52202, "v1_sessions": 0}
+{"stage": 21, "run": 1, "wall_s": 5.960610021, "server_cpu_s": 4.13, "max_rss_kib": 21168, "sent_datagrams": 331354, "retries": 54431, "v1_sessions": 200}
+{"stage": 20, "run": 3, "wall_s": 5.737203958, "server_cpu_s": 4.04, "max_rss_kib": 21072, "sent_datagrams": 328643, "retries": 52395, "v1_sessions": 0}
+{"stage": 21, "run": 2, "wall_s": 4.977141906, "server_cpu_s": 4.25, "max_rss_kib": 20692, "sent_datagrams": 331828, "retries": 54555, "v1_sessions": 200}

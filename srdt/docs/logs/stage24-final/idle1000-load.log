@@ -1,0 +1,12 @@
+{
+  "mode": "bridge-idle",
+  "clients": 1000,
+  "succeeded": 1000,
+  "messages_per_client": 1,
+  "message_bytes": 1,
+  "verified_bytes_one_direction": 1000,
+  "seconds": 5.718428172,
+  "verified_one_direction_mbps": 0.001398985833060141,
+  "verification": "verified bridge open, idle keepalive hold, then exact one-byte echo and half-close",
+  "seed": 1
+}

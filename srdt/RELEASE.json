@@ -1,0 +1,114 @@
+{
+  "project": "SRDT",
+  "stage": 25,
+  "date": "2026-11-02",
+  "go": "go1.23.2 linux/amd64",
+  "production_ready": false,
+  "native_runtime_tested": [
+    "linux/amd64"
+  ],
+  "cross_compiled": [
+    "windows/amd64"
+  ],
+  "protocol_default": "V1 authenticated capabilities + independent streams + authenticated path liveness for fixed TCP upstream bridge",
+  "capabilities": [
+    "packet_tracking",
+    "packet_ack_batch",
+    "window_credits",
+    "control_padding",
+    "streaming",
+    "adaptive_rto",
+    "congestion_control",
+    "independent_streams",
+    "path_liveness"
+  ],
+  "liveness": {
+    "keepalive_default": "15s",
+    "timeout_default": "45s",
+    "bridge_drain_default": "1s",
+    "per_session_timer_goroutine": false,
+    "authenticated_ping_pong": true,
+    "asymmetric_reset_best_effort": true
+  },
+  "bridge": {
+    "fixed_tcp_upstream": true,
+    "client_cli": "--bridge-listen",
+    "server_cli": "--upstream",
+    "upstream_goroutines_per_active_bridge": 2,
+    "max_concurrent_dials_default": 16,
+    "upstream_socket_buffer_request_bytes_per_direction": 16384,
+    "shared_udp_receive_buffer_request_bytes": 2097152,
+    "shared_udp_send_buffer_request_bytes": 1048576
+  },
+  "idle1000_final": {
+    "passed": true,
+    "clients": 1000,
+    "application_idle_s": 4,
+    "server_idle_timeout": "2s",
+    "keepalive": "500ms",
+    "keepalive_timeout": "2s",
+    "workload_s": 5.718428172,
+    "server_cpu_s": 1.31,
+    "server_peak_rss_kib": 30812,
+    "path_pings_received": 7484,
+    "path_pongs_sent": 7484,
+    "peak_buffer_bytes": 1556476,
+    "peak_packet_state_bytes": 1810432,
+    "resource_drops": 0,
+    "completed_bridge_sessions": 1000,
+    "expired_sessions": 0,
+    "active_sessions_after_drain": 0
+  },
+  "long_bridge_100m_final": {
+    "passed": true,
+    "verified_bytes_each_direction": 104857600,
+    "workload_s": 5.796253216,
+    "server_cpu_s": 5.0,
+    "server_peak_rss_kib": 9644,
+    "resource_drops": 0,
+    "data_retry_packets": 0,
+    "path_pings_received": 0,
+    "path_pongs_sent": 0
+  },
+  "verification": {
+    "gofmt": "PASS",
+    "go_build": "PASS",
+    "go_vet": "PASS",
+    "split_normal_groups": "PASS",
+    "split_race_groups": "PASS",
+    "stage23_repeat_3x": "PASS",
+    "stage24_repeat_3x": "PASS",
+    "fuzz": "PASS",
+    "windows_cross_build": "PASS",
+    "archive_manifest": "verified after release manifest generation; see external release checksum",
+    "linux_binary_smoke": "PASS 1000/1000",
+    "stage25_go_source_equivalence": "PASS 75/75 byte-identical to Stage 24",
+    "stage25_helper_linux_e2e": "PASS smoke+100MiB+size-drop+keepalive+1000 clients",
+    "stage25_powershell_static_validation": "PASS; native PowerShell runtime unavailable in Linux environment"
+  },
+  "known_limitations": [
+    "experimental unaudited crypto/key provisioning",
+    "STREAM_RESET is best effort rather than acknowledged/retried",
+    "no NAT rebinding/path migration or multipath recovery",
+    "two blocking Go goroutines per active upstream TCP bridge",
+    "kernel TCP/UDP socket memory is outside protocol budgets",
+    "no native Windows, target 2GB node + Xray, soak, operator WAN or TSPU validation",
+    "fixed TCP upstream only; no generic destination/SOCKS/TUN control",
+    "Go 1.23.2 environment; current govulncheck unavailable"
+  ],
+  "personal_verification_harness": {
+    "linux_server_script": "scripts/srdt-test-server.sh",
+    "windows_script": "scripts/Test-SRDT.ps1",
+    "windows_wrapper": "scripts/Test-SRDT.cmd",
+    "single_connection_token": true,
+    "default_tests": [
+      "smoke",
+      "100MiB exact bridge",
+      "size-drop 800..1100",
+      "silent keepalive"
+    ],
+    "optional_stress_clients": 1000,
+    "linux_equivalent_harness_validation": "PASS including 1000/1000 stress",
+    "native_windows_script_execution": "pending user validation"
+  }
+}

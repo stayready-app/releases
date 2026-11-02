@@ -1,0 +1,6 @@
+=== RUN   TestPacketClosedQueueCannotReacquireMemory
+--- PASS: TestPacketClosedQueueCannotReacquireMemory (0.00s)
+=== RUN   TestPacketClosedQueueStopsControlTimers
+--- PASS: TestPacketClosedQueueStopsControlTimers (0.00s)
+PASS
+ok  	example.com/srdt/reliable	0.003s

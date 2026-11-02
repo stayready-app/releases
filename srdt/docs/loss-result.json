@@ -1,0 +1,13 @@
+{
+  "Status": "FAIL",
+  "Messages": 1000,
+  "Verified": 939,
+  "Invalid": 0,
+  "Network": {
+    "Submitted": 1000,
+    "Dropped": 61,
+    "Duplicated": 0,
+    "Corrupted": 0,
+    "Delivered": 939
+  }
+}

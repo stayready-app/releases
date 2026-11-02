@@ -1,0 +1,14 @@
+=== toolchain ===
+go version go1.23.2 linux/amd64
+Linux 510af89a15a4 6.18.57 #1 SMP Tue Oct 20 21:56:04 UTC 2026 x86_64 GNU/Linux
+=== formatting ===
+=== build ===
+=== vet ===
+=== core tests ===
+ok  	example.com/srdt/reliable	0.616s
+ok  	example.com/srdt/secureudp	0.111s
+ok  	example.com/srdt/testkit	0.027s
+ok  	example.com/srdt/emulator	0.006s
+=== netreliable: audit ===
+ok  	example.com/srdt/netreliable	22.512s
+=== netreliable: congestion-credits ===
