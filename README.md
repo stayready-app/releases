@@ -6,6 +6,13 @@ StayReady is a VPN for Windows, macOS, Linux, Android and Android TV for people 
 
 This repository holds the official StayReady downloads. Step-by-step guides and articles about VPN protocols are in the [wiki](https://github.com/stayready-app/releases/wiki). Website: [stayready.space](https://stayready.space).
 
+<p align="center">
+  <img src="https://stayready-app.github.io/site-media/help/windows/main-en.webp" height="200" alt="StayReady on a computer: connected, the location and the license on the right">
+  <img src="https://stayready-app.github.io/site-media/help/android/main-en.webp" height="200" alt="StayReady on a phone: connected, the server chosen automatically">
+  <img src="https://stayready-app.github.io/site-media/help/tv/app-main-en.webp" height="200" alt="StayReady on a TV: the menu on the left, the connect button in the middle, the server and the plan on the right">
+</p>
+<p align="center"><em>One app on a computer, a phone and a TV</em></p>
+
 ## Download
 
 | System | File | Version |
@@ -60,6 +67,13 @@ Email [support@stayready.space](mailto:support@stayready.space) or use **Support
 StayReady — VPN для Windows, macOS, Linux, Android и Android TV для тех, кому нужно соединение, которое просто работает: дома, на работе, в дороге и в публичном Wi-Fi. Большинство VPN-сервисов полагаются на один протокол. StayReady умеет подключаться несколькими способами и сам восстанавливает соединение, когда сеть подводит.
 
 В этом репозитории лежат официальные файлы для установки StayReady. Пошаговые инструкции и статьи о VPN-протоколах — в [вики](https://github.com/stayready-app/releases/wiki/%D0%93%D0%BB%D0%B0%D0%B2%D0%BD%D0%B0%D1%8F). Сайт: [stayready.space](https://stayready.space/ru/).
+
+<p align="center">
+  <img src="https://stayready-app.github.io/site-media/help/windows/main-ru.webp" height="200" alt="StayReady на компьютере: подключено, справа расположение и лицензия">
+  <img src="https://stayready-app.github.io/site-media/help/android/main-ru.webp" height="200" alt="StayReady на телефоне: подключено, сервер выбран автоматически">
+  <img src="https://stayready-app.github.io/site-media/help/tv/app-main-ru.webp" height="200" alt="StayReady на телевизоре: слева меню, в центре кнопка подключения, справа сервер и тариф">
+</p>
+<p align="center"><em>Одно приложение на компьютере, телефоне и телевизоре</em></p>
 
 ## Скачать
 
